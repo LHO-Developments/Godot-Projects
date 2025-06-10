@@ -1,5 +1,6 @@
 # Godot Projects
 Games created using godot engine
 
-# First Game
-Speedy Saucer - Maze game
+# Games
+	1. Speedy Saucer
+	2. Alien Attack
