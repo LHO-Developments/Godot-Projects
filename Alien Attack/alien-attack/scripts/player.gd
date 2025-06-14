@@ -2,6 +2,9 @@ extends CharacterBody2D
 var speed = 300;
 var rocket_scene = preload("res://scenes/rocket.tscn");
 
+# short hand on _ready() && get_node("RocketContainer");
+@onready var rocket_container = $RocketContainer;
+
 func _process(delta: float) -> void:
 	# shoot rocket
 	if Input.is_action_just_pressed("shoot"):
@@ -32,7 +35,10 @@ func shoot():
 	var rocket_instance = rocket_scene.instantiate();
 	
 	# add rocket to player scene
-	add_child(rocket_instance);
+	rocket_container.add_child(rocket_instance);
+	
+	# add rocket where the player is at
+	rocket_instance.global_position = global_position;
 	
 	#space out the rocket when ship is being shoot
 	rocket_instance.global_position.x += 80;
