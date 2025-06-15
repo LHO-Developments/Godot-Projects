@@ -11,6 +11,8 @@ height = 130.0
 radius = 18.0
 
 [node name="enemy" type="Area2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_md0e3")
 speed = 300
 
