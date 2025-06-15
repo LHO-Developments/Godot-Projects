@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var speed = 300;
 var rocket_scene = preload("res://scenes/rocket.tscn");
+signal took_damage;
 
 # short hand on _ready() && get_node("RocketContainer");
 @onready var rocket_container = $RocketContainer;
@@ -42,4 +43,11 @@ func shoot():
 	
 	#space out the rocket when ship is being shoot
 	rocket_instance.global_position.x += 80;
-	
+
+# called custom signal to subtract lives from game scene
+func take_damage():
+	emit_signal("took_damage");
+
+# player dies
+func die():
+	queue_free();

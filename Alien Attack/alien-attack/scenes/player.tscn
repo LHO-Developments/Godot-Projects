@@ -23,3 +23,5 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_lik2q")
 
 [node name="RocketContainer" type="Node" parent="."]
+
+[connection signal="took_damage" from="." to="." method="_on_took_damage"]

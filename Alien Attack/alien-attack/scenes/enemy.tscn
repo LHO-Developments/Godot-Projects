@@ -35,3 +35,5 @@ shape = SubResource("CircleShape2D_md0e3")
 position = Vector2(15, 28)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_md0e3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -7,3 +7,7 @@ func _physics_process(delta: float):
 
 func die():
 	queue_free();
+
+func _on_body_entered(body: Node2D) -> void:
+	body.take_damage();
+	die();
