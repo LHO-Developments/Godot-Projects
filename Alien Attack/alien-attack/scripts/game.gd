@@ -2,6 +2,12 @@ extends Node2D
 @export var lives = 3;
 var score = 0;
 @onready var player = $Player;
+@onready var hud = $UI/HUD;
+
+func _ready():
+	hud.set_score_label(score);
+	hud.set_lives(lives);
+
 # delte enemy when hit enemy zone
 func _on_deathzone_area_entered(area: Area2D) -> void:
 	area.die();
@@ -9,11 +15,10 @@ func _on_deathzone_area_entered(area: Area2D) -> void:
 # subtract lives by 1
 func _on_player_took_damage() -> void:
 	lives -= 1;
+	hud.set_lives(lives);
 	if (lives == 0):
 		print("Game Over");
 		player.die();
-	else:
-		print(lives);
 
 # add access to enemy when enemy not in game
 func _on_enemy_spawner_enemy_spawned(enemy_instance: Variant) -> void:
@@ -22,4 +27,4 @@ func _on_enemy_spawner_enemy_spawned(enemy_instance: Variant) -> void:
 
 func _on_enemy_died():
 	score += 100;
-	print("Score: " + str(score));
+	hud.set_score_label(score);
