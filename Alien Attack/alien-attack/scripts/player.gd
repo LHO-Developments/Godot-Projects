@@ -6,6 +6,8 @@ signal took_damage;
 # short hand on _ready() && get_node("RocketContainer");
 @onready var rocket_container = $RocketContainer;
 
+@onready var rocket_laser_sound = $RocketLaserSound;
+
 func _process(delta: float) -> void:
 	# shoot rocket
 	if Input.is_action_just_pressed("shoot"):
@@ -43,6 +45,9 @@ func shoot():
 	
 	#space out the rocket when ship is being shoot
 	rocket_instance.global_position.x += 80;
+	
+	# play sound of rocket being release
+	rocket_laser_sound.play();
 
 # called custom signal to subtract lives from game scene
 func take_damage():
