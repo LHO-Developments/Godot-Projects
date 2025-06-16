@@ -3,6 +3,9 @@ extends Node2D
 var score = 0;
 @onready var player = $Player;
 @onready var hud = $UI/HUD;
+@onready var ui = $UI;
+
+var gos_scene = preload("res://scenes/game_over_screen.tscn");
 
 func _ready():
 	hud.set_score_label(score);
@@ -10,7 +13,7 @@ func _ready():
 
 # delte enemy when hit enemy zone
 func _on_deathzone_area_entered(area: Area2D) -> void:
-	area.die();
+	area.queue_free();
 
 # subtract lives by 1
 func _on_player_took_damage() -> void:
@@ -19,6 +22,10 @@ func _on_player_took_damage() -> void:
 	if (lives == 0):
 		print("Game Over");
 		player.die();
+		await  get_tree().create_timer(1.5).timeout;
+		var gos = gos_scene.instantiate();
+		gos.set_score(score);
+		ui.add_child(gos);
 
 # add access to enemy when enemy not in game
 func _on_enemy_spawner_enemy_spawned(enemy_instance: Variant) -> void:
