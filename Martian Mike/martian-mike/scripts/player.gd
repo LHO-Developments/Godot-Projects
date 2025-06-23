@@ -1,4 +1,8 @@
 extends CharacterBody2D
+
+# different way to use layer
+class_name Player;
+
 @export var gravity = 400;
 @export var speed = 125;
 @export var jump_force = 200;
@@ -14,7 +18,7 @@ func _physics_process(delta: float) -> void:
 			
 	# used to to make player jump
 	if Input.is_action_just_pressed("jump") && is_on_floor() :
-		velocity.y = -jump_force;
+		jump(jump_force);
 		
 	# used to make player move left or right + add animaion sprite flips
 	var direction = Input.get_axis("move_left","move_right");
@@ -24,6 +28,9 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide();
 	update_animations(direction);
+
+func jump(force):
+	velocity.y = -force;
 
 # add animation to player based on direction
 func update_animations(direction):
