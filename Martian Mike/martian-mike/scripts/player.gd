@@ -9,19 +9,23 @@ class_name Player;
 
 @onready var animated_sprite = $AnimatedSprite2D;
 
+var active = true;
+
 func _physics_process(delta: float) -> void:
 	# used to handle when player is falling + cap the falling to 500
 	if is_on_floor() == false:
 		velocity.y += gravity * delta;
 		if velocity.y > 500:
 			velocity.y = 500;
-			
-	# used to to make player jump
-	if Input.is_action_just_pressed("jump") && is_on_floor() :
-		jump(jump_force);
+	
+	var direction = 0;
+	if active == true:
+		# used to to make player jump
+		if Input.is_action_just_pressed("jump") && is_on_floor() :
+			jump(jump_force);
 		
-	# used to make player move left or right + add animaion sprite flips
-	var direction = Input.get_axis("move_left","move_right");
+		# used to make player move left or right + add animaion sprite flips
+		direction = Input.get_axis("move_left","move_right");
 	if direction != 0:
 		animated_sprite.flip_h = (direction == -1);
 	velocity.x = direction * speed;
