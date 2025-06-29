@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cofe31ghdo2nj" path="res://scenes/deathzone.tscn" id="6_ax3dk"]
 [ext_resource type="PackedScene" uid="uid://r8pqyd5jl63k" path="res://scenes/player.tscn" id="7_q2dsb"]
 
-[node name="Level_2" type="Node2D"]
+[node name="Level_3" type="Node2D"]
 script = ExtResource("1_hhfj6")
 is_final_level = true
+level_time = 60
 
 [node name="BG" parent="." instance=ExtResource("2_wae8j")]
 bg_texture = ExtResource("3_wae8j")
