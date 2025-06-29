@@ -2,6 +2,7 @@ extends Node
 @export var next_level: PackedScene = null;
 @onready var start = $Start;
 @onready var exit = $Exit;
+@onready var death_zone = $Deathzone;
 var player = null;
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 		trap.touched_player.connect(_on_trap_touched_player);
 	
 	exit.body_entered.connect(_on_exit_body_entered);
+	death_zone.body_entered.connect(_on_deathzone_body_entered);
 
 func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("quit")):
