@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://1aeud4shtih3"]
+[gd_scene load_steps=10 format=4 uid="uid://1aeud4shtih3"]
 
 [ext_resource type="Script" uid="uid://c7ylksie34xhm" path="res://scripts/level.gd" id="1_hhfj6"]
 [ext_resource type="PackedScene" uid="uid://duxn1lngveehs" path="res://scenes/bg.tscn" id="2_wae8j"]
 [ext_resource type="PackedScene" uid="uid://c255b3cgw43hm" path="res://scenes/tile_map_layer.tscn" id="3_ha73p"]
 [ext_resource type="Texture2D" uid="uid://hq1kbaoiyifc" path="res://assets/textures/bg/Pink.png" id="3_wae8j"]
+[ext_resource type="PackedScene" uid="uid://11wl24futubv" path="res://scenes/ui_layer.tscn" id="4_ha73p"]
 [ext_resource type="PackedScene" uid="uid://bqmxarbovmcst" path="res://scenes/start.tscn" id="4_vcx5n"]
 [ext_resource type="PackedScene" uid="uid://crbpsuhmrbxrl" path="res://scenes/exit.tscn" id="5_56dhn"]
 [ext_resource type="PackedScene" uid="uid://cofe31ghdo2nj" path="res://scenes/deathzone.tscn" id="6_ax3dk"]
@@ -14,6 +15,8 @@ script = ExtResource("1_hhfj6")
 
 [node name="BG" parent="." instance=ExtResource("2_wae8j")]
 bg_texture = ExtResource("3_wae8j")
+
+[node name="UILayer" parent="." instance=ExtResource("4_ha73p")]
 
 [node name="TileMapLayer" parent="." instance=ExtResource("3_ha73p")]
 position = Vector2(-256, -347)
