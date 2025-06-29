@@ -6,7 +6,6 @@ extends Node
 var player = null;
 
 @export var level_time = 5;
-
 var timer_node = null;
 var time_left;
 
@@ -27,8 +26,8 @@ func _ready() -> void:
 	exit.body_entered.connect(_on_exit_body_entered);
 	death_zone.body_entered.connect(_on_deathzone_body_entered);
 	
+	# timer node, used to set timer for game
 	time_left = level_time;
-	# timer node
 	timer_node = Timer.new();
 	timer_node.name = "Level Timer";
 	timer_node.wait_time = 1;
