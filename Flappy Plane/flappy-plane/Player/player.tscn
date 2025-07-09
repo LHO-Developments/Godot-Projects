@@ -43,4 +43,4 @@ shape = SubResource("CircleShape2D_gwnis")
 sprite_frames = SubResource("SpriteFrames_fhl08")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.392662
+frame_progress = 0.211219

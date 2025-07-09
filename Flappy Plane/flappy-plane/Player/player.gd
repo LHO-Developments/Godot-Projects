@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player;
 signal  on_game_started;
 
 @export var gravity: float = 1000;
