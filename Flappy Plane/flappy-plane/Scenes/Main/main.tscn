@@ -21,3 +21,4 @@ position = Vector2(158, 349)
 position = Vector2(4, 339)
 
 [connection signal="on_game_started" from="Player" to="." method="_on_player_on_game_started"]
+[connection signal="on_obstacle_crash" from="Spawner" to="." method="_on_spawner_on_obstacle_crash"]
