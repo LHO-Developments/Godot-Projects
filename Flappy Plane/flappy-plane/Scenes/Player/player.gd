@@ -9,6 +9,7 @@ signal  on_game_started;
 
 var is_started: bool = false;
 var should_process_input: bool = true;
+var stop_player = false;
 
 func _physics_process(delta: float) -> void:
 		# Check for jump input

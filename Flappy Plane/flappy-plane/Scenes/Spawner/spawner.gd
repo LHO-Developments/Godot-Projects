@@ -2,6 +2,7 @@ extends Node2D
 class_name Spawner;
 
 signal on_obstacle_crash;
+signal on_player_scored;
 
 const OBSTACLE = preload("res://Scenes/Obstacle/obstacle.tscn");
 @onready var timer: Timer = $Timer
@@ -9,6 +10,7 @@ const OBSTACLE = preload("res://Scenes/Obstacle/obstacle.tscn");
 func create_obstacle() -> void:
 	var obs = OBSTACLE.instantiate();
 	obs.on_plane_crash.connect(_on_plane_crash);
+	obs.player_scored.connect(_player_scored);
 	
 	var viewport: Rect2 = get_viewport_rect();
 	obs.position.x = viewport.end.x + 150;
@@ -29,3 +31,6 @@ func _on_timer_timeout() -> void:
 func _on_plane_crash() -> void:
 	on_obstacle_crash.emit();
 	stop_obstacles();
+
+func _player_scored() -> void:
+	on_player_scored.emit();
