@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddgchxwfdhy66"]
+[gd_scene load_steps=8 format=3 uid="uid://ddgchxwfdhy66"]
 
 [ext_resource type="Script" uid="uid://du14riki25lol" path="res://Scenes/Main/main.gd" id="1_qvhan"]
 [ext_resource type="Texture2D" uid="uid://duiy5x8u0hr7r" path="res://Assets/Sprites/background.png" id="2_eunhr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dkq43hvg4qqox" path="res://Scenes/Spawner/spawner.tscn" id="4_5yls4"]
 [ext_resource type="PackedScene" uid="uid://b6r1wd1ctn0b2" path="res://Scenes/Ground/ground.tscn" id="5_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://p1fmon5wqtva" path="res://Scenes/UI/ui.tscn" id="6_2a143"]
+[ext_resource type="AudioStream" uid="uid://byp2ii5qccxes" path="res://Assets/Audio/bgsong.mp3" id="7_xlvfx"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qvhan")
@@ -25,6 +26,9 @@ position = Vector2(225, 349)
 position = Vector2(0, 821)
 
 [node name="UI" parent="." instance=ExtResource("6_2a143")]
+
+[node name="BGSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xlvfx")
 
 [connection signal="on_game_started" from="Player" to="." method="_on_player_on_game_started"]
 [connection signal="on_obstacle_crash" from="Spawner" to="." method="_on_spawner_on_obstacle_crash"]

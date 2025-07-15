@@ -11,11 +11,14 @@ var is_started: bool = false;
 var should_process_input: bool = true;
 var stop_player = false;
 
+@onready var jump_audio: AudioStreamPlayer = $JumpAudio
+
 func _physics_process(delta: float) -> void:
 		# Check for jump input
 	if Input.is_action_just_pressed("jump") && should_process_input:
 		velocity.y = jump_force;
 		rotation = deg_to_rad(-30);
+		jump_audio.play();
 		if !is_started:
 			is_started = true;
 			on_game_started.emit();
