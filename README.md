@@ -2,6 +2,7 @@
 Games created using godot engine based on varieties of tutorials and videos
 
 # Games
-	1. Speedy Saucer
-	2. Alien Attack
-	3. Martian Mike
+	1. Speedy Saucer - Top down platform
+	2. Alien Attack - Side scroller shooter
+	3. Martian Mike - 2D platformer
+	4. Flappy Plane - Mobile clicker platformer
