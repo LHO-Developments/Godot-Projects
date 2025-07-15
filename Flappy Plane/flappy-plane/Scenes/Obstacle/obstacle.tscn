@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5gxb07vo1ckf"]
+
+[ext_resource type="Script" uid="uid://bn03sgv3fdms1" path="res://Scenes/Obstacle/obstacle.gd" id="1_0gd4u"]
+[ext_resource type="Texture2D" uid="uid://cqejf74ebsjqx" path="res://Assets/Sprites/rockSnowDown.png" id="1_6lu11"]
+[ext_resource type="Texture2D" uid="uid://dtfi2ha7ihubr" path="res://Assets/Sprites/rockSnow.png" id="2_af075"]
+[ext_resource type="AudioStream" uid="uid://btxwdnahv1gc" path="res://Assets/Audio/sfx_hit.wav" id="4_gc3r3"]
+[ext_resource type="AudioStream" uid="uid://c6ebci6361y4v" path="res://Assets/Audio/sfx_point.wav" id="5_8wa5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q7cv"]
+size = Vector2(37.5, 97.5)
+
+[node name="Obstacle" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_0gd4u")
+
+[node name="Top" type="Area2D" parent="."]
+position = Vector2(0, -250)
+
+[node name="Sprite2D" type="Sprite2D" parent="Top"]
+texture = ExtResource("1_6lu11")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Top"]
+polygon = PackedVector2Array(-53, -120, 52, -119, 16, 117, 8, 118, -18, -5, -26, -10)
+
+[node name="Bottom" type="Area2D" parent="."]
+position = Vector2(0, 75)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottom"]
+texture = ExtResource("2_af075")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bottom"]
+polygon = PackedVector2Array(-53, 117, 52, 117, 46, 55, 40, 52, 31, -18, 26, -19, 16, -119, 9, -120, -17, 3, -26, 12)
+
+[node name="Score" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
+position = Vector2(46.75, -85.75)
+shape = SubResource("RectangleShape2D_7q7cv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(79, -88.5)
+rect = Rect2(-10, -40, 20, 80)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gc3r3")
+bus = &"sfx"
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8wa5l")
+bus = &"sfx"
+
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="Score" to="." method="_on_score_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
