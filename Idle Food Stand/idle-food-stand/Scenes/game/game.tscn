@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=7 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
 [ext_resource type="Texture2D" uid="uid://boldt4jc70uuj" path="res://Idle Tycoon Assets/Sprites/Counter_half.png" id="3_7trcl"]
 [ext_resource type="Texture2D" uid="uid://cjacmgi2eu6yq" path="res://Idle Tycoon Assets/Sprites/UI/Coffee.png" id="4_nds08"]
 [ext_resource type="Texture2D" uid="uid://og6fssd6myd8" path="res://Idle Tycoon Assets/Sprites/UI/Burger.png" id="5_5l446"]
+[ext_resource type="PackedScene" uid="uid://ckpqvkrwv17gb" path="res://Scenes/cashier/cashier.tscn" id="6_d0b77"]
 
 [node name="Game" type="Node2D"]
 
@@ -36,3 +37,6 @@ texture = ExtResource("3_7trcl")
 position = Vector2(-57.5, -53.3334)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("5_5l446")
+
+[node name="Cashier" parent="." instance=ExtResource("6_d0b77")]
+position = Vector2(548, 1056)
