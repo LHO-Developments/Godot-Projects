@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=15 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cjacmgi2eu6yq" path="res://Idle Tycoon Assets/Sprites/UI/Coffee.png" id="4_nds08"]
 [ext_resource type="Texture2D" uid="uid://og6fssd6myd8" path="res://Idle Tycoon Assets/Sprites/UI/Burger.png" id="5_5l446"]
 [ext_resource type="PackedScene" uid="uid://ckpqvkrwv17gb" path="res://Scenes/cashier/cashier.tscn" id="6_d0b77"]
+[ext_resource type="Script" uid="uid://duin6p3rdc3xl" path="res://Scenes/managers/customer_manager.gd" id="7_7trcl"]
+[ext_resource type="Script" uid="uid://d35dwp3e51wf2" path="res://data/customer_data.gd" id="8_ii7ab"]
+[ext_resource type="Resource" uid="uid://djqunou2uy12t" path="res://data/customer_green.tres" id="9_hxkax"]
+[ext_resource type="Resource" uid="uid://bj4y85scd646x" path="res://data/customer_purple.tres" id="10_7rk1p"]
+[ext_resource type="Resource" uid="uid://bfphg1pifj8w8" path="res://data/customer_red.tres" id="11_jbxxx"]
+[ext_resource type="Resource" uid="uid://flbbxma5dx4a" path="res://data/customer_yellow.tres" id="12_2wwbv"]
+[ext_resource type="Resource" uid="uid://bsfqyw3yg45tg" path="res://data/custommer_pink.tres" id="13_klkrs"]
+[ext_resource type="PackedScene" uid="uid://cxeqijfw6weed" path="res://Scenes/customer/customer.tscn" id="14_hxkax"]
 
 [node name="Game" type="Node2D"]
 
@@ -40,3 +48,21 @@ texture = ExtResource("5_5l446")
 
 [node name="Cashier" parent="." instance=ExtResource("6_d0b77")]
 position = Vector2(548, 1056)
+
+[node name="CustomerManager" type="Node" parent="." node_paths=PackedStringArray("spawn_positions")]
+script = ExtResource("7_7trcl")
+spawn_positions = [NodePath("TopSpawnPos"), NodePath("BottomSpawnPos")]
+customer_sprites = Array[ExtResource("8_ii7ab")]([ExtResource("9_hxkax"), ExtResource("10_7rk1p"), ExtResource("11_jbxxx"), ExtResource("12_2wwbv"), ExtResource("13_klkrs")])
+customer_scene = ExtResource("14_hxkax")
+
+[node name="SpawnTimer" type="Timer" parent="CustomerManager"]
+wait_time = 4.0
+autostart = true
+
+[node name="TopSpawnPos" type="Marker2D" parent="CustomerManager"]
+position = Vector2(-145, 186)
+
+[node name="BottomSpawnPos" type="Marker2D" parent="CustomerManager"]
+position = Vector2(-145, 639)
+
+[connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
