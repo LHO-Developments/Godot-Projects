@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=16 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://flbbxma5dx4a" path="res://data/customer_yellow.tres" id="12_2wwbv"]
 [ext_resource type="Resource" uid="uid://bsfqyw3yg45tg" path="res://data/custommer_pink.tres" id="13_klkrs"]
 [ext_resource type="PackedScene" uid="uid://cxeqijfw6weed" path="res://Scenes/customer/customer.tscn" id="14_hxkax"]
+[ext_resource type="Script" uid="uid://e5gph3t0xv7k" path="res://Scenes/managers/counter_manager.gd" id="15_7rk1p"]
 
 [node name="Game" type="Node2D"]
 
@@ -64,5 +65,22 @@ position = Vector2(-145, 186)
 
 [node name="BottomSpawnPos" type="Marker2D" parent="CustomerManager"]
 position = Vector2(-145, 639)
+
+[node name="CounterManager" type="Node" parent="." node_paths=PackedStringArray("counter_positions")]
+unique_name_in_owner = true
+script = ExtResource("15_7rk1p")
+counter_positions = [NodePath("Pos_0"), NodePath("Pos_1"), NodePath("Pos_2"), NodePath("Pos_3")]
+
+[node name="Pos_0" type="Marker2D" parent="CounterManager"]
+position = Vector2(370, 740)
+
+[node name="Pos_1" type="Marker2D" parent="CounterManager"]
+position = Vector2(480, 740)
+
+[node name="Pos_2" type="Marker2D" parent="CounterManager"]
+position = Vector2(590, 740)
+
+[node name="Pos_3" type="Marker2D" parent="CounterManager"]
+position = Vector2(700, 740)
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
