@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=17 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://bsfqyw3yg45tg" path="res://data/custommer_pink.tres" id="13_klkrs"]
 [ext_resource type="PackedScene" uid="uid://cxeqijfw6weed" path="res://Scenes/customer/customer.tscn" id="14_hxkax"]
 [ext_resource type="Script" uid="uid://e5gph3t0xv7k" path="res://Scenes/managers/counter_manager.gd" id="15_7rk1p"]
+[ext_resource type="Script" uid="uid://kmhe5ngaou5" path="res://Scenes/managers/cashier_manager.gd" id="15_jbxxx"]
 
 [node name="Game" type="Node2D"]
 
@@ -46,9 +47,6 @@ texture = ExtResource("3_7trcl")
 position = Vector2(-57.5, -53.3334)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("5_5l446")
-
-[node name="Cashier" parent="." instance=ExtResource("6_d0b77")]
-position = Vector2(548, 1056)
 
 [node name="CustomerManager" type="Node" parent="." node_paths=PackedStringArray("spawn_positions")]
 script = ExtResource("7_7trcl")
@@ -82,5 +80,13 @@ position = Vector2(590, 740)
 
 [node name="Pos_3" type="Marker2D" parent="CounterManager"]
 position = Vector2(700, 740)
+
+[node name="CashierManager" type="Node" parent="." node_paths=PackedStringArray("spawn_pos")]
+script = ExtResource("15_jbxxx")
+cashier_scene = ExtResource("6_d0b77")
+spawn_pos = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="CashierManager"]
+position = Vector2(534, 1114)
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
