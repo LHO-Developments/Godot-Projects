@@ -24,7 +24,6 @@ func spawn_customer() -> void:
 	
 	if counter_manager.get_free_index() != -1:
 		customer.position = spawn_positions[1].position;
-		customer.z_index = 100; # make the customers be layer top when on ccunter
 		counter_manager.assign_customer(customer);
 		customer.move_to_counter();
 	else:

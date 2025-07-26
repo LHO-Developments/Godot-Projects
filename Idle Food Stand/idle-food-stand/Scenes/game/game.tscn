@@ -89,4 +89,7 @@ spawn_pos = NodePath("Marker2D")
 [node name="Marker2D" type="Marker2D" parent="CashierManager"]
 position = Vector2(534, 1114)
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(647, 1229)
+
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
