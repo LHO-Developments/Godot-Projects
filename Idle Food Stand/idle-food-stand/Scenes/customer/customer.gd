@@ -63,7 +63,7 @@ func receive_order() -> void:
 func order_completed() -> void:
 	item_box.hide();
 	waiting_order = false;
-	var counter_top_pos: float = counter_pos.y - 180;
+	var counter_top_pos: float = counter_pos.y - 130;
 	
 	#move the customer up from the counter to side walk
 	var tween := create_tween();
