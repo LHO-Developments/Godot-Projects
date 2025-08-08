@@ -20,7 +20,6 @@ func set_customer(customer: Customer) -> void:
 	counter_pos = Vector2(customer.position.x, customer.position.y + 160);
 	item_request = customer.request_item;
 	item_counter_pos = GameManager.get_item_counter_pos(item_request);
-	print(item_counter_pos)
 
 func take_order() -> void:
 	move_to_customer();
