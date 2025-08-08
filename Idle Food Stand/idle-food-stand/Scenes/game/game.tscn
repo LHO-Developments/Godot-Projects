@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=23 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
@@ -19,6 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://2i4id2u6sktx" path="res://Scenes/ui/upgrade_panel.tscn" id="17_2wwbv"]
 [ext_resource type="Script" uid="uid://2sanebtsx6xk" path="res://Scenes/game/game_ui.gd" id="17_klkrs"]
 [ext_resource type="Texture2D" uid="uid://ci12l6pnw4yss" path="res://Idle Tycoon Assets/Sprites/UI/Arrow.png" id="19_2kyel"]
+[ext_resource type="Texture2D" uid="uid://bik145fibl4c6" path="res://Idle Tycoon Assets/Sprites/UI/coin_gold.png" id="20_ai5tx"]
+[ext_resource type="FontFile" uid="uid://fkmtg2y181q" path="res://Idle Tycoon Assets/Fonts/Bake Soda.otf" id="21_qequx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_27ybv"]
+font = ExtResource("21_qequx")
+font_size = 70
 
 [node name="Game" type="Node2D"]
 
@@ -140,6 +146,48 @@ offset_right = 742.0
 offset_bottom = 1378.0
 texture_normal = ExtResource("19_2kyel")
 stretch_mode = 5
+
+[node name="TopBar" type="Control" parent="GameUI"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="GameUI/TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/TopBar/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -32.0
+offset_right = 34.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/TopBar/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("20_ai5tx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CurrentCoins" type="Label" parent="GameUI/TopBar/Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_27ybv")
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
