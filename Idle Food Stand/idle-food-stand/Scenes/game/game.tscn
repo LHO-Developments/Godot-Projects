@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=20 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://cxeqijfw6weed" path="res://Scenes/customer/customer.tscn" id="14_hxkax"]
 [ext_resource type="Script" uid="uid://e5gph3t0xv7k" path="res://Scenes/managers/counter_manager.gd" id="15_7rk1p"]
 [ext_resource type="Script" uid="uid://kmhe5ngaou5" path="res://Scenes/managers/cashier_manager.gd" id="15_jbxxx"]
+[ext_resource type="PackedScene" uid="uid://2i4id2u6sktx" path="res://Scenes/ui/upgrade_panel.tscn" id="17_2wwbv"]
+[ext_resource type="Script" uid="uid://2sanebtsx6xk" path="res://Scenes/game/game_ui.gd" id="17_klkrs"]
+[ext_resource type="Texture2D" uid="uid://ci12l6pnw4yss" path="res://Idle Tycoon Assets/Sprites/UI/Arrow.png" id="19_2kyel"]
 
 [node name="Game" type="Node2D"]
 
@@ -93,4 +96,51 @@ position = Vector2(534, 1114)
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(647, 1229)
 
+[node name="GameUI" type="CanvasLayer" parent="."]
+script = ExtResource("17_klkrs")
+
+[node name="CoffeePanel" parent="GameUI" instance=ExtResource("17_2wwbv")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -325.0
+offset_right = 275.0
+offset_bottom = 325.0
+
+[node name="BurgerPanel" parent="GameUI" instance=ExtResource("17_2wwbv")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -325.0
+offset_right = 275.0
+offset_bottom = 325.0
+
+[node name="CoffeeButton" type="TextureButton" parent="GameUI"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = 435.0
+offset_top = 1314.0
+offset_right = 499.0
+offset_bottom = 1378.0
+texture_normal = ExtResource("19_2kyel")
+stretch_mode = 5
+
+[node name="BurgerButton" type="TextureButton" parent="GameUI"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = 678.0
+offset_top = 1314.0
+offset_right = 742.0
+offset_bottom = 1378.0
+texture_normal = ExtResource("19_2kyel")
+stretch_mode = 5
+
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
+[connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]

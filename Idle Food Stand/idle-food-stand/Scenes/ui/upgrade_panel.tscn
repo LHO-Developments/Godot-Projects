@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://2i4id2u6sktx"]
+[gd_scene load_steps=12 format=3 uid="uid://2i4id2u6sktx"]
 
 [ext_resource type="LabelSettings" uid="uid://cin8h3t2jtvog" path="res://customer_fonts/label_48_black.tres" id="1_ltcd3"]
+[ext_resource type="Script" uid="uid://38jqg22xx7mb" path="res://Scenes/ui/upgrade_panel.gd" id="1_semil"]
 [ext_resource type="FontFile" uid="uid://fkmtg2y181q" path="res://Idle Tycoon Assets/Fonts/Bake Soda.otf" id="2_semil"]
 [ext_resource type="Texture2D" uid="uid://bcitwu1r7nhhq" path="res://Idle Tycoon Assets/Sprites/UI/star.png" id="3_u021m"]
 [ext_resource type="Texture2D" uid="uid://bik145fibl4c6" path="res://Idle Tycoon Assets/Sprites/UI/coin_gold.png" id="4_bto5t"]
@@ -47,6 +48,7 @@ offset_right = -530.0
 offset_bottom = -1270.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_semil")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -58,6 +60,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ggvmw")
 
 [node name="Level" type="Label" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -71,6 +74,7 @@ text = "LV. 1"
 label_settings = ExtResource("1_ltcd3")
 
 [node name="ItemName" type="Label" parent="Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -115,6 +119,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ProgressBar" type="ProgressBar" parent="Panel"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(420, 36)
 layout_mode = 1
 anchors_preset = 8
@@ -156,6 +161,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Profit" type="Label" parent="Panel/ProfitHBox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "1"
 label_settings = ExtResource("1_ltcd3")
@@ -184,11 +190,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CookTime" type="Label" parent="Panel/TimeHBox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "10S"
 label_settings = ExtResource("1_ltcd3")
 
 [node name="UpgradeButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 1
 anchors_preset = 7
