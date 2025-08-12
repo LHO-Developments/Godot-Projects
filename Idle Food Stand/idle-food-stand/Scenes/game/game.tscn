@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c2vjxjn1gbyq4"]
+[gd_scene load_steps=31 format=3 uid="uid://c2vjxjn1gbyq4"]
 
 [ext_resource type="Texture2D" uid="uid://cgu7fswwehh4y" path="res://Idle Tycoon Assets/Sprites/Bakground.png" id="1_7pssd"]
 [ext_resource type="Texture2D" uid="uid://cqqkv5e5r0e0f" path="res://Idle Tycoon Assets/Sprites/Counter.png" id="2_d0b77"]
@@ -22,11 +22,15 @@
 [ext_resource type="Texture2D" uid="uid://bik145fibl4c6" path="res://Idle Tycoon Assets/Sprites/UI/coin_gold.png" id="20_ai5tx"]
 [ext_resource type="FontFile" uid="uid://fkmtg2y181q" path="res://Idle Tycoon Assets/Fonts/Bake Soda.otf" id="21_qequx"]
 [ext_resource type="LabelSettings" uid="uid://cin8h3t2jtvog" path="res://customer_fonts/label_48_black.tres" id="22_27ybv"]
+[ext_resource type="Texture2D" uid="uid://b7b3egno3r8uf" path="res://Idle Tycoon Assets/Sprites/UI/arrowUp.png" id="22_btxna"]
 [ext_resource type="Texture2D" uid="uid://powy61lxqjfh" path="res://Idle Tycoon Assets/Sprites/Characters/face_b.png" id="23_btxna"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_27ybv"]
 font = ExtResource("21_qequx")
 font_size = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl8fu"]
+bg_color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68wwg"]
 bg_color = Color(0.729412, 0.729412, 0.729412, 1)
@@ -210,7 +214,45 @@ layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_27ybv")
 
+[node name="BottomBar" type="Control" parent="GameUI"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="GameUI/BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yl8fu")
+
+[node name="ShopButton" type="Button" parent="GameUI/BottomBar/Panel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -113.0
+offset_right = -20.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("22_btxna")
+expand_icon = true
+
 [node name="Shop" type="Control" parent="GameUI"]
+visible = false
 custom_minimum_size = Vector2(700, 1000)
 layout_mode = 3
 anchors_preset = 8
@@ -256,9 +298,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -325.0
-offset_top = -400.0
+offset_top = -358.0
 offset_right = 325.0
-offset_bottom = 400.0
+offset_bottom = 452.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -302,6 +344,7 @@ CASHIER +1"
 label_settings = SubResource("LabelSettings_yl8fu")
 
 [node name="NewCashier1" type="Button" parent="GameUI/Shop/Panel/VBoxContainer/NewCashierCard"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 1
 anchors_preset = 6
@@ -359,6 +402,7 @@ MAKE COFFEE BETTER"
 label_settings = SubResource("LabelSettings_yl8fu")
 
 [node name="FasterCoffee" type="Button" parent="GameUI/Shop/Panel/VBoxContainer/FasterCoffeeCard"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 1
 anchors_preset = 6
@@ -416,6 +460,7 @@ CASHIER +1"
 label_settings = SubResource("LabelSettings_yl8fu")
 
 [node name="NewCashier2" type="Button" parent="GameUI/Shop/Panel/VBoxContainer/NewCashierCard2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 1
 anchors_preset = 6
@@ -473,6 +518,7 @@ MAKE BURGER FASTER"
 label_settings = SubResource("LabelSettings_yl8fu")
 
 [node name="FasterBurger" type="Button" parent="GameUI/Shop/Panel/VBoxContainer/FasterBurgerCard"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 1
 anchors_preset = 6
@@ -530,6 +576,7 @@ CASHIER +1"
 label_settings = SubResource("LabelSettings_yl8fu")
 
 [node name="NewCashier3" type="Button" parent="GameUI/Shop/Panel/VBoxContainer/NewCashierCard3"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 90)
 layout_mode = 1
 anchors_preset = 6
@@ -551,3 +598,9 @@ text = "50"
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
 [connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
 [connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]
+[connection signal="pressed" from="GameUI/BottomBar/Panel/ShopButton" to="GameUI" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard/NewCashier1" to="GameUI" method="_on_new_cashier_1_pressed"]
+[connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterCoffeeCard/FasterCoffee" to="GameUI" method="_on_faster_coffee_pressed"]
+[connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard2/NewCashier2" to="GameUI" method="_on_new_cashier_2_pressed"]
+[connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/FasterBurgerCard/FasterBurger" to="GameUI" method="_on_faster_burger_pressed"]
+[connection signal="pressed" from="GameUI/Shop/Panel/VBoxContainer/NewCashierCard3/NewCashier3" to="GameUI" method="_on_new_cashier_3_pressed"]

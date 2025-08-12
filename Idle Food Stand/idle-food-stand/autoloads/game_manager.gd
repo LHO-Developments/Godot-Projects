@@ -1,16 +1,18 @@
 extends Node
 
+signal on_spawn_new_cashier;
 signal on_customer_request(customer: Customer);
 signal on_customer_order_completed(customer: Customer);
 
-const ITEM_BURGER = preload("res://data/item_burger.tres");
-const ITEM_COFFEE = preload("res://data/item_coffee.tres");
+@export var item_coffee: Item;
+@export var item_burger: Item;
+
 const COIN_VFX = preload("res://Scenes/vfx/coin_vfx.tscn");
 
 var coffee_item_counter_pos := Vector2(415,1250);
 var burger_item_counter_pos := Vector2(665,1250);
 
-var current_coins: int;
+var current_coins: int = 10000000;
 
 func play_coin_vfx(spawn_pos: Vector2) -> void:
 	var instance: GPUParticles2D = COIN_VFX.instantiate();
@@ -22,7 +24,7 @@ func play_coin_vfx(spawn_pos: Vector2) -> void:
 	instance.finished.connect(func(): instance.queue_free()); 
 
 func get_random_item() -> Item:
-	var items: Array = [ITEM_BURGER, ITEM_COFFEE];
+	var items: Array = [item_burger, item_coffee];
 	return items.pick_random();
 	
 	

@@ -10,6 +10,7 @@ var cashier_list: Array[Cashier] = [];
 
 func _ready() -> void:
 	GameManager.on_customer_request.connect(_on_customer_request);
+	GameManager.on_spawn_new_cashier.connect(add_cashier);
 	add_cashier();
 
 func add_cashier() -> void:
