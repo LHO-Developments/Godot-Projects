@@ -27,9 +27,9 @@ func init_upgrade_panel(item: Item) -> void:
 
 func update_stats() -> void:
 	level.text = "LV. %s" % item_ref.current_level;
-	profit.text = str(item_ref.profit);
+	profit.text = GameManager.format_coins(item_ref.profit);
 	cook_time.text = str(item_ref.cook_time);
-	upgrade_button.text = str(item_ref.upgrade_cost);
+	upgrade_button.text = GameManager.format_coins(item_ref.upgrade_cost);
 
 func _on_star_reached() -> void:
 	current_level = 0;
