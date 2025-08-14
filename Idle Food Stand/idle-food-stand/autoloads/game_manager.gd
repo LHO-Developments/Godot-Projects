@@ -44,7 +44,7 @@ func format_coins(amount: int) -> String:
 	while display_amount >= 1000 and index < suffixes.size() - 1:
 		display_amount = display_amount / 1000;
 		index += 1;
-	print(str(round_to_one_decimal(display_amount)) + suffixes[index]);
+
 	return str(round_to_one_decimal(display_amount)) + suffixes[index];
 
 func round_to_one_decimal(value: float) -> float:

@@ -26,6 +26,7 @@ class_name GameUI;
 @onready var new_cashier_3: Button = %NewCashier3
 
 @onready var shop: Control = $Shop
+@onready var option: Control = $Option
 
 func _ready() -> void:
 	coffee_panel.init_upgrade_panel(GameManager.item_coffee);
@@ -95,3 +96,17 @@ func _on_faster_burger_pressed() -> void:
 
 func _on_shop_button_pressed() -> void:
 	show_hide_shop_panel();
+
+
+func _on_music_h_slider_value_changed(value: float) -> void:
+	var music_index = AudioServer.get_bus_index("Music");
+	AudioServer.set_bus_volume_db(music_index, linear_to_db(value));
+
+
+func _on_sfxh_slider_value_changed(value: float) -> void:
+	var sfx_index = AudioServer.get_bus_index("SFX");
+	AudioServer.set_bus_volume_db(sfx_index, linear_to_db(value));
+
+
+func _on_options_button_pressed() -> void:
+	option.visible = true if not option.visible else false;
