@@ -6,3 +6,4 @@ Games created using godot engine based on varieties of tutorials and videos
 	2. Alien Attack - Side scroller shooter
 	3. Martian Mike - 2D platformer
 	4. Flappy Plane - Mobile clicker platformer
+	5. Idle Food Stand - Idle management clicker
