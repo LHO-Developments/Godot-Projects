@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cin8h3t2jtvog"]
+
+[ext_resource type="FontFile" uid="uid://fkmtg2y181q" path="res://Idle Tycoon Assets/Fonts/Bake Soda.otf" id="1_sqs4s"]
+
+[resource]
+font = ExtResource("1_sqs4s")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
