@@ -81,3 +81,9 @@ func jump() -> void:
 		anim_sprite.play("double_jump");
 	else:
 		anim_sprite.play("jump");
+		
+
+func player_dead() -> void:
+	can_move = false;
+	velocity = Vector2.ZERO;
+	anim_sprite.play("dead");

@@ -136,6 +136,7 @@ texture = ExtResource("1_nda2w")
 14:9/0 = 0
 15:9/0 = 0
 17:9/0 = 0
+17:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:9/0 = 0
 19:9/0 = 0
 20:9/0 = 0
@@ -153,5 +154,5 @@ texture = ExtResource("1_nda2w")
 20:10/0 = 0
 
 [resource]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_0sr1o")
