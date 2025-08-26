@@ -73,12 +73,16 @@ scale = Vector2(1.5, 1.5)
 
 [node name="FruitBanana" parent="Floor_2" instance=ExtResource("7_bdhmt")]
 position = Vector2(109, 241)
+collision_layer = 1
 
 [node name="FruitBanana2" parent="Floor_2" instance=ExtResource("7_bdhmt")]
 position = Vector2(163, 241)
+collision_layer = 1
 
 [node name="FruitBanana3" parent="Floor_2" instance=ExtResource("7_bdhmt")]
 position = Vector2(109, 264)
+collision_layer = 1
 
 [node name="FruitBanana4" parent="Floor_2" instance=ExtResource("7_bdhmt")]
 position = Vector2(163, 264)
+collision_layer = 1
