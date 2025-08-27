@@ -13,5 +13,5 @@ shape = SubResource("CircleShape2D_y4g0h")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("2_hruyn")
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.0675339

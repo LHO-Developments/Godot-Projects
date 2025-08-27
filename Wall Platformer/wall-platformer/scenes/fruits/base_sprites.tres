@@ -174,5 +174,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"collected",
-"speed": 5.0
+"speed": 24.0
 }]

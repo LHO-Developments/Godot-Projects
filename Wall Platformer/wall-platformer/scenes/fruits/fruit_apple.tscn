@@ -178,7 +178,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"collected",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [node name="FruitBase" instance=ExtResource("1_40skv")]
@@ -188,5 +188,5 @@ shape = SubResource("CircleShape2D_ka5je")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_8adrg")
+animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.719741
