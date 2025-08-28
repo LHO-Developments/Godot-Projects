@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dgmkekmeolw7"]
+[gd_scene load_steps=22 format=4 uid="uid://dgmkekmeolw7"]
 
 [ext_resource type="Script" uid="uid://qa3eakn4hbu6" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="Shader" uid="uid://l6iiwd00ivnr" path="res://scenes/game/bg.gdshader" id="1_kelw5"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cgsb17gugrugq" path="res://scenes/extra/custom_path_follow_2d.tscn" id="15_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://bmtcee2n005xc" path="res://scenes/fruits/fruit_kiwi.tscn" id="16_uyinl"]
 [ext_resource type="PackedScene" uid="uid://druf0cyortc7" path="res://scenes/fruits/fruit_strawberry.tscn" id="17_10c2w"]
+[ext_resource type="PackedScene" uid="uid://b0dwqwmuu372v" path="res://scenes/enemy/enemy_blue_bird.tscn" id="18_uyinl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5i0tg"]
 shader = ExtResource("1_kelw5")
@@ -215,3 +216,18 @@ rotation = -0.0325971
 move_speed = 0.2
 
 [node name="FruitBase" parent="Floor_5/Path2D3/CustomPathFollow2D" instance=ExtResource("17_10c2w")]
+
+[node name="Path2D4" type="Path2D" parent="Floor_5"]
+position = Vector2(0, 91)
+curve = SubResource("Curve2D_pg2xm")
+
+[node name="CustomPathFollow2D" parent="Floor_5/Path2D4" instance=ExtResource("15_5v6r0")]
+position = Vector2(-96, -163)
+rotation = -0.0325971
+move_speed = 0.4
+
+[node name="EnemyBlueBird" parent="Floor_5/Path2D4/CustomPathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("18_uyinl")]
+path = NodePath("..")
+
+[node name="LevelStartPosition" type="Marker2D" parent="."]
+position = Vector2(136, 399)

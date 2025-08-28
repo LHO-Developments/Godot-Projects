@@ -87,3 +87,8 @@ func player_dead() -> void:
 	can_move = false;
 	velocity = Vector2.ZERO;
 	anim_sprite.play("dead");
+
+func respawn() -> void:
+	anim_sprite.play("respawn");
+	await anim_sprite.animation_finished;
+	can_move = true;
