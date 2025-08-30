@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dgmkekmeolw7"]
+[gd_scene load_steps=25 format=4 uid="uid://dgmkekmeolw7"]
 
 [ext_resource type="Script" uid="uid://qa3eakn4hbu6" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="Shader" uid="uid://l6iiwd00ivnr" path="res://scenes/game/bg.gdshader" id="1_kelw5"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://druf0cyortc7" path="res://scenes/fruits/fruit_strawberry.tscn" id="17_10c2w"]
 [ext_resource type="PackedScene" uid="uid://b0dwqwmuu372v" path="res://scenes/enemy/enemy_blue_bird.tscn" id="18_uyinl"]
 [ext_resource type="PackedScene" uid="uid://vfnv08r2dar4" path="res://scenes/traps/moving_rock.tscn" id="19_10c2w"]
+[ext_resource type="PackedScene" uid="uid://s6isitanctoa" path="res://scenes/extra/checkpoint.tscn" id="20_pg2xm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5i0tg"]
 shader = ExtResource("1_kelw5")
@@ -102,6 +103,11 @@ one_way_collision = true
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="OneWayLayer/Colliders"]
 position = Vector2(136, -878)
+shape = SubResource("RectangleShape2D_0sr1o")
+one_way_collision = true
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="OneWayLayer/Colliders"]
+position = Vector2(136, -1006)
 shape = SubResource("RectangleShape2D_0sr1o")
 one_way_collision = true
 
@@ -261,5 +267,17 @@ position = Vector2(90, 1)
 scale = Vector2(2, 2)
 move_distance = 95.0
 
+[node name="Floor_7" type="Node2D" parent="."]
+position = Vector2(134, -948)
+
+[node name="Checkpoint" parent="Floor_7" instance=ExtResource("20_pg2xm")]
+position = Vector2(0, 35)
+
+[node name="Floor_8" type="Node2D" parent="."]
+position = Vector2(135, -1052)
+
 [node name="LevelStartPosition" type="Marker2D" parent="."]
 position = Vector2(136, 399)
+
+[node name="CheckpointPosition" type="Marker2D" parent="."]
+position = Vector2(140, -910)

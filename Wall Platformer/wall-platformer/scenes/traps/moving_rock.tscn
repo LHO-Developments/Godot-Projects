@@ -58,6 +58,7 @@ size = Vector2(32, 47)
 size = Vector2(32, 4)
 
 [node name="MovingRock" type="StaticBody2D"]
+collision_layer = 4
 script = ExtResource("1_813wf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
