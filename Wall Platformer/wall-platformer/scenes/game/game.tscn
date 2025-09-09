@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dgmkekmeolw7"]
+[gd_scene load_steps=36 format=4 uid="uid://dgmkekmeolw7"]
 
 [ext_resource type="Script" uid="uid://qa3eakn4hbu6" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="Shader" uid="uid://l6iiwd00ivnr" path="res://scenes/game/bg.gdshader" id="1_kelw5"]
@@ -24,6 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://bspkypdna7h4s" path="res://scenes/enemy/enemy_rino.tscn" id="22_8b66f"]
 [ext_resource type="PackedScene" uid="uid://chyatpo785hv0" path="res://scenes/enemy/enemy_pig.tscn" id="23_3jaai"]
 [ext_resource type="PackedScene" uid="uid://hywd8x7884ec" path="res://scenes/extra/end_checkpoint.tscn" id="24_1iff4"]
+[ext_resource type="FontFile" uid="uid://dyhn7frqlvh7q" path="res://LeapNight Assets/Fonts/Daydream.ttf" id="25_wdnak"]
+[ext_resource type="FontFile" uid="uid://daihrgaf846ud" path="res://LeapNight Assets/Fonts/upheavtt.ttf" id="26_h48ew"]
+[ext_resource type="Texture2D" uid="uid://bn7geagmtnstt" path="res://LeapNight Assets/Sprites/Items/Fruits/Fruit.png" id="27_h48ew"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5i0tg"]
 shader = ExtResource("1_kelw5")
@@ -39,6 +42,20 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -96, -163, 0, 0, 0, 0, 88, -169)
 }
 point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fty5b"]
+bg_color = Color(0.11106, 0.620569, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l2dhg"]
+font = ExtResource("25_wdnak")
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_firvq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fty5b"]
+font = ExtResource("26_h48ew")
+font_size = 36
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_5i0tg")
@@ -368,3 +385,86 @@ position = Vector2(136, 399)
 
 [node name="CheckpointPosition" type="Marker2D" parent="."]
 position = Vector2(140, -910)
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="GameWon" type="Panel" parent="GameUI"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fty5b")
+
+[node name="Title" type="Label" parent="GameUI/GameWon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -57.0
+offset_right = 92.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WIN"
+label_settings = SubResource("LabelSettings_l2dhg")
+
+[node name="PlayButton" type="Button" parent="GameUI/GameWon"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -68.0
+offset_right = 59.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("26_h48ew")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_firvq")
+text = "Play"
+
+[node name="TopBar" type="Control" parent="GameUI"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/TopBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("27_h48ew")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="GameUI/TopBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 34.0
+offset_top = 4.0
+offset_right = 74.0
+offset_bottom = 37.0
+text = "0"
+label_settings = SubResource("LabelSettings_fty5b")
+
+[connection signal="pressed" from="GameUI/GameWon/PlayButton" to="." method="_on_play_button_pressed"]
