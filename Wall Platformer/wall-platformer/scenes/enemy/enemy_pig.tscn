@@ -141,10 +141,10 @@ animations = [{
 radius = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3w0pc"]
-size = Vector2(27, 6)
+size = Vector2(13, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4b0l"]
-size = Vector2(23, 16)
+size = Vector2(31, 17)
 
 [node name="EnemyPig" instance=ExtResource("1_pioem")]
 script = ExtResource("2_3w0pc")
@@ -174,7 +174,7 @@ debug_color = Color(0, 0.642583, 0.315238, 0.42)
 collision_layer = 0
 
 [node name="CollisionShape2D" parent="BottomArea" index="0"]
-position = Vector2(0.5, 5)
+position = Vector2(-0.5, 4.5)
 shape = SubResource("RectangleShape2D_w4b0l")
 debug_color = Color(0.69176, 0.497079, 1.92523e-07, 0.42)
 

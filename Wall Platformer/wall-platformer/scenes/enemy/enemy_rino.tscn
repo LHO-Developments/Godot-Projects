@@ -216,10 +216,10 @@ animations = [{
 radius = 1.41421
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7l6p"]
-size = Vector2(36, 7)
+size = Vector2(24, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u4vr6"]
-size = Vector2(42, 16)
+size = Vector2(46, 16)
 
 [node name="EnemyRino" instance=ExtResource("1_1du2n")]
 scale = Vector2(-1, 1)
@@ -252,7 +252,7 @@ debug_color = Color(1.68458e-06, 0.641195, 0.338175, 0.42)
 collision_layer = 0
 
 [node name="CollisionShape2D" parent="BottomArea" index="0"]
-position = Vector2(2, 7)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_u4vr6")
 debug_color = Color(0.967601, 0, 0.473224, 0.42)
 

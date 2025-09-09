@@ -11,6 +11,7 @@ class_name EnemyRino;
 var direction: int = 1;
 var can_move: bool = false;
 var defeated: bool = false;
+var invincible: bool = false;
 
 func _ready() -> void:
 	ray_cast_player.target_position.x = -ray_length;
@@ -32,7 +33,7 @@ func _process(delta: float) -> void:
 		can_move = false;
 		direction *= -1;
 		anim_sprite.play("wall");
-		await get_tree().create_timer(0.8).timeout;
+		await get_tree().create_timer(0.5).timeout;
 		rotate_rino();
 		anim_sprite.play("idle");
 
@@ -45,6 +46,7 @@ func rotate_rino() -> void:
 
 func _on_top_area_body_entered(body: Node2D) -> void:
 	if body is not Player: return;
+	if invincible: return;
 	defeated = true;
 	anim_sprite.play("hit");
 	SoundManager.play_hit();
@@ -58,3 +60,7 @@ func _on_bottom_area_body_entered(body: Node2D) -> void:
 	
 	SoundManager.play_hit();
 	EventManager.on_player_dead.emit();
+	invincible = true;
+	await get_tree().create_timer(2).timeout;
+	invincible = false;
+	

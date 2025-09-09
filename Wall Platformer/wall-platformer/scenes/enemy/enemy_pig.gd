@@ -7,7 +7,8 @@ class_name EnemyPig;
 
 var direction: int = 1;
 var can_move: bool = true;
-var defeated: bool = true;
+var defeated: bool = false;
+var invincible: bool = false;
 
 func _process(delta:float) -> void:
 	if can_move:
@@ -21,11 +22,13 @@ func _process(delta:float) -> void:
 
 
 func _on_top_area_body_entered(body: Node2D) -> void:
+	if invincible: return;
+	
 	defeated = true;
 	can_move = false;
 	anim_sprite.play("hit");
 	SoundManager.play_hit();
-	await get_tree().create_timer(0.8).timeout;
+	await get_tree().create_timer(0.5).timeout;
 	queue_free();
 	
 
@@ -35,3 +38,6 @@ func _on_bottom_area_body_entered(body: Node2D) -> void:
 	
 	SoundManager.play_hit();
 	EventManager.on_player_dead.emit();
+	invincible = true;
+	await get_tree().create_timer(2).timeout;
+	invincible = false;
