@@ -8,4 +8,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is not Player: return;
 	anim_sprite.play("reached");
 	
+	SoundManager.play_hit();
 	EventManager.on_checkpoint_reached.emit();

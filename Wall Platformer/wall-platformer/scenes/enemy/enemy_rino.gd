@@ -47,6 +47,7 @@ func _on_top_area_body_entered(body: Node2D) -> void:
 	if body is not Player: return;
 	defeated = true;
 	anim_sprite.play("hit");
+	SoundManager.play_hit();
 	await get_tree().create_timer(1.2).timeout;
 	queue_free();
 	
@@ -54,4 +55,6 @@ func _on_top_area_body_entered(body: Node2D) -> void:
 
 func _on_bottom_area_body_entered(body: Node2D) -> void:
 	if defeated: return;
+	
+	SoundManager.play_hit();
 	EventManager.on_player_dead.emit();

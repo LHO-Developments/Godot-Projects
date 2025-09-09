@@ -11,6 +11,7 @@ func _ready() -> void:
 	EventManager.on_player_dead.connect(_on_player_dead);
 	EventManager.on_fruit_collected.connect(_on_fruit_collected);
 	EventManager.on_checkpoint_reached.connect(_on_checkpoint_reached);
+	EventManager.on_game_won.connect(_on_game_won);
 	
 
 func get_respawn_pos() -> Vector2:
@@ -32,3 +33,6 @@ func _on_fruit_collected() -> void:
 
 func _on_checkpoint_reached() -> void:
 	checkpoint_reached = true;
+
+func _on_game_won() -> void:
+	print('GAME WON!')
