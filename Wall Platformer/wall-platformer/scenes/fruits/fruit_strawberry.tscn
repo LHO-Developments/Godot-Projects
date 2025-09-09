@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://druf0cyortc7"]
+
+[ext_resource type="PackedScene" uid="uid://klvejhj6ds4e" path="res://scenes/fruits/fruit_base.tscn" id="1_7s77w"]
+[ext_resource type="SpriteFrames" uid="uid://crvu8w1qem2ot" path="res://scenes/fruits/base_sprites.tres" id="2_hruyn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4g0h"]
+radius = 8.0
+
+[node name="FruitBase" instance=ExtResource("1_7s77w")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_y4g0h")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = ExtResource("2_hruyn")
+animation = &"Idle"
+autoplay = "Idle"

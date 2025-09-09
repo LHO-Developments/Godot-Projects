@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqgqun3c8osq5"]
+
+[ext_resource type="Script" uid="uid://vnj7f7hlvdit" path="res://scenes/obstacles/spike_block.gd" id="1_68omk"]
+[ext_resource type="Texture2D" uid="uid://b1wjmxwdgvywl" path="res://LeapNight Assets/Sprites/Traps/Rock Head/Idle.png" id="1_s23xk"]
+[ext_resource type="PackedScene" uid="uid://hrdxcb3hio3v" path="res://scenes/obstacles/spikes.tscn" id="2_68omk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsfo8"]
+size = Vector2(32, 31)
+
+[node name="SpikeBlock" type="StaticBody2D"]
+script = ExtResource("1_68omk")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_s23xk")
+
+[node name="Spikes" parent="Visuals" instance=ExtResource("2_68omk")]
+position = Vector2(-7, -15)
+
+[node name="Spikes2" parent="Visuals" instance=ExtResource("2_68omk")]
+position = Vector2(8, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_qsfo8")
+debug_color = Color(0.192157, 0.513726, 1, 0.419608)
