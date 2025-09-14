@@ -1,8 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://3xq3vgcsy3e4"]
+[gd_scene load_steps=7 format=3 uid="uid://3xq3vgcsy3e4"]
 
+[ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
+[ext_resource type="Texture2D" uid="uid://drpmj5jkfv8o7" path="res://Topdown Assets/Sprites/Extras/crosshair.png" id="3_kelw5"]
+[ext_resource type="Texture2D" uid="uid://ubm1eqcoxtwx" path="res://Topdown Assets/Sprites/Environment/ground2_white.png" id="4_kelw5"]
+[ext_resource type="AudioStream" uid="uid://c3h5mideq18id" path="res://Topdown Assets/Sound/music.mp3" id="5_lfrn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrn8"]
+size = Vector2(6144, 20)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_0sr1o")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.584314, 0.560784, 0.764706, 1)
+position = Vector2(-3072, -3072)
+scale = Vector2(3, 3)
+texture = ExtResource("4_kelw5")
+centered = false
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_kelw5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.65, 0.65)
+limit_left = -3072
+limit_top = -3072
+limit_right = 3072
+limit_bottom = 3072
 
 [node name="Player" parent="." instance=ExtResource("1_sul5r")]
 position = Vector2(944, 625)
+
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Colliders"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Colliders"]
+position = Vector2(0, -6164)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D2"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Colliders"]
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D3"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Colliders"]
+position = Vector2(6162, -4)
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D4"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lfrn8")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

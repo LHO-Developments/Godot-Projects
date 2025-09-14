@@ -1,5 +1,8 @@
+AudioStreamPlayer
+StaticBody2D
+CollisionShape2D
 Node2D
 Sprite2D
-CollisionShape2D
+Camera2D
 AnimatedSprite2D
 CharacterBody2D
