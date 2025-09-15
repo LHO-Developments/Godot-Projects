@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://dychfxkihrva"]
+
+[ext_resource type="Texture2D" uid="uid://qlmyauce5r36" path="res://Topdown Assets/Sprites/Weapons/weapon_2_m4.png" id="1_c7hvh"]
+[ext_resource type="Script" uid="uid://ckkij3n47xh61" path="res://data/weapon_data.gd" id="1_j46gx"]
+
+[resource]
+script = ExtResource("1_j46gx")
+gun_sprite = ExtResource("1_c7hvh")
+gun_color = Color(1, 1, 1, 1)
+buy_price = 25
+damage = 1.2
+delay_btw_shots = 0.2
+metadata/_custom_type_script = "uid://ckkij3n47xh61"
