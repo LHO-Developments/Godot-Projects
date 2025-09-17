@@ -1,8 +1,5 @@
 res://scenes/game/game.tscn
-res://data/weapon_data.gd
-res://data/weapon_pistol_1.tres
-res://data/weapon_pistol_2.tres
-res://data/weapon_m4_1.tres
+res://scenes/player/player.tscn
+res://scenes/player/weapon.gd
+res://scenes/player/player.gd
 res://data/weapon_m4_2.tres
-res://data/weapon_shotgun_1.tres
-res://data/weapon_shotgun_2.tres

@@ -3,15 +3,21 @@ class_name Player;
 
 @export var move_speed := 700.0;
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon: Weapon = $Weapon
 
 var can_move: bool = true;
 var mouse_pos: Vector2;
+const WEAPON_M_4_2 = preload("res://data/weapon_m4_2.tres");
+
+func _ready() -> void:
+	weapon.setup(WEAPON_M_4_2);
 
 func _process(delta: float) -> void:
 	if not can_move: return;
 	get_mouse_pos();
 	update_animations();
 	update_rotation();
+	update_weapon_roatation();
 
 func _physics_process(delta: float) -> void:
 	if not can_move: return;
@@ -29,6 +35,13 @@ func update_rotation() -> void:
 		anim_sprite.flip_h = false;
 	else:
 		anim_sprite.flip_h = true;
+
+func update_weapon_roatation() -> void:
+	if mouse_pos.x > global_position.x:
+		weapon.rotate_weapon(false);
+	else:
+		weapon.rotate_weapon(true);
+	weapon.look_at(mouse_pos);
 
 func update_animations() -> void:
 	if velocity.length() > 0:
