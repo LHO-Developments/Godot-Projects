@@ -9,9 +9,6 @@ var can_move: bool = true;
 var mouse_pos: Vector2;
 const WEAPON_M_4_2 = preload("res://data/weapon_m4_2.tres");
 
-func _ready() -> void:
-	weapon.setup(WEAPON_M_4_2);
-
 func _process(delta: float) -> void:
 	if not can_move: return;
 	get_mouse_pos();
@@ -26,6 +23,10 @@ func _physics_process(delta: float) -> void:
 	var movement := direction * move_speed;
 	velocity = movement;
 	move_and_slide();
+
+func setup_weapon(weapon_data: WeaponData) -> void:
+	weapon.setup(weapon_data);
+	weapon.show();
 
 func get_mouse_pos() -> void:
 	mouse_pos = get_global_mouse_position();

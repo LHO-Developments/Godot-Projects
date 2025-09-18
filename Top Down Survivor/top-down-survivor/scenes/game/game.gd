@@ -8,6 +8,7 @@ class_name Game;
 func _ready() -> void:
 	#hide mouse
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
+	GameManager.player = player;
 
 func _process(delta: float) -> void:
 	crosshair.global_position = get_global_mouse_position();

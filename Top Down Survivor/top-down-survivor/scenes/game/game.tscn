@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://3xq3vgcsy3e4"]
+[gd_scene load_steps=14 format=3 uid="uid://3xq3vgcsy3e4"]
 
 [ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
 [ext_resource type="Texture2D" uid="uid://drpmj5jkfv8o7" path="res://Topdown Assets/Sprites/Extras/crosshair.png" id="3_kelw5"]
 [ext_resource type="Texture2D" uid="uid://ubm1eqcoxtwx" path="res://Topdown Assets/Sprites/Environment/ground2_white.png" id="4_kelw5"]
+[ext_resource type="PackedScene" uid="uid://c4ibrcqrfpjtv" path="res://scenes/weapons/weapon_pickup.tscn" id="5_5i0tg"]
 [ext_resource type="AudioStream" uid="uid://c3h5mideq18id" path="res://Topdown Assets/Sound/music.mp3" id="5_lfrn8"]
+[ext_resource type="Resource" uid="uid://ctoxymccg7pyx" path="res://data/weapon_pistol_1.tres" id="6_5jirj"]
+[ext_resource type="Resource" uid="uid://cuqpdo2ih8w1p" path="res://data/weapon_pistol_2.tres" id="7_vaxfo"]
+[ext_resource type="Resource" uid="uid://dychfxkihrva" path="res://data/weapon_m4_1.tres" id="8_ftsea"]
+[ext_resource type="Resource" uid="uid://bgfx0jy6es6ae" path="res://data/weapon_m4_2.tres" id="9_otnwt"]
+[ext_resource type="Resource" uid="uid://dwnuvts2t1na" path="res://data/weapon_shotgun_1.tres" id="10_3xj4h"]
+[ext_resource type="Resource" uid="uid://c3lol6b21tbjt" path="res://data/weapon_shotgun_2.tres" id="11_5v6r0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrn8"]
 size = Vector2(6144, 20)
@@ -66,6 +73,32 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D4"]
 position = Vector2(0, 3081)
 shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="WeaponPickup1" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(-748, 0)
+weapon_data = ExtResource("6_5jirj")
+
+[node name="WeaponPickup2" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(-448, 0)
+weapon_data = ExtResource("7_vaxfo")
+
+[node name="WeaponPickup3" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(-148, 0)
+weapon_data = ExtResource("8_ftsea")
+
+[node name="WeaponPickup4" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(152, 0)
+weapon_data = ExtResource("9_otnwt")
+
+[node name="WeaponPickup5" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(452, 0)
+weapon_data = ExtResource("10_3xj4h")
+
+[node name="WeaponPickup6" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(752, 0)
+weapon_data = ExtResource("11_5v6r0")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lfrn8")
