@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cc6v2ajkm5cui"]
+[gd_scene load_steps=32 format=3 uid="uid://cc6v2ajkm5cui"]
 
 [ext_resource type="Script" uid="uid://2bwxc0mgrscn" path="res://scenes/player/player.gd" id="1_6cv16"]
 [ext_resource type="Texture2D" uid="uid://bolqgxb6t1elc" path="res://Topdown Assets/Sprites/Entities/Char 1/idle_0.png" id="1_75vfm"]
@@ -27,7 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://b145gvhu4ameq" path="res://Topdown Assets/Sprites/Entities/Char 1/walk_7.png" id="24_vo27k"]
 [ext_resource type="Texture2D" uid="uid://b0d6xe0sreis5" path="res://Topdown Assets/Sprites/Shadow.png" id="25_007i1"]
 [ext_resource type="Script" uid="uid://c4jau6afsg3y2" path="res://scenes/player/weapon.gd" id="27_28m0y"]
-[ext_resource type="Texture2D" uid="uid://k1o2nroluihr" path="res://Topdown Assets/Sprites/Weapons/weapon_1_pistol.png" id="27_j4nxn"]
+[ext_resource type="Texture2D" uid="uid://kgtvsn78ykg8" path="res://Topdown Assets/Sprites/Weapons/weapon_3_shotgun.png" id="28_uniwh"]
+[ext_resource type="AudioStream" uid="uid://dqndjkx5dws8j" path="res://Topdown Assets/Sound/FireSound.wav" id="29_uniwh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fm80t"]
 animations = [{
@@ -150,7 +151,12 @@ script = ExtResource("27_28m0y")
 
 [node name="WeaponSprite" type="Sprite2D" parent="Weapon"]
 position = Vector2(332, 0)
-texture = ExtResource("27_j4nxn")
+texture = ExtResource("28_uniwh")
 
 [node name="FirePos" type="Marker2D" parent="Weapon"]
-position = Vector2(544, -50)
+position = Vector2(780, -64)
+
+[node name="FireSound" type="AudioStreamPlayer" parent="Weapon"]
+stream = ExtResource("29_uniwh")
+volume_db = -10.0
+bus = &"SFX"

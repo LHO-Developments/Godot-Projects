@@ -3,6 +3,7 @@ class_name Weapon;
 
 @onready var weapon_sprite: Sprite2D = $WeaponSprite
 @onready var fire_pos: Marker2D = $FirePos
+@onready var fire_sound: AudioStreamPlayer = $FireSound
 
 var equipped_weapon: WeaponData;
 var delay_btw_shots: float;
@@ -20,6 +21,7 @@ func setup(weapon_data: WeaponData) -> void:
 	weapon_sprite.texture = weapon_data.gun_sprite;
 	weapon_sprite.modulate = weapon_data.gun_color;
 	delay_btw_shots = weapon_data.delay_btw_shots;
+	fire_pos.position = weapon_data.fire_pos;
 	
 
 func shoot_weapon() -> void:
@@ -27,6 +29,7 @@ func shoot_weapon() -> void:
 	bullet.global_position = fire_pos.global_position;
 	bullet.damage = equipped_weapon.damage;
 	bullet.move_direction = (get_global_mouse_position() - global_position).normalized();
+	fire_sound.play();
 	get_tree().root.add_child(bullet);
 
 func rotate_weapon(value: bool) -> void:

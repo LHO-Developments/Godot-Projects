@@ -1,9 +1,9 @@
+AudioStreamPlayer
 VisibleOnScreenNotifier2D
 Sprite2D
 CollisionShape2D
 Area2D
 Node2D
-AudioStreamPlayer
 Label
 TextureRect
 HBoxContainer
@@ -12,4 +12,3 @@ Marker2D
 StaticBody2D
 Camera2D
 AnimatedSprite2D
-CharacterBody2D
