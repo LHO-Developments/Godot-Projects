@@ -15,7 +15,7 @@ position = Vector2(0, -95)
 position = Vector2(0, -1)
 scale = Vector2(0.07, 0.07)
 collision_layer = 0
-collision_mask = 3
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D2" index="0"]
 texture = ExtResource("2_tt5je")
@@ -27,7 +27,7 @@ shape = SubResource("CircleShape2D_vq1w5")
 position = Vector2(0, 94)
 scale = Vector2(0.07, 0.07)
 collision_layer = 0
-collision_mask = 3
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D3" index="0"]
 texture = ExtResource("2_tt5je")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3xq3vgcsy3e4"]
+[gd_scene load_steps=15 format=3 uid="uid://3xq3vgcsy3e4"]
 
 [ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://bgfx0jy6es6ae" path="res://data/weapon_m4_2.tres" id="9_otnwt"]
 [ext_resource type="Resource" uid="uid://dwnuvts2t1na" path="res://data/weapon_shotgun_1.tres" id="10_3xj4h"]
 [ext_resource type="Resource" uid="uid://c3lol6b21tbjt" path="res://data/weapon_shotgun_2.tres" id="11_5v6r0"]
+[ext_resource type="PackedScene" uid="uid://yuh03itfdabt" path="res://scenes/extra/rock.tscn" id="12_vaxfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrn8"]
 size = Vector2(6144, 20)
@@ -99,6 +100,32 @@ weapon_data = ExtResource("10_3xj4h")
 [node name="WeaponPickup6" parent="Weapons" instance=ExtResource("5_5i0tg")]
 position = Vector2(752, 0)
 weapon_data = ExtResource("11_5v6r0")
+
+[node name="Rocks" type="Node2D" parent="."]
+
+[node name="Rock" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(-1862, 0)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(1952, 0)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(0, -1495)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(0, 1263)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(-1612, 1531)
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(1621, 1397)
+
+[node name="Rock7" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(-1289, -1003)
+
+[node name="Rock8" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(1298, -869)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lfrn8")

@@ -4,6 +4,9 @@ class_name Weapon;
 @onready var weapon_sprite: Sprite2D = $WeaponSprite
 @onready var fire_pos: Marker2D = $FirePos
 @onready var fire_sound: AudioStreamPlayer = $FireSound
+@onready var anim_player: AnimationPlayer = $"../AnimationPlayer"
+@onready var muzzle: Sprite2D = $WeaponSprite/Muzzle
+
 
 var equipped_weapon: WeaponData;
 var delay_btw_shots: float;
@@ -19,7 +22,7 @@ func _process(delta: float) -> void:
 func setup(weapon_data: WeaponData) -> void:
 	equipped_weapon = weapon_data;
 	weapon_sprite.texture = weapon_data.gun_sprite;
-	weapon_sprite.modulate = weapon_data.gun_color;
+	weapon_sprite.self_modulate = weapon_data.gun_color;
 	delay_btw_shots = weapon_data.delay_btw_shots;
 	fire_pos.position = weapon_data.fire_pos;
 	
@@ -30,12 +33,15 @@ func shoot_weapon() -> void:
 	bullet.damage = equipped_weapon.damage;
 	bullet.move_direction = (get_global_mouse_position() - global_position).normalized();
 	fire_sound.play();
+	anim_player.play("shoot");
 	get_tree().root.add_child(bullet);
 
 func rotate_weapon(value: bool) -> void:
 	if value:
 		weapon_sprite.flip_v = true;
-		fire_pos.position.y = -50;
+		muzzle.position.y = 50;
+		fire_pos.position.y = 50;
 	else:
 		weapon_sprite.flip_v = false;
+		muzzle.position.y = -50;
 		fire_pos.position.y = -50;
