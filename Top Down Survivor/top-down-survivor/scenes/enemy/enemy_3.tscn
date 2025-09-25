@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsu0g3m5hw0sx"]
+
+[ext_resource type="PackedScene" uid="uid://fdydvjky6mf4" path="res://scenes/enemy/base_enemy.tscn" id="1_44gae"]
+[ext_resource type="Texture2D" uid="uid://b84ywbjrox8jm" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_0.png" id="2_wwu2i"]
+[ext_resource type="Texture2D" uid="uid://c0wwc6ukoe6ca" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_1.png" id="3_y5qon"]
+[ext_resource type="Texture2D" uid="uid://0854frjae20" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_2.png" id="4_oqadk"]
+[ext_resource type="Texture2D" uid="uid://dteqeyh64480n" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_3.png" id="5_mibo2"]
+[ext_resource type="Texture2D" uid="uid://bk5kyqb2g3emo" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_4.png" id="6_m2om0"]
+[ext_resource type="Texture2D" uid="uid://ckrkjtgj6ncub" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_5.png" id="7_11x1n"]
+[ext_resource type="Texture2D" uid="uid://b0d6xe0sreis5" path="res://Topdown Assets/Sprites/Shadow.png" id="8_510uq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd8a4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wwu2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y5qon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oqadk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mibo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m2om0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_11x1n")
+}],
+"loop": true,
+"name": &"movement",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ov25p"]
+radius = 220.036
+
+[node name="BaseEnemy" instance=ExtResource("1_44gae")]
+
+[node name="AnimSprite" parent="." index="0"]
+position = Vector2(0, -604)
+sprite_frames = SubResource("SpriteFrames_kd8a4")
+animation = &"movement"
+autoplay = "movement"
+frame_progress = 0.617094
+
+[node name="Shadow" parent="." index="1"]
+modulate = Color(1, 1, 1, 0.470588)
+position = Vector2(0, 60)
+texture = ExtResource("8_510uq")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -220)
+shape = SubResource("CircleShape2D_ov25p")
