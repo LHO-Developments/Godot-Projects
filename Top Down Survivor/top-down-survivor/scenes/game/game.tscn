@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://3xq3vgcsy3e4"]
+[gd_scene load_steps=16 format=3 uid="uid://3xq3vgcsy3e4"]
 
 [ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dwnuvts2t1na" path="res://data/weapon_shotgun_1.tres" id="10_3xj4h"]
 [ext_resource type="Resource" uid="uid://c3lol6b21tbjt" path="res://data/weapon_shotgun_2.tres" id="11_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://yuh03itfdabt" path="res://scenes/extra/rock.tscn" id="12_vaxfo"]
+[ext_resource type="PackedScene" uid="uid://bctmlmectnuc4" path="res://scenes/enemy/enemy_1.tscn" id="14_ftsea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrn8"]
 size = Vector2(6144, 20)
@@ -132,3 +133,6 @@ stream = ExtResource("5_lfrn8")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
+
+[node name="Enemy_1" parent="." instance=ExtResource("14_ftsea")]
+position = Vector2(-657, 596)
