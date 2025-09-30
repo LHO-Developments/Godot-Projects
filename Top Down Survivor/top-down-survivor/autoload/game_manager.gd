@@ -1,5 +1,7 @@
 extends Node
 
+signal on_enemy_died;
+
 const EXPLOSION_ANIM = preload("res://scenes/extra/explosion_anim.tscn")
 var player: Player;
 

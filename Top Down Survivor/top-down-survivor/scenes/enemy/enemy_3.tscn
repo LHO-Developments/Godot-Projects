@@ -11,6 +11,11 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kd8a4"]
 animations = [{
+"frames": [],
+"loop": false,
+"name": &"death",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_wwu2i")
@@ -43,9 +48,8 @@ radius = 220.036
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, -604)
 sprite_frames = SubResource("SpriteFrames_kd8a4")
-animation = &"movement"
+animation = &"death"
 autoplay = "movement"
-frame_progress = 0.617094
 
 [node name="Shadow" parent="." index="1"]
 modulate = Color(1, 1, 1, 0.470588)

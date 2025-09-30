@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fdydvjky6mf4"]
+[gd_scene load_steps=3 format=3 uid="uid://fdydvjky6mf4"]
 
 [ext_resource type="Script" uid="uid://bcfatyswfj3sr" path="res://scenes/enemy/enemy.gd" id="1_jf5t1"]
+[ext_resource type="PackedScene" uid="uid://b4q5diajhskvd" path="res://scenes/components/health_component.tscn" id="2_r8x88"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -13,3 +14,8 @@ script = ExtResource("1_jf5t1")
 [node name="Shadow" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_r8x88")]
+
+[connection signal="on_damaged" from="HealthComponent" to="." method="_on_health_component_on_damaged"]
+[connection signal="on_defeated" from="HealthComponent" to="." method="_on_health_component_on_defeated"]

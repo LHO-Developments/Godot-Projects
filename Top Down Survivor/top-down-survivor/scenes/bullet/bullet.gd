@@ -18,6 +18,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	GameManager.play_explosion_anim(global_position);
 	explosion_sound.play();
 	await get_tree().create_timer(0.08).timeout;
+	
+	if body is Enemy:
+		var enemy := body as Enemy;
+		enemy.health_component.take_damage(damage);
+	
 	queue_free();
 
 

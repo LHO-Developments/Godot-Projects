@@ -5,6 +5,9 @@ class_name Enemy;
 @onready var anim_sprite: AnimatedSprite2D = $AnimSprite
 var can_move := true;
 
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var health_component: HealthComponent = $HealthComponent
+
 func _physics_process(delta: float) -> void:
 	var player_dir = GameManager.player.global_position - global_position;
 	var direction = player_dir.normalized();
@@ -20,3 +23,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 	anim_sprite.flip_h = true if velocity.x < 0 else false;
 	
+
+
+func _on_health_component_on_damaged() -> void:
+	print(health_component.current_health);
+
+
+func _on_health_component_on_defeated() -> void:
+	can_move = false;
+	anim_sprite.play('death');
+	collision_shape_2d.set_deferred('disabled', true);
+	
+	await anim_sprite.animation_finished;
+	GameManager.on_enemy_died.emit();
+	queue_free();
