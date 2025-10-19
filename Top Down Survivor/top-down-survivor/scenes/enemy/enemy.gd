@@ -31,9 +31,13 @@ func _on_health_component_on_damaged() -> void:
 
 func _on_health_component_on_defeated() -> void:
 	can_move = false;
-	anim_sprite.play('death');
-	collision_shape_2d.set_deferred('disabled', true);
 	
-	await anim_sprite.animation_finished;
+	if(anim_sprite.sprite_frames.get_frame_count('death') <= 0):
+		collision_shape_2d.set_deferred('disabled', true);
+	else:
+			anim_sprite.play('death');
+			collision_shape_2d.set_deferred('disabled', true);
+			await anim_sprite.animation_finished;
+	
 	GameManager.on_enemy_died.emit();
 	queue_free();

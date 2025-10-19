@@ -1,6 +1,6 @@
-res://scenes/components
 res://scenes/enemy
 res://scenes/extra
+res://scenes/components
 res://scenes/bullet
 res://autoload
 res://scenes/weapons

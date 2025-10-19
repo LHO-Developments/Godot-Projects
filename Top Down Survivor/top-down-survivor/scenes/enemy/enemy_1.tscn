@@ -97,7 +97,7 @@ height = 474.0
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, -763)
 sprite_frames = SubResource("SpriteFrames_fp0kv")
-animation = &"move"
+animation = &"death"
 autoplay = "move"
 
 [node name="Shadow" parent="." index="1"]

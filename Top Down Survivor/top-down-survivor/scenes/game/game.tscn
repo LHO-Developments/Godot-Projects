@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://3xq3vgcsy3e4"]
+[gd_scene load_steps=16 format=3 uid="uid://3xq3vgcsy3e4"]
 
 [ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
@@ -13,10 +13,7 @@
 [ext_resource type="Resource" uid="uid://dwnuvts2t1na" path="res://data/weapon_shotgun_1.tres" id="10_3xj4h"]
 [ext_resource type="Resource" uid="uid://c3lol6b21tbjt" path="res://data/weapon_shotgun_2.tres" id="11_5v6r0"]
 [ext_resource type="PackedScene" uid="uid://yuh03itfdabt" path="res://scenes/extra/rock.tscn" id="12_vaxfo"]
-[ext_resource type="PackedScene" uid="uid://bctmlmectnuc4" path="res://scenes/enemy/enemy_1.tscn" id="14_ftsea"]
-[ext_resource type="PackedScene" uid="uid://bg3104gsdkh41" path="res://scenes/enemy/enemy_2.tscn" id="15_otnwt"]
-[ext_resource type="PackedScene" uid="uid://bsu0g3m5hw0sx" path="res://scenes/enemy/enemy_3.tscn" id="16_3xj4h"]
-[ext_resource type="PackedScene" uid="uid://crivlqrpvjq8j" path="res://scenes/enemy/enemy_4.tscn" id="17_5v6r0"]
+[ext_resource type="PackedScene" uid="uid://jl2w4ywtwrdt" path="res://scenes/enemy/enemy_spawner.tscn" id="14_ftsea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrn8"]
 size = Vector2(6144, 20)
@@ -137,14 +134,6 @@ volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
-[node name="Enemy_1" parent="." instance=ExtResource("14_ftsea")]
-position = Vector2(-657, 596)
-
-[node name="Enemy_2" parent="." instance=ExtResource("15_otnwt")]
-position = Vector2(364, -374)
-
-[node name="Enemy_3" parent="." instance=ExtResource("16_3xj4h")]
-position = Vector2(-531, -364)
-
-[node name="Enemy_4" parent="." instance=ExtResource("17_5v6r0")]
-position = Vector2(751, 1273)
+[node name="EnemySpawner" parent="." instance=ExtResource("14_ftsea")]
+spawn_type = 1
+fixed_time = 1.5
