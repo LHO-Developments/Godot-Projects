@@ -39,5 +39,6 @@ func _on_health_component_on_defeated() -> void:
 			collision_shape_2d.set_deferred('disabled', true);
 			await anim_sprite.animation_finished;
 	
+	GameManager.create_coin(global_position);
 	GameManager.on_enemy_died.emit();
 	queue_free();

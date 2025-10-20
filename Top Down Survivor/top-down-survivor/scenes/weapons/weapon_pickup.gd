@@ -5,6 +5,7 @@ class_name WeaponPickup;
 @onready var weapon_spriite: Sprite2D = $WeaponSpriite
 @onready var buy_label: Label = $BuyLabel
 @onready var price_label: Label = %PriceLabel
+@onready var pickup: AudioStreamPlayer = $Pickup
 
 var can_interact: bool;
 
@@ -18,7 +19,12 @@ func set_weapon() -> void:
 
 func _input(event: InputEvent) -> void:
 	if can_interact and event.is_action_pressed("interact"):
-		GameManager.player.setup_weapon(weapon_data);
+		if GameManager.coins >= weapon_data.buy_price:
+			pickup.play();
+			GameManager.remove_coins(weapon_data.buy_price);
+			GameManager.player.setup_weapon(weapon_data);
+		
+		
 
 func _on_body_entered(body: Node2D) -> void:
 	buy_label.show();
