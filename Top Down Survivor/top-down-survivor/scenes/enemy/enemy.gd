@@ -2,11 +2,11 @@ extends CharacterBody2D
 class_name Enemy;
 
 @export var move_speed := 400.0;
-@onready var anim_sprite: AnimatedSprite2D = $AnimSprite
+@onready var anim_sprite: AnimatedSprite2D = $AnimSprite;
 var can_move := true;
 
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var health_component: HealthComponent = $HealthComponent
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D;
+@onready var health_component: HealthComponent = $HealthComponent;
 
 func _physics_process(delta: float) -> void:
 	var player_dir = GameManager.player.global_position - global_position;

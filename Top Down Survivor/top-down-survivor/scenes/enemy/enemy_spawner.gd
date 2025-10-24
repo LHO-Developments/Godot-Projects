@@ -1,6 +1,8 @@
 extends Node
 class_name EnemySpawner;
 
+signal on_wave_completed;
+
 const SPAWN_ANIM = preload("res://scenes/extra/spawn_anim.tscn");
 @onready var spawn_timer: Timer = $SpawnTimer;
 
@@ -22,7 +24,8 @@ var enemies_remaining: int;
 var spawned_enemies: int;
 
 func _ready() -> void:
-	start_enemy_timer();
+	GameManager.on_enemy_died.connect(_on_enemy_died);
+	enemies_remaining = enemies_per_wave;
 
 func spawn_enemy() -> void:
 	var spawn_anim: SpawnAnim = SPAWN_ANIM.instantiate();
@@ -65,3 +68,11 @@ func _on_spawn_timer_timeout() -> void:
 		return
 	
 	spawn_enemy();
+
+func _on_enemy_died() -> void:
+	enemies_remaining -= 1;
+	if enemies_remaining <= 0:
+		spawn_timer.stop();
+		on_wave_completed.emit();
+		enemies_remaining = enemies_per_wave;
+		spawned_enemies = 0;
