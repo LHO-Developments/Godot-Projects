@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	var direction = player_dir.normalized();
 	var movement = direction * move_speed;
 	velocity = movement;
-	if player_dir.length() <= 170:
+	if player_dir.length() <= 150:
 		return;
 	
 	if not can_move:
@@ -26,7 +26,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_health_component_on_damaged() -> void:
-	print(health_component.current_health);
+	anim_sprite.material = GameManager.HIT_MATERIAL;
+	await  get_tree().create_timer(0.3).timeout;
+	anim_sprite.material = null;
 
 
 func _on_health_component_on_defeated() -> void:
@@ -42,3 +44,8 @@ func _on_health_component_on_defeated() -> void:
 	GameManager.create_coin(global_position);
 	GameManager.on_enemy_died.emit();
 	queue_free();
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	var player = body as Player;
+	player.health_component.take_damage(2);

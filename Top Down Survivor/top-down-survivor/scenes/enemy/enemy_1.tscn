@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bctmlmectnuc4"]
+[gd_scene load_steps=24 format=3 uid="uid://bctmlmectnuc4"]
 
 [ext_resource type="PackedScene" uid="uid://fdydvjky6mf4" path="res://scenes/enemy/base_enemy.tscn" id="1_d8iib"]
 [ext_resource type="Texture2D" uid="uid://cfe0o4d7kxvx1" path="res://Topdown Assets/Sprites/Entities/Enemy 1/death_0.png" id="2_tdbum"]
@@ -92,12 +92,16 @@ animations = [{
 radius = 123.0
 height = 474.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0agnm"]
+radius = 304.0
+height = 640.0
+
 [node name="Enemy_1" instance=ExtResource("1_d8iib")]
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, -763)
 sprite_frames = SubResource("SpriteFrames_fp0kv")
-animation = &"death"
+animation = &"move"
 autoplay = "move"
 
 [node name="Shadow" parent="." index="1"]
@@ -108,3 +112,8 @@ texture = ExtResource("20_k2h6p")
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -244)
 shape = SubResource("CapsuleShape2D_tdbum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -292)
+shape = SubResource("CapsuleShape2D_0agnm")
+debug_color = Color(0.987793, 0, 0.309151, 0.42)

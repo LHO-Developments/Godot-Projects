@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsu0g3m5hw0sx"]
+[gd_scene load_steps=12 format=3 uid="uid://bsu0g3m5hw0sx"]
 
 [ext_resource type="PackedScene" uid="uid://fdydvjky6mf4" path="res://scenes/enemy/base_enemy.tscn" id="1_44gae"]
 [ext_resource type="Texture2D" uid="uid://b84ywbjrox8jm" path="res://Topdown Assets/Sprites/Entities/Enemy 3/fly_0.png" id="2_wwu2i"]
@@ -46,6 +46,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ov25p"]
 radius = 220.036
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_44gae"]
+radius = 428.299
+
 [node name="BaseEnemy" instance=ExtResource("1_44gae")]
 
 [node name="AnimSprite" parent="." index="0"]
@@ -62,3 +65,8 @@ texture = ExtResource("8_510uq")
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -220)
 shape = SubResource("CircleShape2D_ov25p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-40, -280)
+shape = SubResource("CircleShape2D_44gae")
+debug_color = Color(0.978405, 0, 0.396447, 0.42)

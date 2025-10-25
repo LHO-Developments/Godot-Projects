@@ -7,6 +7,7 @@ var player: Player;
 var coins: int = 500;
 
 const COIN = preload("res://scenes/extra/coin.tscn");
+const HIT_MATERIAL = preload("res://scenes/extra/hit_material.tres")
 
 func play_explosion_anim(pos: Vector2) -> void:
 	var anim: AnimatedSprite2D = EXPLOSION_ANIM.instantiate();

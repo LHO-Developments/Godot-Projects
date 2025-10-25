@@ -8,6 +8,7 @@ class_name Player;
 var can_move: bool = true;
 var mouse_pos: Vector2;
 const WEAPON_M_4_2 = preload("res://data/weapon_m4_2.tres");
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _process(delta: float) -> void:
 	if not can_move: return;
@@ -49,3 +50,15 @@ func update_animations() -> void:
 		anim_sprite.play("move");
 	else:
 		anim_sprite.play("idle");
+
+
+func _on_health_component_on_damaged() -> void:
+	print(health_component.current_health);
+	anim_sprite.material = GameManager.HIT_MATERIAL;
+	await get_tree().create_timer(0.3).timeout;
+	anim_sprite.material = null;
+
+
+func _on_health_component_on_defeated() -> void:
+	anim_sprite.play("death");
+	can_move = false;
