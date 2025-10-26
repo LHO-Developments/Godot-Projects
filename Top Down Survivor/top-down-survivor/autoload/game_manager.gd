@@ -8,6 +8,7 @@ var coins: int = 500;
 
 const COIN = preload("res://scenes/extra/coin.tscn");
 const HIT_MATERIAL = preload("res://scenes/extra/hit_material.tres")
+const DAMAGE_TEXT = preload("res://scenes/extra/damage_text.tscn");
 
 func play_explosion_anim(pos: Vector2) -> void:
 	var anim: AnimatedSprite2D = EXPLOSION_ANIM.instantiate();
@@ -16,6 +17,12 @@ func play_explosion_anim(pos: Vector2) -> void:
 	get_parent().add_child(anim);
 	await anim.animation_finished;
 	anim.queue_free();
+
+func play_damage_text(pos: Vector2, value: int) -> void:
+	var damage = DAMAGE_TEXT.instantiate() as DamageText;
+	get_parent().add_child(damage);
+	damage.global_position = pos;
+	damage.setup(value);
 
 func create_coin(pos: Vector2) -> void:
 	var random_value = randf_range(0.0, 100.0);
