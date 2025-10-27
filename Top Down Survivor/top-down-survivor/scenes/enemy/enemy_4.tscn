@@ -111,3 +111,9 @@ shape = SubResource("CapsuleShape2D_1omcb")
 position = Vector2(0, -304)
 shape = SubResource("CapsuleShape2D_2fpse")
 debug_color = Color(0.989259, 0, 0.292558, 0.42)
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -228.0
+offset_top = -756.0
+offset_right = -228.0
+offset_bottom = -756.0

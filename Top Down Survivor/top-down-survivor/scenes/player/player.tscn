@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cc6v2ajkm5cui"]
+[gd_scene load_steps=39 format=3 uid="uid://cc6v2ajkm5cui"]
 
 [ext_resource type="Script" uid="uid://2bwxc0mgrscn" path="res://scenes/player/player.gd" id="1_6cv16"]
 [ext_resource type="Texture2D" uid="uid://bolqgxb6t1elc" path="res://Topdown Assets/Sprites/Entities/Char 1/idle_0.png" id="1_75vfm"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://b1kuiookowv35" path="res://Topdown Assets/Sprites/Extras/muzzle.png" id="29_iqsei"]
 [ext_resource type="AudioStream" uid="uid://dqndjkx5dws8j" path="res://Topdown Assets/Sound/FireSound.wav" id="29_uniwh"]
 [ext_resource type="PackedScene" uid="uid://b4q5diajhskvd" path="res://scenes/components/health_component.tscn" id="32_pk8ii"]
+[ext_resource type="PackedScene" uid="uid://cw4k0p6vhcvnc" path="res://scenes/extra/health_bar.tscn" id="33_5mf0n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fm80t"]
 animations = [{
@@ -215,6 +216,13 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("32_pk8ii")]
+
+[node name="HealthBar" parent="." instance=ExtResource("33_5mf0n")]
+offset_left = -228.0
+offset_top = -816.0
+offset_right = -228.0
+offset_bottom = -816.0
+scale = Vector2(3, 3)
 
 [connection signal="on_damaged" from="HealthComponent" to="." method="_on_health_component_on_damaged"]
 [connection signal="on_defeated" from="HealthComponent" to="." method="_on_health_component_on_defeated"]

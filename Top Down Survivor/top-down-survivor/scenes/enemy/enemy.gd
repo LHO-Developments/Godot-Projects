@@ -7,6 +7,8 @@ var can_move := true;
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D;
 @onready var health_component: HealthComponent = $HealthComponent;
+@onready var health_bar: HealthBar = $HealthBar
+
 
 func _physics_process(delta: float) -> void:
 	var player_dir = GameManager.player.global_position - global_position;
@@ -26,6 +28,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_health_component_on_damaged() -> void:
+	var health_value = health_component.current_health / health_component.max_health;
+	health_bar.set_value(health_value);
+	
 	anim_sprite.material = GameManager.HIT_MATERIAL;
 	await  get_tree().create_timer(0.3).timeout;
 	anim_sprite.material = null;
@@ -41,6 +46,7 @@ func _on_health_component_on_defeated() -> void:
 			collision_shape_2d.set_deferred('disabled', true);
 			await anim_sprite.animation_finished;
 	
+	health_bar.hide();
 	GameManager.create_coin(global_position);
 	GameManager.on_enemy_died.emit();
 	queue_free();

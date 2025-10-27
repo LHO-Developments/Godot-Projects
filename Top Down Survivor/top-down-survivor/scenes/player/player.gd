@@ -9,6 +9,7 @@ var can_move: bool = true;
 var mouse_pos: Vector2;
 const WEAPON_M_4_2 = preload("res://data/weapon_m4_2.tres");
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var health_bar: HealthBar = $HealthBar
 
 func _process(delta: float) -> void:
 	if not can_move: return;
@@ -53,7 +54,9 @@ func update_animations() -> void:
 
 
 func _on_health_component_on_damaged() -> void:
-	print(health_component.current_health);
+	var health_value = health_component.current_health / health_component.max_health;
+	health_bar.set_value(health_value);
+	
 	anim_sprite.material = GameManager.HIT_MATERIAL;
 	await get_tree().create_timer(0.3).timeout;
 	anim_sprite.material = null;
@@ -62,3 +65,4 @@ func _on_health_component_on_damaged() -> void:
 func _on_health_component_on_defeated() -> void:
 	anim_sprite.play("death");
 	can_move = false;
+	health_bar.hide();

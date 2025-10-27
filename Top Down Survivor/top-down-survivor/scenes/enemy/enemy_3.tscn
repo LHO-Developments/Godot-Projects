@@ -70,3 +70,9 @@ shape = SubResource("CircleShape2D_ov25p")
 position = Vector2(-40, -280)
 shape = SubResource("CircleShape2D_44gae")
 debug_color = Color(0.978405, 0, 0.396447, 0.42)
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -264.0
+offset_top = -828.0
+offset_right = -264.0
+offset_bottom = -828.0
