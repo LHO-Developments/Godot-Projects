@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://3xq3vgcsy3e4"]
+[gd_scene load_steps=21 format=3 uid="uid://3xq3vgcsy3e4"]
 
 [ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
 [ext_resource type="Texture2D" uid="uid://drpmj5jkfv8o7" path="res://Topdown Assets/Sprites/Extras/crosshair.png" id="3_kelw5"]
+[ext_resource type="Script" uid="uid://3b0tebm4h6va" path="res://scenes/game/camera_2d.gd" id="4_5v6r0"]
 [ext_resource type="Texture2D" uid="uid://ubm1eqcoxtwx" path="res://Topdown Assets/Sprites/Environment/ground2_white.png" id="4_kelw5"]
 [ext_resource type="PackedScene" uid="uid://c4ibrcqrfpjtv" path="res://scenes/weapons/weapon_pickup.tscn" id="5_5i0tg"]
 [ext_resource type="AudioStream" uid="uid://c3h5mideq18id" path="res://Topdown Assets/Sound/music.mp3" id="5_lfrn8"]
@@ -48,6 +49,7 @@ limit_left = -3072
 limit_top = -3072
 limit_right = 3072
 limit_bottom = 3072
+script = ExtResource("4_5v6r0")
 
 [node name="Player" parent="." instance=ExtResource("1_sul5r")]
 position = Vector2(944, 625)

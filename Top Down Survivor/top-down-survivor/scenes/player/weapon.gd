@@ -34,6 +34,7 @@ func shoot_weapon() -> void:
 	bullet.move_direction = (get_global_mouse_position() - global_position).normalized();
 	fire_sound.play();
 	anim_player.play("shoot");
+	GameManager.on_shake_request.emit();
 	get_tree().root.add_child(bullet);
 
 func rotate_weapon(value: bool) -> void:
