@@ -1,0 +1,171 @@
+[gd_scene load_steps=13 format=3 uid="uid://c4ibrcqrfpjtv"]
+
+[ext_resource type="Script" uid="uid://cvivhm4dk6aw7" path="res://scenes/weapons/weapon_pickup.gd" id="1_nf5xj"]
+[ext_resource type="Texture2D" uid="uid://k1o2nroluihr" path="res://Topdown Assets/Sprites/Weapons/weapon_1_pistol.png" id="1_rawis"]
+[ext_resource type="Texture2D" uid="uid://b0d6xe0sreis5" path="res://Topdown Assets/Sprites/Shadow.png" id="2_rtx7t"]
+[ext_resource type="Texture2D" uid="uid://d0ioacy2yuqsg" path="res://Topdown Assets/Sprites/tile_coin.png" id="3_fcss5"]
+[ext_resource type="FontFile" uid="uid://c4x0jidjvbcs3" path="res://Topdown Assets/Fonts/kenpixel_mini_square.ttf" id="4_2mrpd"]
+[ext_resource type="AudioStream" uid="uid://dnkvodvly3gi6" path="res://Topdown Assets/Sound/BubblePop.wav" id="5_nf5xj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it1hs"]
+size = Vector2(348.572, 625.714)
+
+[sub_resource type="Animation" id="Animation_rtx7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSpriite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSpriite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rawis"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponSpriite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 40), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponSpriite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.3), Vector2(0.8, 1.3), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.4, 0.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcss5"]
+_data = {
+&"RESET": SubResource("Animation_rtx7t"),
+&"idle": SubResource("Animation_rawis")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_nf5xj"]
+font = ExtResource("4_2mrpd")
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_it1hs"]
+font = ExtResource("4_2mrpd")
+font_size = 96
+
+[node name="WeaponPickup" type="Area2D"]
+scale = Vector2(0.35, 0.35)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nf5xj")
+
+[node name="WeaponSpriite" type="Sprite2D" parent="."]
+texture = ExtResource("1_rawis")
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(0, 382.857)
+texture = ExtResource("2_rtx7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.40598e-06, 164.286)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_it1hs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fcss5")
+}
+autoplay = "idle"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(350, 0)
+offset_left = -168.571
+offset_top = 534.286
+offset_right = 181.429
+offset_bottom = 574.286
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("3_fcss5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "50"
+label_settings = SubResource("LabelSettings_nf5xj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyLabel" type="Label" parent="."]
+visible = false
+offset_left = 294.286
+offset_top = -291.429
+offset_right = 710.286
+offset_bottom = -194.429
+text = "Buy 'E'"
+label_settings = SubResource("LabelSettings_it1hs")
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nf5xj")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

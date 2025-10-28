@@ -1,0 +1,15 @@
+PointLight2D
+ColorRect
+ProgressBar
+AnimationPlayer
+Label
+CollisionShape2D
+Area2D
+Timer
+TextureRect
+HBoxContainer
+Control
+CanvasLayer
+AudioStreamPlayer
+Sprite2D
+Node
