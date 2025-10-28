@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://wdow57ixdt5f"]
+[gd_scene load_steps=8 format=3 uid="uid://wdow57ixdt5f"]
 
 [ext_resource type="Script" uid="uid://d4crlbcmutrcu" path="res://scenes/bullet/bullet.gd" id="1_8vic8"]
 [ext_resource type="Texture2D" uid="uid://b6irhpunowl8a" path="res://Topdown Assets/Sprites/Extras/bullet.png" id="2_2y8uk"]
@@ -7,6 +7,15 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vq1w5"]
 radius = 529.273
+
+[sub_resource type="Gradient" id="Gradient_ju4sd"]
+offsets = PackedFloat32Array(0, 0.846939)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ca1x"]
+gradient = SubResource("Gradient_ju4sd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="SingleBullet" type="Node2D"]
 script = ExtResource("1_8vic8")
@@ -34,6 +43,12 @@ texture = ExtResource("3_vq1w5")
 stream = ExtResource("4_ju4sd")
 volume_db = -15.0
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.917647, 0.137255, 0.0509804, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_1ca1x")
+texture_scale = 5.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
