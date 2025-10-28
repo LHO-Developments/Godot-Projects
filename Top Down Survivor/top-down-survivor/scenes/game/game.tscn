@@ -1,0 +1,233 @@
+[gd_scene load_steps=23 format=3 uid="uid://3xq3vgcsy3e4"]
+
+[ext_resource type="Script" uid="uid://ckw1sphynxchi" path="res://scenes/game/game.gd" id="1_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://cc6v2ajkm5cui" path="res://scenes/player/player.tscn" id="1_sul5r"]
+[ext_resource type="Texture2D" uid="uid://drpmj5jkfv8o7" path="res://Topdown Assets/Sprites/Extras/crosshair.png" id="3_kelw5"]
+[ext_resource type="Script" uid="uid://3b0tebm4h6va" path="res://scenes/game/camera_2d.gd" id="4_5v6r0"]
+[ext_resource type="Texture2D" uid="uid://ubm1eqcoxtwx" path="res://Topdown Assets/Sprites/Environment/ground2_white.png" id="4_kelw5"]
+[ext_resource type="PackedScene" uid="uid://c4ibrcqrfpjtv" path="res://scenes/weapons/weapon_pickup.tscn" id="5_5i0tg"]
+[ext_resource type="AudioStream" uid="uid://c3h5mideq18id" path="res://Topdown Assets/Sound/music.mp3" id="5_lfrn8"]
+[ext_resource type="Resource" uid="uid://ctoxymccg7pyx" path="res://data/weapon_pistol_1.tres" id="6_5jirj"]
+[ext_resource type="Resource" uid="uid://cuqpdo2ih8w1p" path="res://data/weapon_pistol_2.tres" id="7_vaxfo"]
+[ext_resource type="Resource" uid="uid://dychfxkihrva" path="res://data/weapon_m4_1.tres" id="8_ftsea"]
+[ext_resource type="Resource" uid="uid://bgfx0jy6es6ae" path="res://data/weapon_m4_2.tres" id="9_otnwt"]
+[ext_resource type="Resource" uid="uid://dwnuvts2t1na" path="res://data/weapon_shotgun_1.tres" id="10_3xj4h"]
+[ext_resource type="Resource" uid="uid://c3lol6b21tbjt" path="res://data/weapon_shotgun_2.tres" id="11_5v6r0"]
+[ext_resource type="PackedScene" uid="uid://yuh03itfdabt" path="res://scenes/extra/rock.tscn" id="12_vaxfo"]
+[ext_resource type="PackedScene" uid="uid://jl2w4ywtwrdt" path="res://scenes/enemy/enemy_spawner.tscn" id="14_ftsea"]
+[ext_resource type="FontFile" uid="uid://c4x0jidjvbcs3" path="res://Topdown Assets/Fonts/kenpixel_mini_square.ttf" id="15_3xj4h"]
+[ext_resource type="Texture2D" uid="uid://d0ioacy2yuqsg" path="res://Topdown Assets/Sprites/tile_coin.png" id="16_5v6r0"]
+[ext_resource type="Shader" uid="uid://bty1a1v4omr5r" path="res://scenes/game/vignette.gdshader" id="18_uyinl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfrn8"]
+size = Vector2(6144, 20)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyinl"]
+font = ExtResource("15_3xj4h")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_10c2w"]
+font = ExtResource("15_3xj4h")
+font_size = 65
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_10c2w"]
+shader = ExtResource("18_uyinl")
+shader_parameter/outerRadius = 1.7
+shader_parameter/MainAlpha = 0.8
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_0sr1o")
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.584314, 0.560784, 0.764706, 1)
+position = Vector2(-3072, -3072)
+scale = Vector2(3, 3)
+texture = ExtResource("4_kelw5")
+centered = false
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_kelw5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.65, 0.65)
+limit_left = -3072
+limit_top = -3072
+limit_right = 3072
+limit_bottom = 3072
+script = ExtResource("4_5v6r0")
+
+[node name="Player" parent="." instance=ExtResource("1_sul5r")]
+position = Vector2(944, 625)
+
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Colliders"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Colliders"]
+position = Vector2(0, -6164)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D2"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Colliders"]
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D3"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Colliders"]
+position = Vector2(6162, -4)
+rotation = 1.5708
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D4"]
+position = Vector2(0, 3081)
+shape = SubResource("RectangleShape2D_lfrn8")
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="WeaponPickup1" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(-748, 0)
+weapon_data = ExtResource("6_5jirj")
+
+[node name="WeaponPickup2" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(-448, 0)
+weapon_data = ExtResource("7_vaxfo")
+
+[node name="WeaponPickup3" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(-148, 0)
+weapon_data = ExtResource("8_ftsea")
+
+[node name="WeaponPickup4" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(152, 0)
+weapon_data = ExtResource("9_otnwt")
+
+[node name="WeaponPickup5" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(452, 0)
+weapon_data = ExtResource("10_3xj4h")
+
+[node name="WeaponPickup6" parent="Weapons" instance=ExtResource("5_5i0tg")]
+position = Vector2(752, 0)
+weapon_data = ExtResource("11_5v6r0")
+
+[node name="Rocks" type="Node2D" parent="."]
+
+[node name="Rock" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(-1862, 0)
+
+[node name="Rock2" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(1952, 0)
+
+[node name="Rock3" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(0, -1495)
+
+[node name="Rock4" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(0, 1263)
+
+[node name="Rock5" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(-1612, 1531)
+
+[node name="Rock6" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(1621, 1397)
+
+[node name="Rock7" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(-1289, -1003)
+
+[node name="Rock8" parent="Rocks" instance=ExtResource("12_vaxfo")]
+position = Vector2(1298, -869)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lfrn8")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="EnemySpawner" parent="." instance=ExtResource("14_ftsea")]
+spawn_type = 1
+fixed_time = 1.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaveLabel" type="Label" parent="CanvasLayer/GameUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.5
+offset_top = 20.0
+offset_right = 137.5
+offset_bottom = 145.0
+grow_horizontal = 2
+text = "NEW WAVE
+IN"
+label_settings = SubResource("LabelSettings_uyinl")
+horizontal_alignment = 1
+
+[node name="EnemyCountLabel" type="Label" parent="CanvasLayer/GameUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.5
+offset_top = 20.0
+offset_right = 137.5
+offset_bottom = 145.0
+grow_horizontal = 2
+text = "Enemy: 5"
+label_settings = SubResource("LabelSettings_uyinl")
+
+[node name="Coins" type="HBoxContainer" parent="CanvasLayer/GameUI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 190.0
+offset_bottom = 102.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI/Coins"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_5v6r0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="CanvasLayer/GameUI/Coins"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_10c2w")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_10c2w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="on_wave_completed" from="EnemySpawner" to="." method="_on_enemy_spawner_on_wave_completed"]
