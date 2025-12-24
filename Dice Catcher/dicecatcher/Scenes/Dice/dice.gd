@@ -7,6 +7,8 @@ const ROTATION_SPEED: float = 5.0;
 @onready var sprite_2d: Sprite2D = $Sprite2D;
 var rotation_dir: float = 1.0;
 
+signal game_over;
+
 
 func _ready() -> void:
 	if randf() < 0.5: rotation_dir *= -1;
@@ -18,4 +20,5 @@ func _physics_process(delta: float) -> void:
 
 func check_game_over() -> void:
 	if get_viewport_rect().end.y < position.y:
+		game_over.emit();
 		queue_free();
