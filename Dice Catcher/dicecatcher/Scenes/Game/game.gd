@@ -36,3 +36,6 @@ func _on_dice_game_over() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_dice();
+
+func _on_fox_score() -> void:
+	print("SCORED")

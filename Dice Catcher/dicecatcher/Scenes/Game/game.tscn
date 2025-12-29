@@ -20,3 +20,4 @@ autostart = true
 position = Vector2(605, 585)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="score" from="Fox" to="." method="_on_fox_score"]
