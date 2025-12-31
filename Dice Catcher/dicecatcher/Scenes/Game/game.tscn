@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://kg4nhwo5blau"]
+[gd_scene load_steps=7 format=3 uid="uid://kg4nhwo5blau"]
 
 [ext_resource type="Texture2D" uid="uid://dslcse8g0hjmk" path="res://Asset/GemBg.png" id="1_mv0hc"]
 [ext_resource type="Script" uid="uid://bpypa60264801" path="res://Scenes/Game/game.gd" id="1_qxfds"]
 [ext_resource type="PackedScene" uid="uid://tv6007ypgyj0" path="res://Scenes/Fox/fox.tscn" id="3_qikps"]
+[ext_resource type="FontFile" uid="uid://du74h821tao07" path="res://Asset/LuckiestGuy-Regular.ttf" id="4_i1e5p"]
+[ext_resource type="AudioStream" uid="uid://6emxcay44x1q" path="res://Asset/tetris.mp3" id="5_ciybh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciybh"]
+font = ExtResource("4_i1e5p")
+font_size = 40
+outline_size = 4
+outline_color = Color(0.117647, 0.117647, 0.117647, 1)
+shadow_size = 7
+shadow_color = Color(0.117647, 0.117647, 0.117647, 0.819608)
 
 [node name="Game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_qxfds")
 
 [node name="GemBg" type="Sprite2D" parent="."]
@@ -12,12 +23,29 @@ position = Vector2(629, 329)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_mv0hc")
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 70.0
+offset_bottom = 58.0
+text = "Score"
+label_settings = SubResource("LabelSettings_ciybh")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ciybh")
+volume_db = -7.0
+autoplay = true
+parameters/looping = true
+
+[node name="Pausable" type="Node" parent="."]
+process_mode = 1
+
+[node name="Fox" parent="Pausable" instance=ExtResource("3_qikps")]
+position = Vector2(605, 585)
+
+[node name="SpawnTimer" type="Timer" parent="Pausable"]
 wait_time = 3.0
 autostart = true
 
-[node name="Fox" parent="." instance=ExtResource("3_qikps")]
-position = Vector2(605, 585)
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="score" from="Fox" to="." method="_on_fox_score"]
+[connection signal="score" from="Pausable/Fox" to="." method="_on_fox_score"]
+[connection signal="timeout" from="Pausable/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
