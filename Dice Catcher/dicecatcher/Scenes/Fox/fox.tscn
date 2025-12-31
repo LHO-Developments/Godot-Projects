@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://tv6007ypgyj0"]
+
+[ext_resource type="Texture2D" uid="uid://jumyfglyacud" path="res://Asset/Fox.png" id="1_fet5y"]
+[ext_resource type="Script" uid="uid://c4prh6ke5d34j" path="res://Scenes/Fox/fox.gd" id="1_gfiem"]
+[ext_resource type="AudioStream" uid="uid://cyfr4ruabpmio" path="res://Asset/eating.wav" id="2_4dsoa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fet5y"]
+radius = 9.0
+height = 102.0
+
+[node name="Fox" type="Area2D" groups=["stoppable"]]
+z_index = 1
+script = ExtResource("1_gfiem")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fet5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 31)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fet5y")
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4dsoa")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
