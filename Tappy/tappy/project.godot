@@ -33,6 +33,11 @@ power={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Barrier"
+2d_physics/layer_2="Tappy"
+
 [rendering]
 
 renderer/rendering_method="mobile"
