@@ -5,7 +5,6 @@ const PIPES = preload("res://Scenes/Pipes/Pipes.tscn");
 @onready var upper_spawn: Marker2D = $UpperSpawn;
 @onready var lower_spawn: Marker2D = $LowerSpawn;
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
