@@ -9,10 +9,6 @@ const PIPES = preload("res://Scenes/Pipes/Pipes.tscn");
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		GameManager.load_main_scene();
-
 func _on_spawn_timer_timeout() -> void:
 	spawn_pipes();
 
