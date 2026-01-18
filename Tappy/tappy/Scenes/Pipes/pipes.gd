@@ -4,6 +4,7 @@ class_name  Pipes;
 const SPEED: float = 120.0;
 @onready var life_timer: Timer = $LifeTimer;
 @onready var laser: Area2D = $Laser
+@onready var score_sound: AudioStreamPlayer = $ScoreSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,5 +37,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_laser_body_entered(body: Node2D) -> void:
 	if body is Tappy:
+		score_sound.play();
 		disconnect_laser();
 		SignalHub.emit_on_point_scored();

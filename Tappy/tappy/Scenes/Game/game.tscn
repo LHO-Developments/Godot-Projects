@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp0u46hc7iv45"]
+[gd_scene load_steps=7 format=3 uid="uid://dp0u46hc7iv45"]
 
 [ext_resource type="Script" uid="uid://3ef5ppquauoj" path="res://Scenes/Game/game.gd" id="1_i1e5p"]
 [ext_resource type="Texture2D" uid="uid://byuxx0yiivhp5" path="res://Assets/background/rocks_2.png" id="1_mv0hc"]
+[ext_resource type="PackedScene" uid="uid://becxhlij4shpt" path="res://Scenes/ScrollingBG/ScrollingBg.tscn" id="2_flgk0"]
 [ext_resource type="PackedScene" uid="uid://b80ihttvunysr" path="res://Scenes/Tappy/Tappy.tscn" id="2_qxfds"]
 [ext_resource type="PackedScene" uid="uid://kukvlg0mkrb2" path="res://Scenes/Barrier/Barrier.tscn" id="3_qikps"]
 [ext_resource type="PackedScene" uid="uid://dl7wcjmo1c31v" path="res://Scenes/GameUI/GameUi.tscn" id="4_i1e5p"]
@@ -9,7 +10,11 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_i1e5p")
 
+[node name="ScrollingBG" parent="." instance=ExtResource("2_flgk0")]
+scale = Vector2(0.79, 0.79)
+
 [node name="Rocks2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(470, 402)
 texture = ExtResource("1_mv0hc")
 
