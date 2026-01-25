@@ -15,8 +15,6 @@ var _drag_start: Vector2 = Vector2.ZERO;
 var _dragged_vector: Vector2 = Vector2.ZERO;
 var _arrow_scale: float = 0.0;
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setup();
@@ -28,9 +26,10 @@ func setup() -> void:
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	update_debug_label();
 
+#region misc 
 func update_debug_label() -> void:
 	var ds: String = "ST:%s SL:%s FR:%s\n" % [
 		AnimalState.keys()[_state], sleeping, freeze
@@ -38,9 +37,31 @@ func update_debug_label() -> void:
 	ds += "_drag_start: %.1f, %.1f\n" % [_drag_start.x, _drag_start.y];
 	ds += "_dragged_vector: %.1f, %.1f" % [_dragged_vector.x, _dragged_vector.y];
 	debug_label.text = ds;
+#endregion
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
+#region drag
+func start_dragging() -> void:
+	arrow.show();
+	_drag_start = get_global_mouse_position();
+#endregion
+
+#region state
+
+func change_state(new_state: AnimalState) -> void:
+	if _state == new_state:
+		return;
+	
+	_state = new_state;
+	
+	match  _state:
+		AnimalState.Drag:
+			start_dragging();
+
+#endregion
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("drag") and _state == AnimalState.Ready:
+		change_state(AnimalState.Drag);
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
