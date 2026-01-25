@@ -3,6 +3,9 @@ class_name Animal;
 
 enum AnimalState {Ready, Drag, Release};
 
+const DRAG_LIM_MAX: Vector2 = Vector2(0,60);
+const DRAG_LIM_MIN: Vector2 = Vector2(-60,0);
+
 @onready var debug_label: Label = $DebugLabel;
 @onready var arrow: Sprite2D = $Arrow;
 @onready var stretch_sound: AudioStreamPlayer = $StretchSound;
@@ -27,6 +30,7 @@ func setup() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
+	update_state();
 	update_debug_label();
 
 #region misc 
@@ -43,9 +47,32 @@ func update_debug_label() -> void:
 func start_dragging() -> void:
 	arrow.show();
 	_drag_start = get_global_mouse_position();
+
+func handle_dragging() -> void:
+	var new_drag_vector: Vector2 = get_global_mouse_position() - _drag_start;
+	
+	new_drag_vector = new_drag_vector.clamp(
+		DRAG_LIM_MIN, DRAG_LIM_MAX
+	);
+	
+	var diff: Vector2 = new_drag_vector - _dragged_vector;
+	
+	if diff.length() > 0 and stretch_sound.playing == false:
+		stretch_sound.play();
+	
+	_dragged_vector = new_drag_vector
+	
+	position = _start + _dragged_vector;
+	
 #endregion
 
 #region state
+func update_state() -> void:
+	match  _state:
+		AnimalState.Drag:
+			handle_dragging();
+			
+
 
 func change_state(new_state: AnimalState) -> void:
 	if _state == new_state:

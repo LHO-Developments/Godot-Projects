@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bh5xqwas2ygqx" path="res://assets/scene/colored_castle.png" id="1_b7mn6"]
 [ext_resource type="PackedScene" uid="uid://c61favqvyf54o" path="res://Scene/Animal.tscn" id="2_w7hen"]
 
-[node name="Node2D" type="Node2D"]
+[node name="LevelBase" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -176)
