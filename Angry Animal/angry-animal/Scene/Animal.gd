@@ -18,6 +18,10 @@ var _drag_start: Vector2 = Vector2.ZERO;
 var _dragged_vector: Vector2 = Vector2.ZERO;
 var _arrow_scale: float = 0.0;
 
+func _unhandled_input(event: InputEvent) -> void:
+	if _state == AnimalState.Drag and event.is_action("drag"):
+		call_deferred("change_state", AnimalState.Release);
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	setup();
@@ -66,6 +70,13 @@ func handle_dragging() -> void:
 	
 #endregion
 
+#region release
+func start_release() -> void:
+	arrow.show();
+	launch_sound.play();
+	freeze = false;
+#endregion
+
 #region state
 func update_state() -> void:
 	match  _state:
@@ -83,6 +94,8 @@ func change_state(new_state: AnimalState) -> void:
 	match  _state:
 		AnimalState.Drag:
 			start_dragging();
+		AnimalState.Release:
+			start_release();
 
 #endregion
 
