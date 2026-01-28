@@ -5,6 +5,8 @@ enum AnimalState {Ready, Drag, Release};
 
 const DRAG_LIM_MAX: Vector2 = Vector2(0,60);
 const DRAG_LIM_MIN: Vector2 = Vector2(-60,0);
+const IMPULSSE_MULT: float = 20.0;
+const IMPULSE_MAX: float = 1200.0;
 
 @onready var debug_label: Label = $DebugLabel;
 @onready var arrow: Sprite2D = $Arrow;
@@ -16,7 +18,7 @@ var _state: AnimalState = AnimalState.Ready;
 var _start: Vector2 = Vector2.ZERO;
 var _drag_start: Vector2 = Vector2.ZERO;
 var _dragged_vector: Vector2 = Vector2.ZERO;
-var _arrow_scale: float = 0.0;
+var _arrow_scale_x: float = 0.0;
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _state == AnimalState.Drag and event.is_action("drag"):
@@ -27,7 +29,7 @@ func _ready() -> void:
 	setup();
 
 func setup() -> void:
-	_arrow_scale = arrow.scale.x;
+	_arrow_scale_x = arrow.scale.x;
 	arrow.hide();
 	_start = position;
 	
@@ -48,6 +50,13 @@ func update_debug_label() -> void:
 #endregion
 
 #region drag
+
+func update_arrow_scale() -> void:
+	var imp_len: float = calculate_impulse().length();
+	var perc: float = clamp(imp_len / IMPULSE_MAX, 0.0, 1.0);
+	arrow.scale.x = lerp(_arrow_scale_x, _arrow_scale_x * 2, perc);
+	arrow.rotation = (_start - position).angle();
+
 func start_dragging() -> void:
 	arrow.show();
 	_drag_start = get_global_mouse_position();
@@ -65,16 +74,25 @@ func handle_dragging() -> void:
 		stretch_sound.play();
 	
 	_dragged_vector = new_drag_vector
-	
 	position = _start + _dragged_vector;
+	
+	update_arrow_scale();
 	
 #endregion
 
 #region release
+
+func calculate_impulse() -> Vector2:
+	return _dragged_vector * -IMPULSSE_MULT;
+
+
+
 func start_release() -> void:
-	arrow.show();
+	arrow.hide();
 	launch_sound.play();
 	freeze = false;
+	apply_central_impulse(calculate_impulse());
+
 #endregion
 
 #region state
