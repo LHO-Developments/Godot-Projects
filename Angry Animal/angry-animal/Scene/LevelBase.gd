@@ -7,7 +7,6 @@ const ANIMAL = preload("res://Scene/Animal.tscn")
 func _ready() -> void:
 	spawn_animal();
 
-
 func spawn_animal() -> void:
 	var animalObj: Animal = ANIMAL.instantiate();
 	animalObj.position = animal_start.position;
