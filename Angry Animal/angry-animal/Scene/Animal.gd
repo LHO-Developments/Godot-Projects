@@ -133,8 +133,13 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func _on_sleeping_state_changed() -> void:
-	pass # Replace with function body.
+	if sleeping == true:
+		for body in get_colliding_bodies():
+				if body is Cup:
+					body.die();
+		call_deferred("die");
 
 
 func _on_body_entered(body: Node) -> void:
-	pass # Replace with function body.
+	if body is Cup and kick_sound.playing == false:
+		kick_sound.play();
