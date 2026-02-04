@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp36p125125pq"]
+[gd_scene load_steps=6 format=3 uid="uid://bp36p125125pq"]
 
+[ext_resource type="Script" uid="uid://b6xw2e4ar148d" path="res://Scene/GameUI/GameUi.gd" id="1_cpoep"]
 [ext_resource type="LabelSettings" uid="uid://cah5onj8snx6j" path="res://Resources/grey_32_font.tres" id="1_wl143"]
 [ext_resource type="LabelSettings" uid="uid://eqbmvx5elt2c" path="res://Resources/blue_72_font.tres" id="2_f8obm"]
 [ext_resource type="LabelSettings" uid="uid://csrut3oder1q2" path="res://Resources/light_48_font.tres" id="3_h1shy"]
@@ -13,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_cpoep")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,12 +44,12 @@ size_flags_vertical = 0
 text = "Attempt 0"
 label_settings = ExtResource("1_wl143")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBGameOver" type="VBoxContainer" parent="MarginContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/VBGameOver"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "LEVEL COMPLETE"
@@ -55,7 +57,7 @@ label_settings = ExtResource("2_f8obm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PressSpaceLabel" type="Label" parent="MarginContainer/VBoxContainer2"]
+[node name="PressSpaceLabel" type="Label" parent="MarginContainer/VBGameOver"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Press Space"

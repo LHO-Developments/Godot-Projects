@@ -1,8 +1,8 @@
 extends StaticBody2D
 class_name Cup;
 
-static  var _num_cups: int = 0;
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+static var _num_cups: int = 0;
+@onready var animation_player: AnimationPlayer = $AnimationPlayer;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,5 +16,5 @@ func die() -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	_num_cups -= 1;
-	print("_num_cups - ", _num_cups);
+	SignalHub.emit_on_cup_destroyed(_num_cups);
 	queue_free();
