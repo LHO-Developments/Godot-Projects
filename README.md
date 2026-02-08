@@ -11,3 +11,4 @@ Games created using godot engine based on varieties of tutorials and videos
 	7. Top Down Survivor - 2D survival top down shooter
 	8. Dice Catcher - side scroller catching dices
 	9. Tappy - mobile clicker platformer
+	10. Angry Animal - launch animal, 2d, puzzle 
