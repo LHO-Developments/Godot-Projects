@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp36p125125pq"]
+[gd_scene format=3 uid="uid://bp36p125125pq"]
 
 [ext_resource type="Script" uid="uid://b6xw2e4ar148d" path="res://Scene/GameUI/GameUi.gd" id="1_cpoep"]
 [ext_resource type="LabelSettings" uid="uid://cah5onj8snx6j" path="res://Resources/grey_32_font.tres" id="1_wl143"]
@@ -6,7 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://csrut3oder1q2" path="res://Resources/light_48_font.tres" id="3_h1shy"]
 [ext_resource type="AudioStream" uid="uid://dnjonqadgklq6" path="res://assets/audio/jazzyfrenchy.mp3" id="4_h1shy"]
 
-[node name="GameUI" type="Control"]
+[node name="GameUI" type="Control" unique_id=1975954167]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +16,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_cpoep")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1339056364]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,27 +29,27 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1099832495]
 layout_mode = 2
 
-[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=536596291]
 layout_mode = 2
 size_flags_vertical = 0
 text = "LEVEL 10"
 label_settings = ExtResource("1_wl143")
 
-[node name="AttemptLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="AttemptLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=981410819]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Attempt 0"
 label_settings = ExtResource("1_wl143")
 
-[node name="VBGameOver" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBGameOver" type="VBoxContainer" parent="MarginContainer" unique_id=1297147726]
 visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/VBGameOver"]
+[node name="LevelCompleteLabel" type="Label" parent="MarginContainer/VBGameOver" unique_id=672160943]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "LEVEL COMPLETE"
@@ -57,12 +57,12 @@ label_settings = ExtResource("2_f8obm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PressSpaceLabel" type="Label" parent="MarginContainer/VBGameOver"]
+[node name="PressSpaceLabel" type="Label" parent="MarginContainer/VBGameOver" unique_id=1643930066]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Press Space"
+text = "Press Escape"
 label_settings = ExtResource("3_h1shy")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1110980285]
 stream = ExtResource("4_h1shy")
 parameters/looping = true

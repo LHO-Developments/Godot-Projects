@@ -51,9 +51,11 @@ layout_mode = 2
 
 [node name="LevelButton2" parent="HBoxContainer" unique_id=1474054751 instance=ExtResource("2_sblpm")]
 layout_mode = 2
+level_number = "2"
 
 [node name="LevelButton3" parent="HBoxContainer" unique_id=630310402 instance=ExtResource("2_sblpm")]
 layout_mode = 2
+level_number = "3"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=122831705]
 layout_mode = 1

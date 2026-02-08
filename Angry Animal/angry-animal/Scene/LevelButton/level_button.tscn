@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgvub4nfss5a" path="res://assets/ui/panel_beige.png" id="1_pkwc8"]
 [ext_resource type="LabelSettings" uid="uid://kpms2y0fnujs" path="res://Resources/white_32_font.tres" id="2_a53fx"]
 [ext_resource type="LabelSettings" uid="uid://c3f2hglowr3rt" path="res://Resources/white_48_font.tres" id="2_s0tex"]
+[ext_resource type="Script" uid="uid://bj48i7w31flhj" path="res://Scene/LevelButton/LevelButton.gd" id="2_wvyl4"]
 
 [node name="LevelButton" type="TextureButton" unique_id=562051015]
 anchors_preset = 8
@@ -16,8 +17,9 @@ offset_right = 50.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset_ratio = Vector2(50, 50)
+pivot_offset = Vector2(50, 50)
 texture_normal = ExtResource("1_pkwc8")
+script = ExtResource("2_wvyl4")
 
 [node name="MC" type="MarginContainer" parent="." unique_id=341014696]
 layout_mode = 1
@@ -40,7 +42,11 @@ vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="MC/VB" unique_id=220173194]
 layout_mode = 2
-text = "1000"
+text = "999"
 label_settings = ExtResource("2_a53fx")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
