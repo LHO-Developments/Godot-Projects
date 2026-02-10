@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cql5xay1b52lu"]
+
+[ext_resource type="Texture2D" uid="uid://uxopsjhnkjuk" path="res://Assets/frames/hidden_frame_blank.png" id="1_dtpqw"]
+
+[node name="MemoryTile" type="TextureButton" unique_id=1242308473]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_dtpqw")
