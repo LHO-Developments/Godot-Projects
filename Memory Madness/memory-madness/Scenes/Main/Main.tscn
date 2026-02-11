@@ -2,10 +2,41 @@
 
 [ext_resource type="LabelSettings" uid="uid://cd4hqlpko4qap" path="res://Resources/Label_White_72.tres" id="1_w20t6"]
 [ext_resource type="PackedScene" uid="uid://bbi6hton1rsj" path="res://Scenes/LevelButton/LevelButton.tscn" id="2_cmk6n"]
+[ext_resource type="Script" uid="uid://b3prtmlf3yvu" path="res://Classes/LevelSetting.gd" id="3_aw1lf"]
 [ext_resource type="PackedScene" uid="uid://2juealdyrtgy" path="res://Scenes/FrontSprite/FrontSprite.tscn" id="3_i3fi7"]
 [ext_resource type="Texture2D" uid="uid://batwhvd8q4bsg" path="res://Assets/glitch/saucepan.png" id="4_w20t6"]
 [ext_resource type="Texture2D" uid="uid://dht8kkq6ud26j" path="res://Assets/glitch/smoothie.png" id="5_aw1lf"]
 [ext_resource type="Texture2D" uid="uid://bbh3urh3cd0e" path="res://Assets/glitch/cauldron.png" id="6_5s61s"]
+
+[sub_resource type="Resource" id="Resource_5s61s"]
+script = ExtResource("3_aw1lf")
+rows = 3
+cols = 4
+metadata/_custom_type_script = "uid://b3prtmlf3yvu"
+
+[sub_resource type="Resource" id="Resource_7npjy"]
+script = ExtResource("3_aw1lf")
+rows = 4
+cols = 4
+metadata/_custom_type_script = "uid://b3prtmlf3yvu"
+
+[sub_resource type="Resource" id="Resource_4vhfm"]
+script = ExtResource("3_aw1lf")
+rows = 4
+cols = 6
+metadata/_custom_type_script = "uid://b3prtmlf3yvu"
+
+[sub_resource type="Resource" id="Resource_dvlhv"]
+script = ExtResource("3_aw1lf")
+rows = 5
+cols = 6
+metadata/_custom_type_script = "uid://b3prtmlf3yvu"
+
+[sub_resource type="Resource" id="Resource_aw1lf"]
+script = ExtResource("3_aw1lf")
+rows = 6
+cols = 7
+metadata/_custom_type_script = "uid://b3prtmlf3yvu"
 
 [node name="Main" type="Control" unique_id=54145615]
 layout_mode = 3
@@ -56,15 +87,23 @@ layout_mode = 2
 
 [node name="LevelButton2" parent="VB/HBLevels" unique_id=2074766632 instance=ExtResource("2_cmk6n")]
 layout_mode = 2
+level_setting = SubResource("Resource_5s61s")
 
 [node name="LevelButton3" parent="VB/HBLevels" unique_id=1461127806 instance=ExtResource("2_cmk6n")]
 layout_mode = 2
+level_setting = SubResource("Resource_7npjy")
 
 [node name="LevelButton4" parent="VB/HBLevels" unique_id=1696136263 instance=ExtResource("2_cmk6n")]
 layout_mode = 2
+level_setting = SubResource("Resource_4vhfm")
 
 [node name="LevelButton5" parent="VB/HBLevels" unique_id=1025968064 instance=ExtResource("2_cmk6n")]
 layout_mode = 2
+level_setting = SubResource("Resource_dvlhv")
+
+[node name="LevelButton6" parent="VB/HBLevels" unique_id=1827855136 instance=ExtResource("2_cmk6n")]
+layout_mode = 2
+level_setting = SubResource("Resource_aw1lf")
 
 [node name="HBSprites" type="HBoxContainer" parent="VB" unique_id=92382974]
 layout_mode = 2

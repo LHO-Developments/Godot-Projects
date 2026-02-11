@@ -23,8 +23,8 @@ texture = ExtResource("1_h6g34")
 expand_mode = 1
 
 [node name="Main" parent="." unique_id=54145615 instance=ExtResource("2_o4rt4")]
-visible = false
 layout_mode = 1
 
 [node name="Game" parent="." unique_id=1934863686 instance=ExtResource("3_7tgqy")]
+visible = false
 layout_mode = 1
