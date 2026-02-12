@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://5rq82ik7i04h"]
 
+[ext_resource type="Script" uid="uid://b6ukuqfnuv275" path="res://Scenes/Game/Game.gd" id="1_3k6gv"]
 [ext_resource type="PackedScene" uid="uid://cql5xay1b52lu" path="res://Scenes/MemoryTile/MemoryTile.tscn" id="1_rdw05"]
 [ext_resource type="LabelSettings" uid="uid://dwks2cb2bmbxb" path="res://Resources/Label_White_24.tres" id="2_gwu2e"]
 [ext_resource type="Texture2D" uid="uid://dk16kfwtqa4yi" path="res://Assets/ui/blue_button00.png" id="3_y3kpf"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3k6gv")
 
 [node name="HB" type="HBoxContainer" parent="." unique_id=215923280]
 layout_mode = 1
