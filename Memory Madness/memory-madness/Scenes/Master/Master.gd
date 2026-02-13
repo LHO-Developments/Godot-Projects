@@ -6,7 +6,8 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalHub.on_level_selected.connect(_on_level_selected);
-	show_game(false);
+	SignalHub.on_game_exit_pressed.connect(on_game_exit_pressed);
+	on_game_exit_pressed()
 
 
 func _on_level_selected(level_setting: LevelSetting) -> void:
@@ -20,3 +21,5 @@ func show_game(show: bool) -> void:
 		main.show();
 		game.hide();
 	
+func on_game_exit_pressed() -> void:
+	show_game(false);
