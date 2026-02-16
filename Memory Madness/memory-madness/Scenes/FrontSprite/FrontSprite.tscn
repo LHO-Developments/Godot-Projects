@@ -6,5 +6,6 @@
 [node name="FrontSprite" type="TextureRect" unique_id=1107891263]
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_dw5qn")
 script = ExtResource("2_g3sii")
