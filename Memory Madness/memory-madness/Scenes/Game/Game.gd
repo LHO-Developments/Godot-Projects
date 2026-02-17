@@ -13,11 +13,13 @@ func _on_level_selected(level_setting: LevelSetting) -> void:
 	
 	var lds: LevelDataSelector = LevelDataSelector.new();
 	var selected_images: Array[Texture2D] = lds.get_images_for_level(level_setting);
+	var frame_image: Texture2D = ImageManager.get_random_frame_image();
 	
 	grid_container.columns = level_setting.cols;
-	for n in level_setting.total_tiles:
-		var tile = MEMORY_TILE.instantiate();
+	for image in selected_images:
+		var tile: MemoryTile = MEMORY_TILE.instantiate();
 		grid_container.add_child(tile);
+		tile.setup(image,frame_image);
 
 
 func _on_exit_button_pressed() -> void:
