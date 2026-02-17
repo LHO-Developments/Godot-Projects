@@ -10,6 +10,10 @@ func _ready() -> void:
 
 
 func _on_level_selected(level_setting: LevelSetting) -> void:
+	
+	var lds: LevelDataSelector = LevelDataSelector.new();
+	var selected_images: Array[Texture2D] = lds.get_images_for_level(level_setting);
+	
 	grid_container.columns = level_setting.cols;
 	for n in level_setting.total_tiles:
 		var tile = MEMORY_TILE.instantiate();
