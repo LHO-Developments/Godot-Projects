@@ -2,12 +2,16 @@ extends Control
 
 const MEMORY_TILE = preload("uid://cql5xay1b52lu")
 @onready var grid_container: GridContainer = $HB/GridContainer
+@onready var scorer: Scorer = $Scorer;
+@onready var pairs_label: Label = $HB/VB/HB2/PairsLabel
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalHub.on_level_selected.connect(_on_level_selected);
 
+func _process(delta: float) -> void:
+	pairs_label.text = scorer.get_pairs_str();
 
 func _on_level_selected(level_setting: LevelSetting) -> void:
 	
@@ -20,6 +24,8 @@ func _on_level_selected(level_setting: LevelSetting) -> void:
 		var tile: MemoryTile = MEMORY_TILE.instantiate();
 		grid_container.add_child(tile);
 		tile.setup(image,frame_image);
+		
+	scorer.clear_new_game();
 
 
 func _on_exit_button_pressed() -> void:
