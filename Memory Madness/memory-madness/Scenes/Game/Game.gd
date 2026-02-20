@@ -4,7 +4,7 @@ const MEMORY_TILE = preload("uid://cql5xay1b52lu")
 @onready var grid_container: GridContainer = $HB/GridContainer
 @onready var scorer: Scorer = $Scorer;
 @onready var pairs_label: Label = $HB/VB/HB2/PairsLabel
-
+@onready var moves_label: Label = $HB/VB/HB/MovesLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pairs_label.text = scorer.get_pairs_str();
+	moves_label.text = scorer.get_move_made_str();
 
 func _on_level_selected(level_setting: LevelSetting) -> void:
 	
@@ -25,7 +26,7 @@ func _on_level_selected(level_setting: LevelSetting) -> void:
 		grid_container.add_child(tile);
 		tile.setup(image,frame_image);
 		
-	scorer.clear_new_game();
+	scorer.clear_new_game(level_setting.target_pairs);
 
 
 func _on_exit_button_pressed() -> void:
