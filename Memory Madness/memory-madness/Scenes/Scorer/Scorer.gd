@@ -11,13 +11,13 @@ var _moves_made: int = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalHub.on_tile_selected.connect(on_tile_selected);
-	SignalHub.on_game_exit_pressed.connect(on_game_exist_pressed)
+	SignalHub.on_game_exit_pressed.connect(on_game_exist_pressed);
 
-func clear_new_game(_target_pairs: int) -> void:
+func clear_new_game(target_pairs: int) -> void:
 	_selected_tiles.clear();
 	SelectionEnabled = true;
 	_pairs_made = 0;
-	_target_pairs = _target_pairs
+	_target_pairs = target_pairs
 	_moves_made = 0;
 
 func get_pairs_str() -> String:
@@ -34,6 +34,14 @@ func check_for_pair() -> void:
 		_selected_tiles[1].kill_on_pair();
 		_pairs_made += 1;
 
+
+func check_game_over() -> void:
+	if _pairs_made != _target_pairs:
+		SelectionEnabled = true;
+	else:
+		SignalHub.emit_on_game_over(_moves_made);
+	
+
 func process_pair() -> void:
 	if _selected_tiles.size() != 2: return
 	SelectionEnabled =  false;
@@ -49,7 +57,7 @@ func on_tile_selected(tile: MemoryTile) -> void:
 func _on_reveal_timer_timeout() -> void:
 	for tile in _selected_tiles:
 		tile.reveal(false);
-	SelectionEnabled = true;
+	check_game_over();
 	_selected_tiles.clear();
 
 func on_game_exist_pressed() -> void:

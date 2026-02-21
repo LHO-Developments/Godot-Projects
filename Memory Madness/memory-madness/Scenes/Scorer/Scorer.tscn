@@ -6,6 +6,6 @@
 script = ExtResource("1_pmgxc")
 
 [node name="RevealTimer" type="Timer" parent="." unique_id=558045055]
-wait_time = 2.5
+wait_time = 2.0
 
 [connection signal="timeout" from="RevealTimer" to="." method="_on_reveal_timer_timeout"]
