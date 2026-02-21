@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xk4h4k6palx2" path="res://Assets/ui/yellow_button00.png" id="4_3k6gv"]
 [ext_resource type="Texture2D" uid="uid://ceu42wmi08uyy" path="res://Assets/ui/green_button00.png" id="5_1q8bt"]
 [ext_resource type="PackedScene" uid="uid://bg7l7h8e24g3n" path="res://Scenes/Scorer/Scorer.tscn" id="6_3k6gv"]
+[ext_resource type="PackedScene" uid="uid://calhgngfctiie" path="res://Scenes/GameOverUi/GameOverUi.tscn" id="7_1q8bt"]
 
 [node name="Game" type="Control" unique_id=1934863686]
 layout_mode = 3
@@ -108,5 +109,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Scorer" parent="." unique_id=1069322945 instance=ExtResource("6_3k6gv")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=497985391]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 72
+
+[node name="GameOverUi" parent="MarginContainer" unique_id=1224072535 instance=ExtResource("7_1q8bt")]
+visible = false
+layout_mode = 2
 
 [connection signal="pressed" from="HB/VB/ExitButton" to="." method="_on_exit_button_pressed"]
