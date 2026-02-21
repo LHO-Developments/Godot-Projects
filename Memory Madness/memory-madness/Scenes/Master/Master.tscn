@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dhg5hikctmh0" path="res://Assets/images/backgroundEmpty.png" id="1_h6g34"]
 [ext_resource type="PackedScene" uid="uid://c4fyfnu4l4ki7" path="res://Scenes/Main/Main.tscn" id="2_o4rt4"]
 [ext_resource type="PackedScene" uid="uid://5rq82ik7i04h" path="res://Scenes/Game/Game.tscn" id="3_7tgqy"]
+[ext_resource type="PackedScene" uid="uid://imax01utga4i" path="res://Scenes/SoundController/SoundController.tscn" id="5_qemos"]
 
 [node name="Master" type="Control" unique_id=687834031]
 layout_mode = 3
@@ -30,3 +31,5 @@ layout_mode = 1
 [node name="Game" parent="." unique_id=1934863686 instance=ExtResource("3_7tgqy")]
 visible = false
 layout_mode = 1
+
+[node name="SoundController" parent="." unique_id=2017003358 instance=ExtResource("5_qemos")]

@@ -7,6 +7,7 @@ var _selected_tiles: Array[MemoryTile];
 var _pairs_made: int = 0;
 var _target_pairs: int = 99;
 var _moves_made: int = 0;
+@onready var pair_sound: AudioStreamPlayer = $PairSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +34,7 @@ func check_for_pair() -> void:
 		_selected_tiles[0].kill_on_pair();
 		_selected_tiles[1].kill_on_pair();
 		_pairs_made += 1;
+		pair_sound.play()
 
 
 func check_game_over() -> void:
