@@ -230,7 +230,3 @@ tile_set = SubResource("TileSet_akiud")
 
 [node name="Player" parent="." unique_id=1054922863 instance=ExtResource("2_bgw71")]
 position = Vector2(327, 600)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1170077378]
-position = Vector2(319, 629)
-zoom = Vector2(2.3, 2.3)

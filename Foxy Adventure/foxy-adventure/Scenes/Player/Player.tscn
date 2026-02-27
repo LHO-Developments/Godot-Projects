@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baaewt48yyqxy" path="res://Scenes/Player/player.gd" id="1_ft8w5"]
 [ext_resource type="Texture2D" uid="uid://d20ewhlc265ma" path="res://assets/player/player.png" id="1_s0eop"]
+[ext_resource type="PackedScene" uid="uid://bmp2vqrorimwd" path="res://Scenes/PlayerCam/PlayerCam.tscn" id="3_h54ih"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0eop"]
 radius = 6.0
@@ -18,3 +19,5 @@ hframes = 19
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306324578]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_s0eop")
+
+[node name="PlayerCam" parent="." unique_id=1455973340 instance=ExtResource("3_h54ih")]
