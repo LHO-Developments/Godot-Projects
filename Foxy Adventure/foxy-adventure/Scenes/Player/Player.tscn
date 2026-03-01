@@ -210,3 +210,14 @@ autoplay = &"idle"
 tree_root = SubResource("AnimationNodeStateMachine_t26db")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=269262958]
+offset_left = -11.999998
+offset_top = -88.60003
+offset_right = 100.9978
+offset_bottom = 118.39997
+scale = Vector2(0.31859028, 0.31999993)
+theme_override_font_sizes/font_size = 48
+text = "000
+000
+000"
