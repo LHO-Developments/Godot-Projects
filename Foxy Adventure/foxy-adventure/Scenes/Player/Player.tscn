@@ -8,6 +8,116 @@
 radius = 6.0
 height = 20.0
 
+[sub_resource type="Animation" id="Animation_h54ih"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_4wape"]
+resource_name = "fall"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_t26db"]
+resource_name = "hurt"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_ude3g"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_fk5o5"]
+resource_name = "jump"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmcll"]
+_data = {
+&"RESET": SubResource("Animation_h54ih"),
+&"fall": SubResource("Animation_4wape"),
+&"hurt": SubResource("Animation_t26db"),
+&"idle": SubResource("Animation_ude3g"),
+&"jump": SubResource("Animation_fk5o5"),
+&"run": SubResource("Animation_jmcll")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1054922863]
 collision_layer = 0
 script = ExtResource("1_ft8w5")
@@ -15,9 +125,14 @@ script = ExtResource("1_ft8w5")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888965442]
 texture = ExtResource("1_s0eop")
 hframes = 19
+frame = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306324578]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_s0eop")
 
 [node name="PlayerCam" parent="." unique_id=1455973340 instance=ExtResource("3_h54ih")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=256961593]
+libraries/ = SubResource("AnimationLibrary_jmcll")
+autoplay = &"idle"
