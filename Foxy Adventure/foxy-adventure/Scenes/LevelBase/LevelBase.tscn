@@ -92,8 +92,11 @@ texture = ExtResource("1_5ufo3")
 3:5/0 = 0
 4:5/0 = 0
 6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:5/0 = 0
 10:5/0 = 0
 12:5/0 = 0
@@ -112,8 +115,11 @@ texture = ExtResource("1_5ufo3")
 1:6/0 = 0
 2:6/0 = 0
 6:6/0 = 0
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:6/0 = 0
 14:6/0 = 0
 15:6/0 = 0
@@ -128,22 +134,37 @@ texture = ExtResource("1_5ufo3")
 2:8/0 = 0
 3:8/0 = 0
 4:8/0 = 0
+6:8/next_alternative_id = 2
 6:8/0 = 0
 6:8/0/terrain_set = 0
 6:8/0/terrain = 0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:8/0/terrains_peering_bit/right_side = 0
 6:8/0/terrains_peering_bit/bottom_side = 0
+6:8/1 = 1
+6:8/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:8/1/physics_layer_0/polygon_0/one_way = true
+7:8/next_alternative_id = 2
 7:8/0 = 0
 7:8/0/terrain_set = 0
 7:8/0/terrain = 0
+7:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:8/0/terrains_peering_bit/right_side = 0
 7:8/0/terrains_peering_bit/bottom_side = 0
 7:8/0/terrains_peering_bit/left_side = 0
+7:8/1 = 1
+7:8/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:8/1/physics_layer_0/polygon_0/one_way = true
+8:8/next_alternative_id = 2
 8:8/0 = 0
 8:8/0/terrain_set = 0
 8:8/0/terrain = 0
+8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:8/0/terrains_peering_bit/bottom_side = 0
 8:8/0/terrains_peering_bit/left_side = 0
+8:8/1 = 1
+8:8/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:8/1/physics_layer_0/polygon_0/one_way = true
 9:8/0 = 0
 10:8/0 = 0
 12:8/0 = 0
@@ -225,7 +246,7 @@ sources/0 = SubResource("TileSetAtlasSource_bgw71")
 [node name="LevelBase" type="Node2D" unique_id=1880738594]
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=1688382801]
-tile_map_data = PackedByteArray("AAAAAC8AAAAHAAAAAAABAC8AAAAHAAAAAAACAC8AAAAHAAAAAAADAC8AAAAHAAAAAAAEAC8AAAAHAAAAAAAFAC8AAAAHAAAAAAAGAC8AAAAHAAAAAAAJAC0AAAAHAAAAAAAKAC0AAAAHAAAAAAALAC0AAAAHAAAAAAAMAC0AAAAHAAAAAAANAC0AAAAHAAAAAAAOAC0AAAAHAAAAAAAPAC0AAAAHAAAAAAAQAC0AAAAHAAAAAAASAC4AAAAHAAAAAAATAC4AAAAHAAAAAAAUAC4AAAAHAAAAAAAVAC4AAAAHAAAAAAAWAC4AAAAHAAAAAAAXAC4AAAAHAAAAAAATACkAAAAHAAAAAAAUACkAAAAHAAAAAAAVACkAAAAHAAAAAAAWACkAAAAHAAAAAAAXACkAAAAHAAAAAAAGACoAAAAHAAAAAAAFACoAAAAHAAAAAAAEACoAAAAHAAAAAAANACsAAAAHAAAAAAAOACsAAAAHAAAAAAAPACsAAAAHAAAAAAAaAC0AAAAHAAAAAAAbAC0AAAAHAAAAAAAcAC0AAAAHAAAAAAAdAC0AAAAHAAAAAAAeAC0AAAAHAAAAAAAfAC0AAAAHAAAAAAAgAC0AAAAHAAAAAAAhAC0AAAAHAAAAAAAiAC0AAAAHAAAAAAAdACkAAAAHAAAAAAAeACkAAAAHAAAAAAAeACoAAAAHAAAAAAAfACoAAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAC8AAAAHAAAAAAABAC8AAAAHAAAAAAACAC8AAAAHAAAAAAADAC8AAAAHAAAAAAAEAC8AAAAHAAAAAAAFAC8AAAAHAAAAAAAGAC8AAAAHAAAAAAAJAC0AAAAHAAAAAAAKAC0AAAAHAAAAAAALAC0AAAAHAAAAAAAMAC0AAAAHAAAAAAANAC0AAAAHAAAAAAAOAC0AAAAHAAAAAAAPAC0AAAAHAAAAAAAQAC0AAAAHAAAAAAASAC4AAAAHAAAAAAATAC4AAAAHAAAAAAAUAC4AAAAHAAAAAAAVAC4AAAAHAAAAAAAWAC4AAAAHAAAAAAAXAC4AAAAHAAAAAAATACkAAAAHAAAAAAAUACkAAAAHAAAAAAAVACkAAAAHAAAAAAAWACkAAAAHAAAAAAAXACkAAAAHAAAAAAAGACoAAAAHAAAAAAAFACoAAAAHAAAAAAAEACoAAAAHAAAAAAANACsAAAAHAAAAAAAOACsAAAAHAAAAAAAPACsAAAAHAAAAAAAaAC0AAAAHAAAAAAAbAC0AAAAHAAAAAAAcAC0AAAAHAAAAAAAdAC0AAAAHAAAAAAAeAC0AAAAHAAAAAAAfAC0AAAAHAAAAAAAgAC0AAAAHAAAAAAAhAC0AAAAHAAAAAAAiAC0AAAAHAAAAAAAdACkAAAAHAAAAAAAeACkAAAAHAAAAAAAeACoAAAAHAAAAAAAfACoAAAAHAAAAAAAVACYAAAAGAAgAAQAWACYAAAAHAAgAAQAXACYAAAAIAAgAAQA=")
 tile_set = SubResource("TileSet_akiud")
 
 [node name="Player" parent="." unique_id=1054922863 instance=ExtResource("2_bgw71")]
