@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c7v67le8olybt" path="res://assets/tiles/Terrain (16x16).png" id="1_5ufo3"]
 [ext_resource type="PackedScene" uid="uid://bg3qbh1l0c3eo" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
+[ext_resource type="PackedScene" uid="uid://btuvi20rckjcp" path="res://Scenes/Enemies/Snail/Snail.tscn" id="3_78m1b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -246,8 +247,12 @@ sources/0 = SubResource("TileSetAtlasSource_bgw71")
 [node name="LevelBase" type="Node2D" unique_id=1880738594]
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=1688382801]
+position = Vector2(0, -765)
 tile_map_data = PackedByteArray("AAAAAC8AAAAHAAAAAAABAC8AAAAHAAAAAAACAC8AAAAHAAAAAAADAC8AAAAHAAAAAAAEAC8AAAAHAAAAAAAFAC8AAAAHAAAAAAAGAC8AAAAHAAAAAAAJAC0AAAAHAAAAAAAKAC0AAAAHAAAAAAALAC0AAAAHAAAAAAAMAC0AAAAHAAAAAAANAC0AAAAHAAAAAAAOAC0AAAAHAAAAAAAPAC0AAAAHAAAAAAAQAC0AAAAHAAAAAAASAC4AAAAHAAAAAAATAC4AAAAHAAAAAAAUAC4AAAAHAAAAAAAVAC4AAAAHAAAAAAAWAC4AAAAHAAAAAAAXAC4AAAAHAAAAAAATACkAAAAHAAAAAAAUACkAAAAHAAAAAAAVACkAAAAHAAAAAAAWACkAAAAHAAAAAAAXACkAAAAHAAAAAAAGACoAAAAHAAAAAAAFACoAAAAHAAAAAAAEACoAAAAHAAAAAAANACsAAAAHAAAAAAAOACsAAAAHAAAAAAAPACsAAAAHAAAAAAAaAC0AAAAHAAAAAAAbAC0AAAAHAAAAAAAcAC0AAAAHAAAAAAAdAC0AAAAHAAAAAAAeAC0AAAAHAAAAAAAfAC0AAAAHAAAAAAAgAC0AAAAHAAAAAAAhAC0AAAAHAAAAAAAiAC0AAAAHAAAAAAAdACkAAAAHAAAAAAAeACkAAAAHAAAAAAAeACoAAAAHAAAAAAAfACoAAAAHAAAAAAAVACYAAAAGAAgAAQAWACYAAAAHAAgAAQAXACYAAAAIAAgAAQA=")
 tile_set = SubResource("TileSet_akiud")
 
 [node name="Player" parent="." unique_id=1054922863 instance=ExtResource("2_bgw71")]
-position = Vector2(327, 600)
+position = Vector2(21, -39)
+
+[node name="Snail" parent="." unique_id=713670621 instance=ExtResource("3_78m1b")]
+position = Vector2(319, -45)
