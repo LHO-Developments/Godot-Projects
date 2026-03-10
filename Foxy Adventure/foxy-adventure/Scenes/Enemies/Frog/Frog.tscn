@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://chsohilggr2iw" path="res://Scenes/Enemies/EnemyBase.tscn" id="1_qthob"]
 [ext_resource type="Texture2D" uid="uid://buimsk87ckqcp" path="res://assets/enemies/frog/frog_sheet.png" id="2_iwcnn"]
+[ext_resource type="Script" uid="uid://b8wa2o6pkpnl0" path="res://Scenes/Enemies/Frog/frog.gd" id="2_yjng5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qthob"]
 radius = 5.0
@@ -72,7 +73,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qthob"]
 size = Vector2(20, 14)
 
-[node name="EnemyBase" unique_id=713670621 instance=ExtResource("1_qthob")]
+[node name="Frog" unique_id=713670621 instance=ExtResource("1_qthob")]
+script = ExtResource("2_yjng5")
 
 [node name="CollisionShape2D" parent="." index="0" unique_id=1758771805]
 rotation = 1.5707964
@@ -87,3 +89,8 @@ autoplay = "idle"
 [node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(146360831) index="0" unique_id=61446281]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_qthob")
+
+[node name="JumpTimer" type="Timer" parent="." index="4" unique_id=1033068841]
+one_shot = true
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

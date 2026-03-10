@@ -190,7 +190,6 @@ graph_offset = Vector2(-23, 53)
 [node name="Player" type="CharacterBody2D" unique_id=1054922863]
 collision_layer = 0
 script = ExtResource("1_ft8w5")
-_fell_off_y = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888965442]
 texture = ExtResource("1_s0eop")
