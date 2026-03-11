@@ -187,6 +187,10 @@ states/Start/position = Vector2(200.8, 100)
 transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_h54ih"), "Grounded", "Air", SubResource("AnimationNodeStateMachineTransition_ude3g"), "Air", "Grounded", SubResource("AnimationNodeStateMachineTransition_ji083")]
 graph_offset = Vector2(-23, 53)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54ih"]
+radius = 7.0
+height = 20.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1054922863]
 collision_layer = 0
 script = ExtResource("1_ft8w5")
@@ -221,3 +225,9 @@ theme_override_font_sizes/font_size = 48
 text = "000
 000
 000"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=511338205]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1163382958]
+shape = SubResource("CapsuleShape2D_h54ih")
