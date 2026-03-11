@@ -19,11 +19,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0;
 		animated_sprite_2d.play("idle");
 
-
-# turn to face the player (flip me)
-func flip_me() -> void:
-	animated_sprite_2d.flip_h = _player_ref.global_position.x > global_position.x;
-
 func _on_jump_timer_timeout() -> void:
 	_can_jump = true;
 

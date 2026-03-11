@@ -31,3 +31,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	die();
+
+# turn to face the player (flip me)
+func flip_me() -> void:
+	animated_sprite_2d.flip_h = _player_ref.global_position.x > global_position.x;
