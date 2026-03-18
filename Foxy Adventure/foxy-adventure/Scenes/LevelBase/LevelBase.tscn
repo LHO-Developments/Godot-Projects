@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bg3qbh1l0c3eo" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://fomgf8i3y8fy" path="res://Scenes/Enemies/Frog/Frog.tscn" id="3_78m1b"]
 [ext_resource type="PackedScene" uid="uid://btuvi20rckjcp" path="res://Scenes/Enemies/Snail/Snail.tscn" id="4_3lxj6"]
+[ext_resource type="PackedScene" uid="uid://d0ia42ehbkrxp" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="6_ooqsx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -269,3 +270,6 @@ position = Vector2(320, -119)
 
 [node name="Snail" parent="." unique_id=2102419100 instance=ExtResource("4_3lxj6")]
 position = Vector2(162, -62)
+
+[node name="Eagle" parent="." unique_id=805651259 instance=ExtResource("6_ooqsx")]
+position = Vector2(141, -236)
