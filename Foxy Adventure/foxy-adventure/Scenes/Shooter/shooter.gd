@@ -18,7 +18,13 @@ func shoot(direction: Vector2) -> void:
 	if _can_shoot == false:
 		return;
 	_can_shoot = false;
-	print("SHOOT: ", direction);
+	SignalHub.emit_on_create_bullet(
+		global_position,
+		direction,
+		speed,
+		bullet_key
+	);
+	
 	shoot_timer.start();
 
 func _on_shoot_timer_timeout() -> void:

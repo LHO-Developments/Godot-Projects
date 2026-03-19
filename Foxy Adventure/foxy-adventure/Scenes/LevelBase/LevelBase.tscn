@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fomgf8i3y8fy" path="res://Scenes/Enemies/Frog/Frog.tscn" id="3_78m1b"]
 [ext_resource type="PackedScene" uid="uid://btuvi20rckjcp" path="res://Scenes/Enemies/Snail/Snail.tscn" id="4_3lxj6"]
 [ext_resource type="PackedScene" uid="uid://d0ia42ehbkrxp" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="6_ooqsx"]
+[ext_resource type="PackedScene" uid="uid://bwnkeyvfuqh8t" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="7_txgif"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -273,3 +274,5 @@ position = Vector2(162, -62)
 
 [node name="Eagle" parent="." unique_id=805651259 instance=ExtResource("6_ooqsx")]
 position = Vector2(141, -236)
+
+[node name="ObjectMaker" parent="." unique_id=582298725 instance=ExtResource("7_txgif")]
