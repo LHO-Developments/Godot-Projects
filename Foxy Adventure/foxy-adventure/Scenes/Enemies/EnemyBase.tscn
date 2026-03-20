@@ -11,8 +11,8 @@ script = ExtResource("1_iiq2q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=672672252]
 
 [node name="HitBox" type="Area2D" parent="." unique_id=146360831]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=61446281]
 
