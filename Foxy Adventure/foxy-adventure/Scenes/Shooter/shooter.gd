@@ -26,6 +26,7 @@ func shoot(direction: Vector2) -> void:
 	);
 	
 	shoot_timer.start();
+	sound.play();
 
 func _on_shoot_timer_timeout() -> void:
 	_can_shoot = true;

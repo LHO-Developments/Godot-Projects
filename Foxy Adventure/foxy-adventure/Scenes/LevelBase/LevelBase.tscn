@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btuvi20rckjcp" path="res://Scenes/Enemies/Snail/Snail.tscn" id="4_3lxj6"]
 [ext_resource type="PackedScene" uid="uid://d0ia42ehbkrxp" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="6_ooqsx"]
 [ext_resource type="PackedScene" uid="uid://bwnkeyvfuqh8t" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="7_txgif"]
+[ext_resource type="AudioStream" uid="uid://v6l17icvlhpu" path="res://assets/sound/Flowing Rocks.ogg" id="8_o536s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -276,3 +277,9 @@ position = Vector2(162, -62)
 position = Vector2(141, -236)
 
 [node name="ObjectMaker" parent="." unique_id=582298725 instance=ExtResource("7_txgif")]
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=880961051]
+stream = ExtResource("8_o536s")
+volume_db = -10.0
+autoplay = true
+parameters/looping = false

@@ -13,6 +13,7 @@ const _MAX_FALL: float = 350;
 @onready var debug_label: Label = $DebugLabel;
 
 @onready var shooter: Shooter = $Shooter;
+@onready var sound: AudioStreamPlayer2D = $Sound
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("jump") && player.is_on_floor():
 		player.velocity.y = _JUMP_SPEED;
+		sound.play();
 	
 	player.velocity.x = _RUN_SPEED * Input.get_axis("left","right");
 	if not is_equal_approx(player.velocity.x,0.0):
