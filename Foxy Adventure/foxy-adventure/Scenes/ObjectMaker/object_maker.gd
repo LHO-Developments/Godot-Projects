@@ -3,11 +3,13 @@ extends Node2D
 const PLAYER_BULLET = preload("uid://2cvw461i0ncv");
 const ENEMY_BULLET = preload("uid://cie6injvdxke4")
 const EXPLOSION = preload("uid://bepr4ikeoldnv")
+const FRUIT_PICKUP = preload("uid://rc6mvac5wea8")
 
 const OBJECT_SCENES: Dictionary[Constants.ObjectType, PackedScene] = {
 	Constants.ObjectType.BULLET_PLAYER: PLAYER_BULLET,
 	Constants.ObjectType.BULLET_ENEMY: ENEMY_BULLET,
-	Constants.ObjectType.EXPLOSION: EXPLOSION
+	Constants.ObjectType.EXPLOSION: EXPLOSION,
+	Constants.ObjectType.PICKUP: FRUIT_PICKUP
 }
 
 func _enter_tree() -> void:
