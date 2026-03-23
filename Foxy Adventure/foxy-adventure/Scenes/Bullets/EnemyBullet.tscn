@@ -5,6 +5,7 @@
 [ext_resource type="Shape2D" uid="uid://6e1bdbwht22n" path="res://Resources/BulletShape.tres" id="3_r3k85"]
 
 [node name="EnemyBullet" unique_id=1201776180 instance=ExtResource("1_rluuw")]
+collision_layer = 16
 
 [node name="Sprite2D" parent="." index="0" unique_id=1386420969]
 scale = Vector2(0.5, 0.5)

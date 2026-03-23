@@ -169,6 +169,9 @@ states/run/node = SubResource("AnimationNodeAnimation_ude3g")
 states/run/position = Vector2(525.2, 95.2)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_4wape"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_t26db")]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t26db"]
+animation = &"hurt"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h54ih"]
 advance_mode = 2
 
@@ -180,13 +183,31 @@ advance_expression = "!is_on_floor()"
 advance_mode = 2
 advance_expression = "is_on_floor()"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i5acl"]
+advance_mode = 2
+advance_expression = "_is_hurt == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_epg6k"]
+advance_mode = 2
+advance_expression = "_is_hurt == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0u84n"]
+advance_mode = 2
+advance_expression = "_is_hurt == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_esmjy"]
+advance_mode = 2
+advance_expression = "_is_hurt == false"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t26db"]
 states/Air/node = SubResource("AnimationNodeStateMachine_0kmp4")
 states/Air/position = Vector2(557.39996, 99.560005)
 states/Grounded/node = SubResource("AnimationNodeStateMachine_fk5o5")
 states/Grounded/position = Vector2(378.2, 97.128)
 states/Start/position = Vector2(200.8, 100)
-transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_h54ih"), "Grounded", "Air", SubResource("AnimationNodeStateMachineTransition_ude3g"), "Air", "Grounded", SubResource("AnimationNodeStateMachineTransition_ji083")]
+states/hurt/node = SubResource("AnimationNodeAnimation_t26db")
+states/hurt/position = Vector2(447, 224)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_h54ih"), "Grounded", "Air", SubResource("AnimationNodeStateMachineTransition_ude3g"), "Air", "Grounded", SubResource("AnimationNodeStateMachineTransition_ji083"), "Grounded", "hurt", SubResource("AnimationNodeStateMachineTransition_i5acl"), "Air", "hurt", SubResource("AnimationNodeStateMachineTransition_epg6k"), "hurt", "Grounded", SubResource("AnimationNodeStateMachineTransition_0u84n"), "hurt", "Air", SubResource("AnimationNodeStateMachineTransition_esmjy")]
 graph_offset = Vector2(-23, 53)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54ih"]
@@ -230,6 +251,7 @@ text = "000
 
 [node name="HitBox" type="Area2D" parent="." unique_id=511338205]
 collision_layer = 2
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1163382958]
 shape = SubResource("CapsuleShape2D_h54ih")
@@ -240,3 +262,10 @@ shoot_delay = 1.0
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=95840590]
 stream = ExtResource("5_jmcll")
+
+[node name="HurtTimer" type="Timer" parent="." unique_id=580601989]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
