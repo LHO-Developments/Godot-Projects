@@ -22,6 +22,7 @@ const _HURT_JUMP_VELOCITY: Vector2 = Vector2(0,-130.0);
 @onready var sound: AudioStreamPlayer2D = $Sound
 
 var _is_hurt: bool = false;
+var _invincible: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -79,6 +80,19 @@ func fallen_off() -> void:
 	if player.global_position.y > _fell_off_y:
 		queue_free(); 
 
+func go_invincible() -> void:
+	
+	if _invincible == true:
+		return;
+	
+	_invincible = true;
+	
+	var tween: Tween = create_tween();
+	for i in range(3):
+		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 0.0), 0.5);
+		tween.tween_property(sprite_2d, "modulate", Color("#ffffff", 1.0), 0.5);
+	tween.tween_property(self, "_invincible", false, 0);
+
 func apply_hurt_jump() -> void:
 	_is_hurt = true;
 	velocity = _HURT_JUMP_VELOCITY;
@@ -86,6 +100,11 @@ func apply_hurt_jump() -> void:
 	play_effect(DAMAGE);
 
 func apply_hit() -> void:
+	
+	if _invincible == true:
+		return;
+	
+	go_invincible();
 	apply_hurt_jump();
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
