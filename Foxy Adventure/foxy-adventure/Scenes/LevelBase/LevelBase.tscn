@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ia42ehbkrxp" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="6_ooqsx"]
 [ext_resource type="PackedScene" uid="uid://bwnkeyvfuqh8t" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="7_txgif"]
 [ext_resource type="AudioStream" uid="uid://v6l17icvlhpu" path="res://assets/sound/Flowing Rocks.ogg" id="8_o536s"]
+[ext_resource type="PackedScene" uid="uid://bgxpbpwmky60j" path="res://Scenes/Hud/Hud.tscn" id="9_dufl6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -283,3 +284,7 @@ stream = ExtResource("8_o536s")
 volume_db = -10.0
 autoplay = true
 parameters/looping = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1423400796]
+
+[node name="Hud" parent="CanvasLayer" unique_id=465364183 instance=ExtResource("9_dufl6")]
