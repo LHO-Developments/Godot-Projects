@@ -26,6 +26,7 @@ func die() -> void:
 	SignalHub.emit_on_create_object(global_position, Constants.ObjectType.EXPLOSION)
 	set_physics_process(false);
 	queue_free();
+	SignalHub.emit_on_scored(points);
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	pass # Replace with function body.
