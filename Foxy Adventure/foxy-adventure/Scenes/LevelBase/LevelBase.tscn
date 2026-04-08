@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bg3qbh1l0c3eo" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
 [ext_resource type="PackedScene" uid="uid://c1lmxkt31uuct" path="res://Scenes/BallSpikes/BallSpikes.tscn" id="7_o536s"]
 [ext_resource type="PackedScene" uid="uid://bwnkeyvfuqh8t" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="7_txgif"]
+[ext_resource type="PackedScene" uid="uid://cu1y7dxvl6o0m" path="res://Scenes/MovingPlatform/MovingPlatform.tscn" id="8_dufl6"]
 [ext_resource type="AudioStream" uid="uid://v6l17icvlhpu" path="res://assets/sound/Flowing Rocks.ogg" id="8_o536s"]
 [ext_resource type="PackedScene" uid="uid://bgxpbpwmky60j" path="res://Scenes/Hud/Hud.tscn" id="9_dufl6"]
+[ext_resource type="PackedScene" uid="uid://lkfa2maqgyl0" path="res://Scenes/FloorSpikes/FloorSpikes.tscn" id="9_hcoko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -254,6 +256,8 @@ sources/0 = SubResource("TileSetAtlasSource_bgw71")
 
 [sub_resource type="Curve2D" id="Curve2D_ooqsx"]
 
+[sub_resource type="Curve2D" id="Curve2D_hcoko"]
+
 [node name="LevelBase" type="Node2D" unique_id=1880738594]
 script = ExtResource("1_lmtt4")
 
@@ -283,3 +287,27 @@ parameters/looping = false
 curve = SubResource("Curve2D_ooqsx")
 
 [node name="BallSpikes" parent="BallSpikeHolder/Path2D" unique_id=412423015 instance=ExtResource("7_o536s")]
+
+[node name="MovingPlatforms" type="Node" parent="." unique_id=1089541732]
+
+[node name="Path2D" type="Path2D" parent="MovingPlatforms" unique_id=168679891]
+curve = SubResource("Curve2D_hcoko")
+
+[node name="MovingPlatform" parent="MovingPlatforms/Path2D" unique_id=1754557996 instance=ExtResource("8_dufl6")]
+
+[node name="MP1" type="Node" parent="." unique_id=1225439993]
+
+[node name="Marker2D" type="Marker2D" parent="MP1" unique_id=920108906]
+position = Vector2(159, -65)
+
+[node name="Marker2D2" type="Marker2D" parent="MP1" unique_id=1248721776]
+position = Vector2(159, -151)
+
+[node name="Marker2D3" type="Marker2D" parent="MP1" unique_id=1577541062]
+position = Vector2(94, -151)
+
+[node name="MovingPlatform" parent="MP1" unique_id=2017147838 node_paths=PackedStringArray("targets") instance=ExtResource("8_dufl6")]
+targets = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3")]
+
+[node name="FloorSpikes" parent="." unique_id=2089085069 instance=ExtResource("9_hcoko")]
+position = Vector2(93, -15)
