@@ -89,6 +89,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.019607844, 0.105882354, 1), Color(1, 1, 1, 1), Color(1, 0.019607844, 0.105882354, 1), Color(1, 1, 1, 1), Color(1, 0.019607844, 0.105882354, 1), Color(1, 1, 1, 1), Color(1, 0.019607844, 0.105882354, 1), Color(1, 1, 1, 1), Color(1, 0.019607844, 0.105882354, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_invincible"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vxow8"]
 resource_name = "Pulse"
@@ -190,6 +204,10 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1gdmr"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxow8"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_inx1m"]
 states/Arrive/node = SubResource("AnimationNodeAnimation_b3u3o")
 states/Arrive/position = Vector2(414, 90)
@@ -201,7 +219,7 @@ states/Pulse/node = SubResource("AnimationNodeAnimation_tsvkr")
 states/Pulse/position = Vector2(546, 90)
 states/RESET/node = SubResource("AnimationNodeAnimation_mjv7n")
 states/RESET/position = Vector2(296, 83)
-transitions = ["RESET", "Arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "Arrive", "Pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b"), "Pulse", "Attack", SubResource("AnimationNodeStateMachineTransition_763pt"), "Attack", "Pulse", SubResource("AnimationNodeStateMachineTransition_twko3"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_1gdmr")]
+transitions = ["RESET", "Arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "Arrive", "Pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b"), "Pulse", "Attack", SubResource("AnimationNodeStateMachineTransition_763pt"), "Attack", "Pulse", SubResource("AnimationNodeStateMachineTransition_twko3"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_1gdmr"), "Hit", "Pulse", SubResource("AnimationNodeStateMachineTransition_vxow8")]
 
 [node name="Boss" type="Node2D" unique_id=79714293]
 script = ExtResource("1_xyuww")
@@ -246,4 +264,5 @@ tree_root = SubResource("AnimationNodeStateMachine_inx1m")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/on_trigger = false
 
+[connection signal="area_entered" from="Visuals/HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
