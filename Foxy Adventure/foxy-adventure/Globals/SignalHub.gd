@@ -1,6 +1,8 @@
 extends Node
 
 signal on_boss_killed;
+signal on_player_hit(lives: int, shake: bool);
+
 
 signal on_create_bullet(
 	pos: Vector2, dir:Vector2, speed: float, ob_type: Constants.ObjectType
@@ -11,6 +13,9 @@ signal on_create_object(
 )
 
 signal on_score(points: int);
+
+func emit_on_player_hit(lives: int, shake: bool) -> void:
+	on_player_hit.emit(lives, shake);
 
 func emit_on_boss_killed() -> void:
 	on_boss_killed.emit();

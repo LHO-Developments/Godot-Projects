@@ -8,6 +8,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		add_child(b);
 
 func _ready() -> void:
-	pass;
-	#await get_tree().create_timer(2.0).timeout;
-	#SignalHub.emit_on_boss_killed();
+	get_tree().paused = false;
