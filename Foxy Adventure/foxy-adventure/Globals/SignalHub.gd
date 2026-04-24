@@ -14,6 +14,11 @@ signal on_create_object(
 
 signal on_score(points: int);
 
+signal on_level_complete(complete:bool);
+
+func emit_on_level_complete(complete:bool) -> void:
+	on_level_complete.emit(complete);
+
 func emit_on_player_hit(lives: int, shake: bool) -> void:
 	on_player_hit.emit(lives, shake);
 

@@ -1,12 +1,23 @@
 extends Control
+const GAME_OVER = preload("uid://1jb4cbwqovd4")
+const YOU_WIN = preload("uid://dp3osl7xpukdf")
 
 var _score: int = 0;
 var _hearts: Array;
+var _can_continue: bool = false;
 @onready var score_label: Label = $MarginContainer/ScoreLabel
 @onready var hb_hearts: HBoxContainer = $MarginContainer/HBHearts
+@onready var color_rect: ColorRect = $ColorRect
+@onready var vb_game_over: VBoxContainer = $ColorRect/VBGameOver
+@onready var vb_complete: VBoxContainer = $ColorRect/VBComplete
+@onready var complete_timer: Timer = $CompleteTimer
+@onready var sound: AudioStreamPlayer2D = $Sound
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit") == true:
+		GameManager.load_main();
+	
+	if _can_continue and event.is_action_pressed("shoot"):
 		GameManager.load_main();
 
 
@@ -19,6 +30,7 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	SignalHub.on_score.connect(on_scored);
 	SignalHub.on_player_hit.connect(on_player_hit);
+	SignalHub.on_level_complete.connect(on_level_complete);
 	
 
 func _exit_tree() -> void:
@@ -31,11 +43,26 @@ func on_player_hit(lives: int, shake: bool) -> void:
 		_hearts[index].visible = lives > index;
 	
 	if lives <= 0:
-		level_over(false);
+		on_level_complete(false);
 
-func level_over(complete:bool) -> void:
+func on_level_complete(complete:bool) -> void:
+	color_rect.show();
+	
+	if complete:
+		vb_complete.show();
+		sound.stream = YOU_WIN;
+	else:
+		vb_game_over.show();
+		sound.stream = GAME_OVER;
+	
+	sound.play();
 	get_tree().paused = true;
+	complete_timer.start()
 
 func on_scored(points: int) -> void:
 	_score += points;
 	score_label.text = "%05d" % _score;
+
+
+func _on_complete_timer_timeout() -> void:
+	_can_continue = true;
