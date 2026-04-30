@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lkfa2maqgyl0" path="res://Scenes/FloorSpikes/FloorSpikes.tscn" id="9_hcoko"]
 [ext_resource type="PackedScene" uid="uid://cryae0vursk6x" path="res://Scenes/Checkpoint/Checkpoint.tscn" id="10_hcoko"]
 [ext_resource type="PackedScene" uid="uid://blb305qlbb1c7" path="res://Scenes/Boss/Boss.tscn" id="11_k6lws"]
+[ext_resource type="PackedScene" uid="uid://6vkg5nngkmbe" path="res://Scenes/ParallaxBg/ParallaxBg.tscn" id="12_y0wgt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw71"]
 resource_name = "Platforms"
@@ -262,6 +263,8 @@ sources/0 = SubResource("TileSetAtlasSource_bgw71")
 
 [node name="LevelBase" type="Node2D" unique_id=1880738594]
 script = ExtResource("1_lmtt4")
+
+[node name="ParallaxBg" parent="." unique_id=110746558 instance=ExtResource("12_y0wgt")]
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=1688382801]
 position = Vector2(0, -765)
