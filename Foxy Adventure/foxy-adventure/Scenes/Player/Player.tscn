@@ -1,0 +1,272 @@
+[gd_scene format=3 uid="uid://bg3qbh1l0c3eo"]
+
+[ext_resource type="Script" uid="uid://baaewt48yyqxy" path="res://Scenes/Player/player.gd" id="1_ft8w5"]
+[ext_resource type="Texture2D" uid="uid://d20ewhlc265ma" path="res://assets/player/player.png" id="1_s0eop"]
+[ext_resource type="PackedScene" uid="uid://bmp2vqrorimwd" path="res://Scenes/PlayerCam/PlayerCam.tscn" id="3_h54ih"]
+[ext_resource type="PackedScene" uid="uid://cgbinjdihx2x6" path="res://Scenes/Shooter/Shooter.tscn" id="4_ude3g"]
+[ext_resource type="AudioStream" uid="uid://gb2linuqnrcm" path="res://assets/sound/jump.wav" id="5_jmcll"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0eop"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_h54ih"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_4wape"]
+resource_name = "fall"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_t26db"]
+resource_name = "hurt"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_ude3g"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_fk5o5"]
+resource_name = "jump"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmcll"]
+_data = {
+&"RESET": SubResource("Animation_h54ih"),
+&"fall": SubResource("Animation_4wape"),
+&"hurt": SubResource("Animation_t26db"),
+&"idle": SubResource("Animation_ude3g"),
+&"jump": SubResource("Animation_fk5o5"),
+&"run": SubResource("Animation_jmcll")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jmcll"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4wape"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fk5o5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_825xp"]
+advance_mode = 2
+advance_expression = "int(velocity.y) > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kmp4"]
+advance_mode = 2
+advance_expression = "int(velocity.y) <= 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0kmp4"]
+states/fall/node = SubResource("AnimationNodeAnimation_jmcll")
+states/fall/position = Vector2(529.2, 91.840004)
+states/jump/node = SubResource("AnimationNodeAnimation_4wape")
+states/jump/position = Vector2(374.8, 92.8)
+transitions = ["Start", "jump", SubResource("AnimationNodeStateMachineTransition_fk5o5"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_825xp"), "fall", "jump", SubResource("AnimationNodeStateMachineTransition_0kmp4")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h54ih"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ude3g"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jmcll"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4wape"]
+advance_mode = 2
+advance_expression = "int(velocity.x) != 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t26db"]
+advance_mode = 2
+advance_expression = "int(velocity.x) == 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fk5o5"]
+states/Start/position = Vector2(200, 99.840004)
+states/idle/node = SubResource("AnimationNodeAnimation_h54ih")
+states/idle/position = Vector2(376.4, 88.8)
+states/run/node = SubResource("AnimationNodeAnimation_ude3g")
+states/run/position = Vector2(525.2, 95.2)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_jmcll"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_4wape"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_t26db")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t26db"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h54ih"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ude3g"]
+advance_mode = 2
+advance_expression = "!is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ji083"]
+advance_mode = 2
+advance_expression = "is_on_floor()"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i5acl"]
+advance_mode = 2
+advance_expression = "_is_hurt == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_epg6k"]
+advance_mode = 2
+advance_expression = "_is_hurt == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0u84n"]
+advance_mode = 2
+advance_expression = "_is_hurt == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_esmjy"]
+advance_mode = 2
+advance_expression = "_is_hurt == false"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t26db"]
+states/Air/node = SubResource("AnimationNodeStateMachine_0kmp4")
+states/Air/position = Vector2(557.39996, 99.560005)
+states/Grounded/node = SubResource("AnimationNodeStateMachine_fk5o5")
+states/Grounded/position = Vector2(378.2, 97.128)
+states/Start/position = Vector2(200.8, 100)
+states/hurt/node = SubResource("AnimationNodeAnimation_t26db")
+states/hurt/position = Vector2(447, 224)
+transitions = ["Start", "Grounded", SubResource("AnimationNodeStateMachineTransition_h54ih"), "Grounded", "Air", SubResource("AnimationNodeStateMachineTransition_ude3g"), "Air", "Grounded", SubResource("AnimationNodeStateMachineTransition_ji083"), "Grounded", "hurt", SubResource("AnimationNodeStateMachineTransition_i5acl"), "Air", "hurt", SubResource("AnimationNodeStateMachineTransition_epg6k"), "hurt", "Grounded", SubResource("AnimationNodeStateMachineTransition_0u84n"), "hurt", "Air", SubResource("AnimationNodeStateMachineTransition_esmjy")]
+graph_offset = Vector2(-23, 53)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54ih"]
+radius = 7.0
+height = 20.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1054922863]
+collision_layer = 0
+script = ExtResource("1_ft8w5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1888965442]
+texture = ExtResource("1_s0eop")
+hframes = 19
+frame = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306324578]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_s0eop")
+
+[node name="PlayerCam" parent="." unique_id=1455973340 instance=ExtResource("3_h54ih")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=256961593]
+libraries/ = SubResource("AnimationLibrary_jmcll")
+autoplay = &"idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1805863458]
+tree_root = SubResource("AnimationNodeStateMachine_t26db")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="DebugLabel" type="Label" parent="." unique_id=269262958]
+visible = false
+offset_left = -11.999998
+offset_top = -88.60003
+offset_right = 100.9978
+offset_bottom = 118.39997
+scale = Vector2(0.31859028, 0.31999993)
+theme_override_font_sizes/font_size = 48
+text = "000
+000
+000"
+
+[node name="HitBox" type="Area2D" parent="." unique_id=511338205]
+collision_layer = 2
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1163382958]
+shape = SubResource("CapsuleShape2D_h54ih")
+
+[node name="Shooter" parent="." unique_id=757049095 instance=ExtResource("4_ude3g")]
+speed = 350.0
+shoot_delay = 1.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=95840590]
+stream = ExtResource("5_jmcll")
+
+[node name="HurtTimer" type="Timer" parent="." unique_id=580601989]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
