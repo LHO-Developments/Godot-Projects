@@ -13,3 +13,4 @@ Games created using godot engine based on varieties of tutorials and videos
 	9. Tappy - mobile clicker platformer
 	10. Angry Animal - launch animal, 2d, puzzle 
 	11. Memory Madness - puzzle, memory
+	12. Foxy Adventure - 2d platformer, side scroller
