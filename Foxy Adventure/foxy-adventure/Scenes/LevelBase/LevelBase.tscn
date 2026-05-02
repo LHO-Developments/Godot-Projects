@@ -3,12 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://c7v67le8olybt" path="res://assets/tiles/Terrain (16x16).png" id="1_5ufo3"]
 [ext_resource type="Script" uid="uid://cv74u5d2r330s" path="res://Scenes/LevelBase/level_base.gd" id="1_lmtt4"]
 [ext_resource type="PackedScene" uid="uid://bg3qbh1l0c3eo" path="res://Scenes/Player/Player.tscn" id="2_bgw71"]
-[ext_resource type="PackedScene" uid="uid://c1lmxkt31uuct" path="res://Scenes/BallSpikes/BallSpikes.tscn" id="7_o536s"]
 [ext_resource type="PackedScene" uid="uid://bwnkeyvfuqh8t" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="7_txgif"]
-[ext_resource type="PackedScene" uid="uid://cu1y7dxvl6o0m" path="res://Scenes/MovingPlatform/MovingPlatform.tscn" id="8_dufl6"]
 [ext_resource type="AudioStream" uid="uid://v6l17icvlhpu" path="res://assets/sound/Flowing Rocks.ogg" id="8_o536s"]
 [ext_resource type="PackedScene" uid="uid://bgxpbpwmky60j" path="res://Scenes/Hud/Hud.tscn" id="9_dufl6"]
-[ext_resource type="PackedScene" uid="uid://lkfa2maqgyl0" path="res://Scenes/FloorSpikes/FloorSpikes.tscn" id="9_hcoko"]
 [ext_resource type="PackedScene" uid="uid://cryae0vursk6x" path="res://Scenes/Checkpoint/Checkpoint.tscn" id="10_hcoko"]
 [ext_resource type="PackedScene" uid="uid://blb305qlbb1c7" path="res://Scenes/Boss/Boss.tscn" id="11_k6lws"]
 [ext_resource type="PackedScene" uid="uid://6vkg5nngkmbe" path="res://Scenes/ParallaxBg/ParallaxBg.tscn" id="12_y0wgt"]
@@ -257,10 +254,6 @@ terrain_set_0/terrain_0/name = "Pink Grass"
 terrain_set_0/terrain_0/color = Color(4.813075e-08, 0.5176266, 0.4945383, 1)
 sources/0 = SubResource("TileSetAtlasSource_bgw71")
 
-[sub_resource type="Curve2D" id="Curve2D_ooqsx"]
-
-[sub_resource type="Curve2D" id="Curve2D_hcoko"]
-
 [node name="LevelBase" type="Node2D" unique_id=1880738594]
 script = ExtResource("1_lmtt4")
 
@@ -268,11 +261,11 @@ script = ExtResource("1_lmtt4")
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=1688382801]
 position = Vector2(0, -765)
-tile_map_data = PackedByteArray("AAAAAC8AAAAHAAAAAAABAC8AAAAHAAAAAAACAC8AAAAHAAAAAAADAC8AAAAHAAAAAAAEAC8AAAAHAAAAAAAFAC8AAAAHAAAAAAAGAC8AAAAHAAAAAAAJAC0AAAAHAAAAAAAKAC0AAAAHAAAAAAALAC0AAAAHAAAAAAAMAC0AAAAHAAAAAAANAC0AAAAHAAAAAAAOAC0AAAAHAAAAAAAPAC0AAAAHAAAAAAAQAC0AAAAHAAAAAAASAC4AAAAHAAAAAAATAC4AAAAHAAAAAAAUAC4AAAAHAAAAAAAVAC4AAAAHAAAAAAAWAC4AAAAHAAAAAAAXAC4AAAAHAAAAAAATACkAAAAHAAAAAAAUACkAAAAHAAAAAAAVACkAAAAHAAAAAAAWACkAAAAHAAAAAAAXACkAAAAHAAAAAAAGACoAAAAHAAAAAAAFACoAAAAHAAAAAAAEACoAAAAHAAAAAAANACsAAAAHAAAAAAAOACsAAAAHAAAAAAAPACsAAAAHAAAAAAAaAC0AAAAHAAAAAAAbAC0AAAAHAAAAAAAcAC0AAAAHAAAAAAAdAC0AAAAHAAAAAAAeAC0AAAAHAAAAAAAfAC0AAAAHAAAAAAAgAC0AAAAHAAAAAAAhAC0AAAAHAAAAAAAiAC0AAAAHAAAAAAAdACkAAAAHAAAAAAAeACkAAAAHAAAAAAAeACoAAAAHAAAAAAAfACoAAAAHAAAAAAAVACYAAAAGAAgAAQAWACYAAAAHAAgAAQAXACYAAAAIAAgAAQAMACwAAAASAAUAAAAjAC0AAAAHAAAAAAAkAC0AAAAHAAAAAAAlAC0AAAAHAAAAAAAmAC0AAAAHAAAAAAAnAC0AAAAHAAAAAAAoAC0AAAAHAAAAAAApAC0AAAAHAAAAAAAqAC0AAAAHAAAAAAArAC0AAAAHAAAAAAAsAC0AAAAHAAAAAAAtAC0AAAAHAAAAAAAuAC0AAAAHAAAAAAAvAC0AAAAHAAAAAAAwAC0AAAAHAAAAAAAxAC0AAAAHAAAAAAAyAC0AAAAHAAAAAAAzAC0AAAAHAAAAAAA0AC0AAAAHAAAAAAA1AC0AAAAHAAAAAAA2AC0AAAAHAAAAAAA3AC0AAAAHAAAAAAA4AC0AAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAC8AAAAHAAAAAAABAC8AAAAHAAAAAAACAC8AAAAHAAAAAAADAC8AAAAHAAAAAAAEAC8AAAAHAAAAAAAFAC8AAAAHAAAAAAAGAC8AAAAHAAAAAAAHAC8AAAAHAAAAAAAIAC8AAAAHAAAAAAAJAC8AAAAHAAAAAAAKAC8AAAAHAAAAAAD8/y8AAAAHAAAAAAD9/y8AAAAHAAAAAAD+/y8AAAAHAAAAAAD//y8AAAAHAAAAAAALAC8AAAAHAAAAAAAMAC8AAAAHAAAAAAANAC8AAAAHAAAAAAAOAC8AAAAHAAAAAAAPAC8AAAAHAAAAAAAQAC8AAAAHAAAAAAARAC8AAAAHAAAAAAASAC8AAAAHAAAAAAATAC8AAAAHAAAAAAAUAC8AAAAHAAAAAAAVAC8AAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_akiud")
 
 [node name="Player" parent="." unique_id=1054922863 instance=ExtResource("2_bgw71")]
-position = Vector2(554, -74)
+position = Vector2(-36, -33)
 
 [node name="ObjectMaker" parent="." unique_id=582298725 instance=ExtResource("7_txgif")]
 
@@ -288,37 +281,14 @@ parameters/looping = false
 
 [node name="BallSpikeHolder" type="Node" parent="." unique_id=181795533]
 
-[node name="Path2D" type="Path2D" parent="BallSpikeHolder" unique_id=243879816]
-curve = SubResource("Curve2D_ooqsx")
-
-[node name="BallSpikes" parent="BallSpikeHolder/Path2D" unique_id=412423015 instance=ExtResource("7_o536s")]
-
 [node name="MovingPlatforms" type="Node" parent="." unique_id=1089541732]
 
-[node name="Path2D" type="Path2D" parent="MovingPlatforms" unique_id=168679891]
-curve = SubResource("Curve2D_hcoko")
-
-[node name="MovingPlatform" parent="MovingPlatforms/Path2D" unique_id=1754557996 instance=ExtResource("8_dufl6")]
-
-[node name="MP1" type="Node" parent="." unique_id=1225439993]
-
-[node name="Marker2D" type="Marker2D" parent="MP1" unique_id=920108906]
-position = Vector2(159, -65)
-
-[node name="Marker2D2" type="Marker2D" parent="MP1" unique_id=1248721776]
-position = Vector2(159, -151)
-
-[node name="Marker2D3" type="Marker2D" parent="MP1" unique_id=1577541062]
-position = Vector2(94, -151)
-
-[node name="MovingPlatform" parent="MP1" unique_id=2017147838 node_paths=PackedStringArray("targets") instance=ExtResource("8_dufl6")]
-targets = [NodePath("../Marker2D"), NodePath("../Marker2D2"), NodePath("../Marker2D3")]
-
-[node name="FloorSpikes" parent="." unique_id=2089085069 instance=ExtResource("9_hcoko")]
-position = Vector2(93, -15)
-
-[node name="Checkpoint" parent="." unique_id=445254597 instance=ExtResource("10_hcoko")]
-position = Vector2(633, -50)
+[node name="Spikes" type="Node" parent="." unique_id=1331681412]
 
 [node name="Boss" parent="." unique_id=79714293 instance=ExtResource("11_k6lws")]
-position = Vector2(697, -48)
+position = Vector2(296, -27)
+
+[node name="Checkpoint" parent="." unique_id=445254597 instance=ExtResource("10_hcoko")]
+position = Vector2(313, -16)
+
+[node name="Enemies" type="Node" parent="." unique_id=44818136]

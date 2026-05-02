@@ -8,7 +8,6 @@ class_name Boss;
 @onready var hit_box: Area2D = $Visuals/HitBox;
 @onready var shooter: Shooter = $Visuals/Shooter;
 
-var _player_ref: Player;
 var _invincible: bool = false;
 
 @onready var state_machine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"];
@@ -16,16 +15,10 @@ var _invincible: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_player_ref = get_tree().get_first_node_in_group(Constants.PLAYER_GROUP);
-	if _player_ref == null:
-		queue_free();
+	pass;
 
 func shoot() -> void:
-	shooter.shoot(
-		shooter.global_position.direction_to(
-			_player_ref.global_position
-		)
-	);
+	shooter.shoot_at_player();
 
 func activate_collisions() -> void:
 	hit_box.set_deferred("monitoring", true);

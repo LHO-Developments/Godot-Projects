@@ -15,6 +15,8 @@ const _HURT_JUMP_VELOCITY: Vector2 = Vector2(0,-130.0);
 
 @export var _fell_off_y: float = 100.0;
 @export var lives: int = 3;
+@export var camera_min: Vector2 = Vector2(-10000,10000);
+@export var camera_max: Vector2 = Vector2(10000,-10000);
 
 @onready var sprite_2d: Sprite2D = $Sprite2D;
 @onready var debug_label: Label = $DebugLabel;
@@ -23,11 +25,19 @@ const _HURT_JUMP_VELOCITY: Vector2 = Vector2(0,-130.0);
 
 var _is_hurt: bool = false;
 var _invincible: bool = false;
+@onready var player_cam: Camera2D = $PlayerCam
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_camera_limits();
 	call_deferred("late_init");
+
+func set_camera_limits() -> void:
+	player_cam.limit_bottom = camera_min.y;
+	player_cam.limit_left = camera_min.x;
+	player_cam.limit_top = camera_max.y;
+	player_cam.limit_right = camera_max.x;
 
 func late_init() -> void:
 	SignalHub.emit_on_player_hit(lives,false);

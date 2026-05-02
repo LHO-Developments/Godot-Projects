@@ -17,8 +17,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit") == true:
 		GameManager.load_main();
 	
-	if _can_continue and event.is_action_pressed("shoot"):
-		GameManager.load_main();
+	if _can_continue and event.is_action_pressed("shoot") == true:
+		if vb_game_over.visible == true:
+			GameManager.load_main();
+		else:
+			GameManager.load_next_level();
+		
 
 
 # Called when the node enters the scene tree for the first time.

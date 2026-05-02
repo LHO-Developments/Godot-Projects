@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Foxy Adventure"
-run/main_scene="uid://ddr3hfulvxrox"
+run/main_scene="uid://bk3ljh7guh17d"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://bqei5jbmh5bxu"
 
