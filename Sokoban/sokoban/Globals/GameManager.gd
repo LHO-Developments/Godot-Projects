@@ -1,11 +1,16 @@
 extends Node
 
+const LEVEL = preload("uid://3erogswmru6e");
+const MAIN = preload("uid://dt12mjj45tb81")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var _level_selected: String = "1";
 
+func get_level_Selected() -> String:
+	return _level_selected;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func load_level_scene(ln: String) -> void:
+	_level_selected = ln;
+	get_tree().change_scene_to_packed(LEVEL);
+
+func load_main_scene() -> void:
+	get_tree().change_scene_to_packed(MAIN);

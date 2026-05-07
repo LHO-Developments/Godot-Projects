@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://3erogswmru6e"]
 
+[ext_resource type="Script" uid="uid://d2irylbio1u7i" path="res://Scenes/Level/level.gd" id="1_3hkb6"]
 [ext_resource type="Texture2D" uid="uid://825yw4tyq1b" path="res://assets/Purple.png" id="1_vbawi"]
 
 [node name="Level" type="Node2D" unique_id=47254649]
+script = ExtResource("1_3hkb6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=929033721]
 layer = -1
