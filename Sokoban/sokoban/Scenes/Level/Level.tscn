@@ -38,5 +38,5 @@ tile_map_data = PackedByteArray("AAANAAsAAAABAAAAAAANAAcAAAABAAAAAAARAAkAAAABAAA
 tile_set = ExtResource("3_4dwx7")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1155940234]
-position = Vector2(542, 359)
+position = Vector2(347, 259)
 zoom = Vector2(1.5, 1.5)
