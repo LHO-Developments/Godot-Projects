@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2irylbio1u7i" path="res://Scenes/Level/level.gd" id="1_3hkb6"]
 [ext_resource type="Texture2D" uid="uid://825yw4tyq1b" path="res://assets/Purple.png" id="1_vbawi"]
 [ext_resource type="TileSet" uid="uid://diqaqxfwvgbst" path="res://Resources/Tiles.tres" id="3_4dwx7"]
+[ext_resource type="PackedScene" uid="uid://bgbqws5kgntbt" path="res://Scenes/Player/Player.tscn" id="4_qp1lj"]
 
 [node name="Level" type="Node2D" unique_id=47254649]
 script = ExtResource("1_3hkb6")
@@ -40,3 +41,6 @@ tile_set = ExtResource("3_4dwx7")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1155940234]
 position = Vector2(347, 259)
 zoom = Vector2(1.5, 1.5)
+
+[node name="Player" parent="." unique_id=298730312 instance=ExtResource("4_qp1lj")]
+position = Vector2(418, 165)
