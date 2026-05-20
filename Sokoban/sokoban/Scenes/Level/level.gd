@@ -39,8 +39,42 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	var md: Vector2i = get_input_direction();
 	if md != Vector2i.ZERO:
-		place_player_on_tile(_player_tile + md);
+		player_move(md);
 
+func cell_is_wall(cell: Vector2i) -> bool:
+	return cell in walls_tiles.get_used_cells();
+
+func cell_is_box(cell: Vector2i) -> bool:
+	return cell in boxes_tiles.get_used_cells();
+
+func cell_is_empty(cell: Vector2i) -> bool:
+	return !cell_is_box(cell) and !cell_is_wall(cell);
+
+func box_can_move(box_tile: Vector2i, dir: Vector2i) -> bool:
+	return cell_is_empty(box_tile + dir);
+
+func move_box(box_tile: Vector2i, md: Vector2i) -> void:
+	var dest: Vector2i = box_tile + md;
+	boxes_tiles.erase_cell(box_tile);
+	
+	var tlt: TileLayers.LayerType = TileLayers.LayerType.Boxes;
+	
+	if dest in targets_tiles.get_used_cells():
+		tlt = TileLayers.LayerType.TargetBoxes;
+		
+	
+	boxes_tiles.set_cell(dest, SOURCE_ID, get_atlas_cord(tlt));
+
+func player_move(md: Vector2i) -> void:
+	var dest: Vector2i = _player_tile + md;
+	
+	if cell_is_wall(dest): return;
+	if cell_is_box(dest) and !box_can_move(dest,md): return;
+	
+	if cell_is_box(dest):
+		move_box(dest,md);
+	
+	place_player_on_tile(dest);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
