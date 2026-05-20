@@ -14,13 +14,33 @@ const SOURCE_ID: int = 0;
 var _tile_size: int = 0;
 var _player_tile: Vector2i = Vector2i.ZERO;
 
-
+func get_input_direction() -> Vector2i:
+	var md: Vector2i = Vector2i.ZERO;
+	
+	if Input.is_action_just_pressed("ui_left"):
+		md = Vector2i.LEFT;
+		player.flip_h = true;
+	elif Input.is_action_just_pressed("ui_right"):
+		md = Vector2i.RIGHT;
+		player.flip_h = false;
+	elif Input.is_action_just_pressed("ui_up"):
+		md = Vector2i.UP;
+	elif Input.is_action_just_pressed("ui_down"):
+		md = Vector2i.DOWN;
+	
+	return md;
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("exit"):
 		GameManager.load_main_scene();
 	if event.is_action_pressed("reload"):
 		get_tree().reload_current_scene();
+	
+	
+	var md: Vector2i = get_input_direction();
+	if md != Vector2i.ZERO:
+		place_player_on_tile(_player_tile + md);
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
