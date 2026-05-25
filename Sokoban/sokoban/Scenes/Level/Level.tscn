@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://825yw4tyq1b" path="res://assets/Purple.png" id="1_vbawi"]
 [ext_resource type="TileSet" uid="uid://diqaqxfwvgbst" path="res://Resources/Tiles.tres" id="3_4dwx7"]
 [ext_resource type="PackedScene" uid="uid://bgbqws5kgntbt" path="res://Scenes/Player/Player.tscn" id="4_qp1lj"]
+[ext_resource type="PackedScene" uid="uid://boh058362xsq" path="res://Scenes/GameUI/GameUI.tscn" id="5_k2uda"]
 
 [node name="Level" type="Node2D" unique_id=47254649]
 script = ExtResource("1_3hkb6")
@@ -44,3 +45,7 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." unique_id=298730312 instance=ExtResource("4_qp1lj")]
 position = Vector2(418, 165)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=806914274]
+
+[node name="GameUI" parent="CanvasLayer2" unique_id=1693631568 instance=ExtResource("5_k2uda")]

@@ -9,11 +9,15 @@ const SOURCE_ID: int = 0;
 @onready var boxes_tiles: TileMapLayer = $TileLayers/Boxes;
 @onready var camera_2d: Camera2D = $Camera2D;
 @onready var player: AnimatedSprite2D = $Player;
+@onready var game_ui: GameUi = $CanvasLayer2/GameUI;
 
 
 var _tile_size: int = 0;
 var _player_tile: Vector2i = Vector2i.ZERO;
 var _game_over: bool = false;
+var _level: String = '';
+var _move_made: int  = 0;
+
 
 func get_input_direction() -> Vector2i:
 	var md: Vector2i = Vector2i.ZERO;
@@ -73,6 +77,8 @@ func check_game_state() -> void:
 		if !cell_is_box(t):
 			return;
 	_game_over = true;
+	var best: bool = GameManager.level_complete(_level, _move_made);
+	
 
 func player_move(md: Vector2i) -> void:
 	var dest: Vector2i = _player_tile + md;
@@ -84,12 +90,15 @@ func player_move(md: Vector2i) -> void:
 		move_box(dest,md);
 	
 	place_player_on_tile(dest);
+	_move_made += 1;
+	game_ui.set_moves_label(_move_made);
 	check_game_state();
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Level Loaded: ", GameManager.get_level_Selected());
 	_tile_size = floor_tiles.tile_set.tile_size.x;
+	game_ui.set_moves_label(_move_made);
 	setup_level();
 
 func place_player_on_tile(title_coord: Vector2i) -> void:
@@ -129,8 +138,8 @@ func move_camera() -> void:
 	camera_2d.position = tmr.get_center() * _tile_size;
 
 func setup_level() -> void:
-	var level_number: String = GameManager.get_level_Selected();
-	var level_layout: LevelLayout = LevelData.get_level_data(level_number);
+	_level = GameManager.get_level_Selected();
+	var level_layout: LevelLayout = LevelData.get_level_data(_level);
 	clear_tiles();
 	
 	setup_layer(TileLayers.LayerType.Floor, floor_tiles, level_layout);
