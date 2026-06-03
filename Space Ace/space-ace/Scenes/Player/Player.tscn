@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://cwvkoimo7kywb"]
 
+[ext_resource type="PackedScene" uid="uid://bo3gnni0lowo6" path="res://PlayerThrust/PlayerThrust.tscn" id="1_h54ih"]
 [ext_resource type="Texture2D" uid="uid://bhcn17efdadjl" path="res://Asset/Images/player.png" id="1_s0eop"]
 [ext_resource type="PackedScene" uid="uid://dbcp152uveyfj" path="res://Component/Movement/PlayerMovement.tscn" id="2_ft8w5"]
 
 [node name="Player" type="Node2D" unique_id=1328625762]
+
+[node name="PlayerThrust" parent="." unique_id=1830897507 instance=ExtResource("1_h54ih")]
+position = Vector2(44, 14)
+
+[node name="PlayerThrust2" parent="." unique_id=1425498486 instance=ExtResource("1_h54ih")]
+position = Vector2(-44, 14)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1835836612]
 texture = ExtResource("1_s0eop")
