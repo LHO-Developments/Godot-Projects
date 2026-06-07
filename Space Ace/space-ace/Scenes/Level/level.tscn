@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwvkoimo7kywb" path="res://Scenes/Player/Player.tscn" id="1_iheil"]
 [ext_resource type="PackedScene" uid="uid://fxrpwv2c7cp8" path="res://Scenes/Background/Background.tscn" id="2_1ov45"]
+[ext_resource type="PackedScene" uid="uid://bohlnwst1215b" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_lscpc"]
 
 [node name="Level" type="Node2D" unique_id=75695576]
 
@@ -9,3 +10,5 @@
 position = Vector2(672, 924)
 
 [node name="Background" parent="." unique_id=1164972436 instance=ExtResource("2_1ov45")]
+
+[node name="ObjectContainer" parent="." unique_id=584549780 instance=ExtResource("3_lscpc")]
