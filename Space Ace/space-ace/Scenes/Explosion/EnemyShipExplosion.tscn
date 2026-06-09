@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c73qocgk3paj8"]
+
+[ext_resource type="PackedScene" uid="uid://b0lm5kfnat7jk" path="res://Scenes/Explosion/Explosion.tscn" id="1_cn0t3"]
+[ext_resource type="AudioStream" uid="uid://ckk60lyu2xf0q" path="res://Asset/Sounds/93834__cgeffex__huge-explosion.wav" id="2_wlye8"]
+[ext_resource type="Texture2D" uid="uid://ca80p3b4rlw58" path="res://Asset/Textures/scorch_02.png" id="2_yej4v"]
+[ext_resource type="AudioStream" uid="uid://dfapaliwictv2" path="res://Asset/Sounds/AsteroidExplosion.wav" id="3_yej4v"]
+
+[sub_resource type="Curve" id="Curve_yej4v"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.14361703, -0.41573036), 0.0, 0.0, 0, 0, Vector2(0.4893617, 1), 0.0, 0.0, 0, 0, Vector2(0.86170214, -0.30337083), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jbox0"]
+streams_count = 2
+stream_0/stream = ExtResource("2_wlye8")
+stream_1/stream = ExtResource("3_yej4v")
+
+[node name="EnemyShipExplosion" unique_id=314014667 instance=ExtResource("1_cn0t3")]
+
+[node name="CPUParticles2D" parent="." index="0" unique_id=363351755]
+amount = 48
+texture = ExtResource("2_yej4v")
+lifetime = 1.2
+explosiveness = 0.64
+randomness = 0.23
+emission_shape = 1
+emission_sphere_radius = 26.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+radial_accel_min = 20.0
+radial_accel_max = 30.0
+angle_max = 360.0
+angle_curve = SubResource("Curve_yej4v")
+color = Color(1, 0.47058824, 0, 1)
+
+[node name="Sound" parent="." index="1" unique_id=1266230385]
+stream = SubResource("AudioStreamRandomizer_jbox0")

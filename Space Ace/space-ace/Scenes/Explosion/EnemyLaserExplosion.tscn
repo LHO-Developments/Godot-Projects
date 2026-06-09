@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cu8sly35eeaw6"]
+
+[ext_resource type="PackedScene" uid="uid://b0lm5kfnat7jk" path="res://Scenes/Explosion/Explosion.tscn" id="1_rkxal"]
+[ext_resource type="AudioStream" uid="uid://dn54dbf6vd8e2" path="res://Asset/Sounds/252198__pepingrillin__rocket_impact_short.wav" id="2_de2xs"]
+[ext_resource type="Texture2D" uid="uid://dri1wqafe8aiw" path="res://Asset/Textures/magic_05.png" id="2_x7d4e"]
+
+[sub_resource type="Curve" id="Curve_pjepr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5106383, 1), 0.0, 0.0, 0, 0, Vector2(0.79255325, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.078651786), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_5jx02"]
+offsets = PackedFloat32Array(0, 0.52469134, 0.6851852, 0.8271605)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.52469134, 0.52469134, 1, 1, 0.23921569, 0.7764706, 0.47058824, 1, 1, 1, 0)
+
+[node name="EnemyLaserExplosion" unique_id=314014667 instance=ExtResource("1_rkxal")]
+
+[node name="CPUParticles2D" parent="." index="0" unique_id=363351755]
+amount = 32
+texture = ExtResource("2_x7d4e")
+lifetime = 0.8
+explosiveness = 0.75
+randomness = 0.29
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_pjepr")
+color_ramp = SubResource("Gradient_5jx02")
+
+[node name="Sound" parent="." index="1" unique_id=1266230385]
+stream = ExtResource("2_de2xs")

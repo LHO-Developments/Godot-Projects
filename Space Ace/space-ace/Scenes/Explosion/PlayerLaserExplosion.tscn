@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c3pgufv22dag4"]
+
+[ext_resource type="PackedScene" uid="uid://b0lm5kfnat7jk" path="res://Scenes/Explosion/Explosion.tscn" id="1_7de2m"]
+[ext_resource type="Texture2D" uid="uid://ogiufw6ufw5" path="res://Asset/Textures/ParticleDot16.png" id="2_cmpx7"]
+
+[sub_resource type="Curve" id="Curve_kl4tg"]
+_data = [Vector2(0.2712766, 0), 0.0, 0.0, 0, 0, Vector2(0.4893617, 1), 0.0, 0.0, 0, 0, Vector2(0.86170214, 0.08988774), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cmpx7"]
+colors = PackedColorArray(0, 0.654902, 1, 1, 1, 1, 1, 1)
+
+[node name="PlayerLaserExplosion" unique_id=314014667 instance=ExtResource("1_7de2m")]
+
+[node name="CPUParticles2D" parent="." index="0" unique_id=363351755]
+amount = 64
+texture = ExtResource("2_cmpx7")
+lifetime = 0.6
+explosiveness = 0.52
+randomness = 0.25
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+radial_accel_min = 400.0
+radial_accel_max = 600.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_kl4tg")
+color_ramp = SubResource("Gradient_cmpx7")
