@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve" id="Curve_yej4v"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0.14361703, -0.41573036), 0.0, 0.0, 0, 0, Vector2(0.4893617, 1), 0.0, 0.0, 0, 0, Vector2(0.86170214, -0.30337083), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.14361703, -0.41573036), 0.0, 0.0, 0, 0, Vector2(0.5053192, 0.9550562), 0.0, 0.0, 0, 0, Vector2(0.86170214, -0.30337083), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jbox0"]
