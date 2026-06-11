@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cdx1hlyeam1ol"]
+
+[ext_resource type="PackedScene" uid="uid://cuq5igk8lfv4f" path="res://Scenes/Projectile/BaseProjectile.tscn" id="1_d8pwx"]
+[ext_resource type="Texture2D" uid="uid://rrgibyrwtrsi" path="res://Asset/Images/LaserBlue.png" id="2_tlr11"]
+[ext_resource type="PackedScene" uid="uid://bi8fqovlohcc6" path="res://Component/Movement/Mover.tscn" id="3_0fhu1"]
+
+[node name="PlayerLaser" unique_id=1709716112 instance=ExtResource("1_d8pwx")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=989220919]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_tlr11")
+
+[node name="ScreenNotifier" parent="." index="1" unique_id=960293046]
+rect = Rect2(-10, -42, 20, 83)
+
+[node name="LifeTimer" parent="." index="2" unique_id=1617951205]
+wait_time = 1.0
+
+[node name="Mover" parent="." index="3" unique_id=1340264163 instance=ExtResource("3_0fhu1")]
+speed = 200.0
+direction = Vector2(0, -1)
