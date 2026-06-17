@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwvkoimo7kywb" path="res://Scenes/Player/Player.tscn" id="1_iheil"]
 [ext_resource type="PackedScene" uid="uid://fxrpwv2c7cp8" path="res://Scenes/Background/Background.tscn" id="2_1ov45"]
 [ext_resource type="PackedScene" uid="uid://bohlnwst1215b" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_lscpc"]
-[ext_resource type="PackedScene" uid="uid://cdx1hlyeam1ol" path="res://Scenes/Projectile/PlayerLaser.tscn" id="4_43gce"]
+[ext_resource type="PackedScene" uid="uid://lie5jjga5efr" path="res://Scenes/Projectile/HomingMissile.tscn" id="4_43gce"]
 [ext_resource type="Texture2D" uid="uid://bod5ulca2rr1b" path="res://Asset/Images/Enemy1.png" id="5_7i4w6"]
 [ext_resource type="PackedScene" uid="uid://bi8fqovlohcc6" path="res://Component/Movement/Mover.tscn" id="6_q8n36"]
 [ext_resource type="PackedScene" uid="uid://bhn8t7tgv7imo" path="res://Component/Movement/TargetedMover.tscn" id="7_q8n36"]
