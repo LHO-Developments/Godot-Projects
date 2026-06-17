@@ -4,11 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://fxrpwv2c7cp8" path="res://Scenes/Background/Background.tscn" id="2_1ov45"]
 [ext_resource type="PackedScene" uid="uid://bohlnwst1215b" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_lscpc"]
 [ext_resource type="PackedScene" uid="uid://lie5jjga5efr" path="res://Scenes/Projectile/HomingMissile.tscn" id="4_43gce"]
-[ext_resource type="Texture2D" uid="uid://bod5ulca2rr1b" path="res://Asset/Images/Enemy1.png" id="5_7i4w6"]
-[ext_resource type="PackedScene" uid="uid://bi8fqovlohcc6" path="res://Component/Movement/Mover.tscn" id="6_q8n36"]
-[ext_resource type="PackedScene" uid="uid://bhn8t7tgv7imo" path="res://Component/Movement/TargetedMover.tscn" id="7_q8n36"]
-[ext_resource type="Texture2D" uid="uid://dkqjp5rdnexd0" path="res://Asset/Images/HomingMissile.png" id="8_43gce"]
-[ext_resource type="PackedScene" uid="uid://cjqdnrt3kdoxp" path="res://Component/Movement/HomingMover.tscn" id="9_6rsi7"]
+[ext_resource type="PackedScene" uid="uid://ceqdwewjsd72c" path="res://Scenes/Enemy/EnemyVee.tscn" id="5_7i4w6"]
+[ext_resource type="PackedScene" uid="uid://de07mjhw6t4nk" path="res://Scenes/Enemy/EnemyRobot.tscn" id="6_q8n36"]
+
+[sub_resource type="Curve2D" id="Curve2D_06ioy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 94, 314, 0, 0, 0, 0, 1232, 299)
+}
+point_count = 2
 
 [node name="Level" type="Node2D" unique_id=75695576]
 
@@ -20,30 +23,12 @@ position = Vector2(672, 924)
 [node name="ObjectContainer" parent="." unique_id=584549780 instance=ExtResource("3_lscpc")]
 test_scene = ExtResource("4_43gce")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=966635150]
-position = Vector2(1091, 287)
-texture = ExtResource("5_7i4w6")
+[node name="Path2D" type="Path2D" parent="." unique_id=347543163]
+curve = SubResource("Curve2D_06ioy")
 
-[node name="Mover" parent="Sprite2D" unique_id=1340264163 instance=ExtResource("6_q8n36")]
-speed = 150.0
-rotation_speed_degrees = 360.0
-direction = Vector2(0, 1)
+[node name="EnemyVee" parent="Path2D" unique_id=330623592 instance=ExtResource("5_7i4w6")]
+position = Vector2(193.98505, 312.68213)
+progress = 100.0
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=394754004]
-position = Vector2(390, 248)
-texture = ExtResource("5_7i4w6")
-
-[node name="TargetedMover" parent="Sprite2D2" unique_id=1558715759 instance=ExtResource("7_q8n36")]
-speed = 100.0
-direction = Vector2(0, 1)
-
-[node name="Node2D" type="Node2D" parent="." unique_id=605153599]
-position = Vector2(710, 416)
-
-[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=512413679]
-rotation = 1.5707964
-texture = ExtResource("8_43gce")
-
-[node name="HomingMover" parent="Node2D" unique_id=1434343771 instance=ExtResource("9_6rsi7")]
-speed = 150.0
-rotation_speed_degrees = 150.0
+[node name="EnemyRobot" parent="Path2D" unique_id=149409930 instance=ExtResource("6_q8n36")]
+position = Vector2(94, 314)
