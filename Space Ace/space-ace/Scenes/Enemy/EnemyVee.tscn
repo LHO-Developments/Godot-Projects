@@ -2,10 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://bvglwn07kxrxp" path="res://Scenes/Enemy/EnemyBase.tscn" id="1_cweeu"]
 [ext_resource type="Texture2D" uid="uid://bod5ulca2rr1b" path="res://Asset/Images/Enemy1.png" id="2_wvqqx"]
+[ext_resource type="PackedScene" uid="uid://dwcns7mb4ke67" path="res://Scenes/Projectile/EnemyLaser.tscn" id="3_hrol3"]
+[ext_resource type="AudioStream" uid="uid://ma0a564tox08" path="res://Asset/Sounds/Blaster1_short.wav" id="4_sy7w6"]
 
 [node name="EnemyVee" unique_id=330623592 instance=ExtResource("1_cweeu")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=1988232119]
 rotation = 3.1415927
-scale = Vector2(0.8, 0.8)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_wvqqx")
+
+[node name="Shooter" parent="." index="1" unique_id=402735415]
+position = Vector2(0, 52)
+shoot_wait = 2.0
+projectile_scene = ExtResource("3_hrol3")
+launch_effect = ExtResource("4_sy7w6")

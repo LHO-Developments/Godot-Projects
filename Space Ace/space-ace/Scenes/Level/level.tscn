@@ -30,5 +30,6 @@ curve = SubResource("Curve2D_06ioy")
 position = Vector2(193.98505, 312.68213)
 progress = 100.0
 
-[node name="EnemyRobot" parent="Path2D" unique_id=149409930 instance=ExtResource("6_q8n36")]
+[node name="EnemyRobot" parent="Path2D" unique_id=919102646 instance=ExtResource("6_q8n36")]
 position = Vector2(94, 314)
+speed = 75.0

@@ -17,6 +17,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		)
 		
 
+func _ready() -> void:
+	SignalHub.spawn_pool_object.connect(on_spawn_pool_object)
+
 func on_spawn_pool_object(position: Vector2, scene: PackedScene) -> void:
 	call_deferred("spawn_deferred", position, scene)
 

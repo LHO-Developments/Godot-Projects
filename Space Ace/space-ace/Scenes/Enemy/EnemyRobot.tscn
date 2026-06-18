@@ -2,9 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://bvglwn07kxrxp" path="res://Scenes/Enemy/EnemyBase.tscn" id="1_74opd"]
 [ext_resource type="Texture2D" uid="uid://qjf870wrhrhx" path="res://Asset/Images/Enemy3.png" id="2_rxy5j"]
+[ext_resource type="PackedScene" uid="uid://dlq0h04ivag6j" path="res://Scenes/Projectile/EnemyBomb.tscn" id="3_5vq8f"]
+[ext_resource type="AudioStream" uid="uid://qb73lk72ypl6" path="res://Asset/Sounds/685916_whoosh.wav" id="4_g7hgf"]
 
 [node name="EnemyRobot" unique_id=330623592 instance=ExtResource("1_74opd")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=1988232119]
-scale = Vector2(0.9, 0.9)
+scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_rxy5j")
+
+[node name="Shooter" parent="." index="1" unique_id=402735415]
+projectile_scene = ExtResource("3_5vq8f")
+launch_effect = ExtResource("4_g7hgf")

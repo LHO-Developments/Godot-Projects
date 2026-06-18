@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dohkr64ph6bq"]
+
+[ext_resource type="Script" uid="uid://cypy18welxuvg" path="res://Scenes/Shooter/Shooter.gd" id="1_081au"]
+
+[node name="Shooter" type="Node2D" unique_id=402735415]
+script = ExtResource("1_081au")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=2021713255]
+one_shot = true
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="." unique_id=2133736840]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
