@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvglwn07kxrxp"]
 
 [ext_resource type="Script" uid="uid://bqp26fegli8yg" path="res://Scenes/Enemy/EnemyBase.gd" id="1_t2bgb"]
-[ext_resource type="PackedScene" uid="uid://dohkr64ph6bq" path="res://Scenes/Shooter/Shooter.tscn" id="2_klqhl"]
+[ext_resource type="PackedScene" uid="uid://dohkr64ph6bq" path="res://Component/Shooter/Shooter/Shooter.tscn" id="2_klqhl"]
 
 [node name="EnemyBase" type="PathFollow2D" unique_id=330623592]
 rotates = false

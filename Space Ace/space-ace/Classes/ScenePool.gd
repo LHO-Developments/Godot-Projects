@@ -1,7 +1,7 @@
 extends  RefCounted;
 class_name ScenePool;
 
-const DEBUG_POOL: bool = true
+const DEBUG_POOL: bool = false
 
 
 var number_active: int:
