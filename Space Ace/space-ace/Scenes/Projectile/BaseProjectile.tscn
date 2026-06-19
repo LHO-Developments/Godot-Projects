@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cuq5igk8lfv4f"]
 
 [ext_resource type="Script" uid="uid://dbn6obbx5anlk" path="res://Scenes/Projectile/BaseProjectile.gd" id="1_lnpgm"]
+[ext_resource type="PackedScene" uid="uid://tewi3dhgtkfj" path="res://Component/Hitbox/Hitbox.tscn" id="2_2nmit"]
 
 [node name="BaseProjectile" type="Node2D" unique_id=1709716112]
 script = ExtResource("1_lnpgm")
@@ -12,6 +13,8 @@ script = ExtResource("1_lnpgm")
 [node name="LifeTimer" type="Timer" parent="." unique_id=1617951205]
 wait_time = 15.0
 one_shot = true
+
+[node name="Hitbox" parent="." unique_id=1733803325 instance=ExtResource("2_2nmit")]
 
 [connection signal="screen_exited" from="ScreenNotifier" to="." method="_on_screen_notifier_screen_exited"]
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

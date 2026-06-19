@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dwcns7mb4ke67" path="res://Scenes/Projectile/EnemyLaser.tscn" id="3_hrol3"]
 [ext_resource type="AudioStream" uid="uid://ma0a564tox08" path="res://Asset/Sounds/Blaster1_short.wav" id="4_sy7w6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrol3"]
+radius = 50.0
+
 [node name="EnemyVee" unique_id=330623592 instance=ExtResource("1_cweeu")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=1988232119]
@@ -17,3 +20,6 @@ position = Vector2(0, 52)
 shoot_wait = 2.0
 projectile_scene = ExtResource("3_hrol3")
 launch_effect = ExtResource("4_sy7w6")
+
+[node name="Hitbox" parent="." index="2" unique_id=1733803325]
+collision_shape = SubResource("CircleShape2D_hrol3")

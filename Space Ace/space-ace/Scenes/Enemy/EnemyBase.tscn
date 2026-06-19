@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqp26fegli8yg" path="res://Scenes/Enemy/EnemyBase.gd" id="1_t2bgb"]
 [ext_resource type="PackedScene" uid="uid://dohkr64ph6bq" path="res://Component/Shooter/Shooter/Shooter.tscn" id="2_klqhl"]
+[ext_resource type="PackedScene" uid="uid://tewi3dhgtkfj" path="res://Component/Hitbox/Hitbox.tscn" id="3_p26r3"]
 
 [node name="EnemyBase" type="PathFollow2D" unique_id=330623592]
 rotates = false
@@ -11,3 +12,5 @@ script = ExtResource("1_t2bgb")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988232119]
 
 [node name="Shooter" parent="." unique_id=402735415 instance=ExtResource("2_klqhl")]
+
+[node name="Hitbox" parent="." unique_id=1733803325 instance=ExtResource("3_p26r3")]
