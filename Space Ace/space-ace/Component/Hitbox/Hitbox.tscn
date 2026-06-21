@@ -4,5 +4,8 @@
 
 [node name="Hitbox" type="Area2D" unique_id=1733803325]
 script = ExtResource("1_ebqiu")
+max_collisions = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=722174758]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
