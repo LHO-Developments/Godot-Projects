@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ba0ym1o8wi0wb" path="res://Scenes/Explosion/Explosion.gd" id="1_qb8ow"]
 
 [node name="Explosion" type="Node2D" unique_id=314014667]
+z_index = 20
 script = ExtResource("1_qb8ow")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=363351755]

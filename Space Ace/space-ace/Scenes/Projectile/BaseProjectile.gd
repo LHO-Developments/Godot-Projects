@@ -1,9 +1,13 @@
 extends Poolable;
 class_name BaseProjectile
 
+@export var explosion_scene: PackedScene
+
+
 @onready var life_timer: Timer = $LifeTimer
 @onready var hitbox: HitBox = $Hitbox
 
+@export var explosion_margin: float = 40.0
 
 var _mover: Mover
 
@@ -14,6 +18,16 @@ func _ready() -> void:
 			_mover = c
 			break
 	assert(_mover, "No mover on base projectile")
+
+
+func explode(collider_position: Vector2) -> void:
+	if !explosion_scene: return
+	var direction: Vector2 = global_position.direction_to(collider_position)
+	var explosion_position: Vector2 = global_position + direction * explosion_margin
+	SignalHub.emit_spawn_pool_object(
+		explosion_position, explosion_scene
+	)
+
 
 
 func activate() -> void:
@@ -34,4 +48,5 @@ func _on_screen_notifier_screen_exited() -> void:
 
 
 func _on_hitbox_died(collided_with: Area2D) -> void:
+	explode(collided_with.global_position)
 	deactivate()

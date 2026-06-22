@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0lm5kfnat7jk" path="res://Scenes/Explosion/Explosion.tscn" id="1_7de2m"]
 [ext_resource type="Texture2D" uid="uid://ogiufw6ufw5" path="res://Asset/Textures/ParticleDot16.png" id="2_cmpx7"]
+[ext_resource type="AudioStream" uid="uid://cfdx48ylogcko" path="res://Asset/Sounds/394128__space-explosion_shotz.wav" id="3_kl4tg"]
 
 [sub_resource type="Curve" id="Curve_kl4tg"]
 _data = [Vector2(0.2712766, 0), 0.0, 0.0, 0, 0, Vector2(0.4893617, 1), 0.0, 0.0, 0, 0, Vector2(0.86170214, 0.08988774), 0.0, 0.0, 0, 0]
@@ -28,3 +29,6 @@ scale_amount_min = 2.0
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_kl4tg")
 color_ramp = SubResource("Gradient_cmpx7")
+
+[node name="Sound" parent="." index="1" unique_id=1266230385]
+stream = ExtResource("3_kl4tg")
