@@ -23,3 +23,9 @@ launch_effect = ExtResource("4_sy7w6")
 
 [node name="Hitbox" parent="." index="2" unique_id=1733803325]
 collision_shape = SubResource("CircleShape2D_hrol3")
+
+[node name="HealthBar" parent="." index="3" unique_id=720456850]
+offset_left = -50.0
+offset_top = -40.0
+offset_right = 50.0
+offset_bottom = -34.0
