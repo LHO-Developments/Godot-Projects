@@ -4,11 +4,13 @@ class_name HitBox
 
 extends Area2D
 
-signal died(collided_with: Area2D)
+signal died(collided_with: Area2D);
+signal hit(damage: int);
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @export var max_collisions: int = 1
+@export var damage_dealt: int = 15
 
 var _collisions_left: int = 0
 
@@ -37,6 +39,7 @@ func reset() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if area is HitBox: hit.emit(area.damage_dealt);
 	_collisions_left -= 1
 	if _collisions_left <= 0:
 		print(get_parent().name, " hitbox died")

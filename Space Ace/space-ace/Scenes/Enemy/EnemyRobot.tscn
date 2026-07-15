@@ -19,6 +19,7 @@ projectile_scene = ExtResource("3_5vq8f")
 launch_effect = ExtResource("4_g7hgf")
 
 [node name="Hitbox" parent="." index="2" unique_id=1733803325]
+damage_dealt = null
 collision_shape = SubResource("CircleShape2D_5vq8f")
 
 [node name="HealthBar" parent="." index="3" unique_id=720456850]

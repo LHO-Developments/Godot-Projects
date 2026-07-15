@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqp26fegli8yg" path="res://Scenes/Enemy/EnemyBase.gd" id="1_t2bgb"]
 [ext_resource type="PackedScene" uid="uid://dohkr64ph6bq" path="res://Component/Shooter/Shooter/Shooter.tscn" id="2_klqhl"]
+[ext_resource type="PackedScene" uid="uid://c73qocgk3paj8" path="res://Scenes/Explosion/EnemyShipExplosion.tscn" id="2_yj8lf"]
 [ext_resource type="PackedScene" uid="uid://tewi3dhgtkfj" path="res://Component/Hitbox/Hitbox.tscn" id="3_p26r3"]
 [ext_resource type="PackedScene" uid="uid://bjf1f0i87ltoi" path="res://Component/HealthBar/HealthBar.tscn" id="4_w3c4a"]
 
@@ -9,6 +10,7 @@
 rotates = false
 loop = false
 script = ExtResource("1_t2bgb")
+explosion_scene = ExtResource("2_yj8lf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988232119]
 
@@ -18,5 +20,9 @@ script = ExtResource("1_t2bgb")
 collision_layer = 2
 collision_mask = 9
 max_collisions = 1
+damage_dealt = null
 
 [node name="HealthBar" parent="." unique_id=720456850 instance=ExtResource("4_w3c4a")]
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="died" from="HealthBar" to="." method="_on_health_bar_died"]
