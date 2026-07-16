@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lie5jjga5efr" path="res://Scenes/Projectile/HomingMissile.tscn" id="4_43gce"]
 [ext_resource type="PackedScene" uid="uid://ceqdwewjsd72c" path="res://Scenes/Enemy/EnemyVee.tscn" id="5_7i4w6"]
 [ext_resource type="PackedScene" uid="uid://de07mjhw6t4nk" path="res://Scenes/Enemy/EnemyRobot.tscn" id="6_q8n36"]
+[ext_resource type="PackedScene" uid="uid://cna5uq6wchu3" path="res://Scenes/GameUi/GameUi.tscn" id="7_q8n36"]
 
 [sub_resource type="Curve2D" id="Curve2D_06ioy"]
 _data = {
@@ -33,3 +34,7 @@ progress = 100.0
 [node name="EnemyRobot" parent="Path2D" unique_id=919102646 instance=ExtResource("6_q8n36")]
 position = Vector2(94, 314)
 speed = 75.0
+
+[node name="GameUi" parent="." unique_id=2042328640 instance=ExtResource("7_q8n36")]
+offset_right = 1440.0
+offset_bottom = 1080.0

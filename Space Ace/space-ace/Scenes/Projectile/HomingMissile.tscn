@@ -26,4 +26,5 @@ rotation_speed_degrees = 90.0
 
 [node name="Hitbox" parent="." index="4" unique_id=1733803325]
 rotation = 1.5707964
+damage_dealt = 30
 collision_shape = SubResource("CapsuleShape2D_ivttq")
