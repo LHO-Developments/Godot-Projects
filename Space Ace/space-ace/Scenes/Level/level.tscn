@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwvkoimo7kywb" path="res://Scenes/Player/Player.tscn" id="1_iheil"]
 [ext_resource type="PackedScene" uid="uid://fxrpwv2c7cp8" path="res://Scenes/Background/Background.tscn" id="2_1ov45"]
 [ext_resource type="PackedScene" uid="uid://bohlnwst1215b" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_lscpc"]
-[ext_resource type="PackedScene" uid="uid://lie5jjga5efr" path="res://Scenes/Projectile/HomingMissile.tscn" id="4_43gce"]
+[ext_resource type="PackedScene" uid="uid://bojxn1fot36f2" path="res://Scenes/PowerUp/PowerUp.tscn" id="4_q8n36"]
 [ext_resource type="PackedScene" uid="uid://ceqdwewjsd72c" path="res://Scenes/Enemy/EnemyVee.tscn" id="5_7i4w6"]
 [ext_resource type="PackedScene" uid="uid://de07mjhw6t4nk" path="res://Scenes/Enemy/EnemyRobot.tscn" id="6_q8n36"]
 [ext_resource type="PackedScene" uid="uid://cna5uq6wchu3" path="res://Scenes/GameUi/GameUi.tscn" id="7_q8n36"]
@@ -22,7 +22,7 @@ position = Vector2(672, 924)
 [node name="Background" parent="." unique_id=1164972436 instance=ExtResource("2_1ov45")]
 
 [node name="ObjectContainer" parent="." unique_id=584549780 instance=ExtResource("3_lscpc")]
-test_scene = ExtResource("4_43gce")
+test_scene = ExtResource("4_q8n36")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=347543163]
 curve = SubResource("Curve2D_06ioy")
