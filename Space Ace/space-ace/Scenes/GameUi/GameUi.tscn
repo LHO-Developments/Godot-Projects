@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ng1qj8x0t7sq" path="res://Scenes/GameUi/GameUi.gd" id="1_tt7lr"]
 [ext_resource type="FontFile" uid="uid://fkfw3g8rmnsq" path="res://Asset/Fonts/Audiowide-Regular.ttf" id="2_anolp"]
 [ext_resource type="AudioStream" uid="uid://bff46334vulgi" path="res://Asset/Sounds/830558__universfield__dark-80s-sci-fi-atmosphere.mp3" id="3_anolp"]
+[ext_resource type="AudioStream" uid="uid://du1k4fx6yy11m" path="res://Asset/Sounds/Powerup2.mp3" id="5_5hvfd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tt7lr"]
 font = ExtResource("2_anolp")
@@ -45,5 +46,8 @@ stream = ExtResource("3_anolp")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
+
+[node name="BoostSound" type="AudioStreamPlayer" parent="." unique_id=1789946987]
+stream = ExtResource("5_5hvfd")
 
 [connection signal="died" from="MarginContainer/HealthBar" to="." method="_on_health_bar_died"]

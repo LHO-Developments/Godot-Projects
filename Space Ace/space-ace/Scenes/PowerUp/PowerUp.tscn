@@ -12,6 +12,9 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_kdlqn"]
 colors = PackedColorArray(0.80784315, 0, 0.57254905, 1, 0.22745098, 1, 0.5529412, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtc48"]
+radius = 53.037724
+
 [node name="PowerUp" type="Node2D" unique_id=1373468377]
 script = ExtResource("1_v5ap0")
 
@@ -47,4 +50,11 @@ scale_amount_max = 1.2
 scale_amount_curve = SubResource("Curve_rtpde")
 color_initial_ramp = SubResource("Gradient_kdlqn")
 
+[node name="Detection" type="Area2D" parent="." unique_id=1532877916]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" unique_id=1088217784]
+shape = SubResource("CircleShape2D_gtc48")
+
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
+[connection signal="area_entered" from="Detection" to="." method="_on_detection_area_entered"]
