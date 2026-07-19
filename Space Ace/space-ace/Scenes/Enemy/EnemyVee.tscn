@@ -9,6 +9,7 @@
 radius = 50.0
 
 [node name="EnemyVee" unique_id=330623592 instance=ExtResource("1_cweeu")]
+points = 15
 
 [node name="Sprite2D" parent="." index="0" unique_id=1988232119]
 rotation = 3.1415927
@@ -22,6 +23,7 @@ projectile_scene = ExtResource("3_hrol3")
 launch_effect = ExtResource("4_sy7w6")
 
 [node name="Hitbox" parent="." index="2" unique_id=1733803325]
+invincible_time = 0.1
 collision_shape = SubResource("CircleShape2D_hrol3")
 
 [node name="HealthBar" parent="." index="3" unique_id=720456850]

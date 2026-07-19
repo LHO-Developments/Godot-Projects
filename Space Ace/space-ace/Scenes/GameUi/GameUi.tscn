@@ -38,7 +38,7 @@ size_flags_vertical = 4
 [node name="ScoreLabel" type="Label" parent="MarginContainer" unique_id=1200439394]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "0000"
+text = "00000"
 label_settings = SubResource("LabelSettings_tt7lr")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=373411825]

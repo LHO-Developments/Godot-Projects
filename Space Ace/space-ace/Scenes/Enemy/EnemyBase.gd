@@ -14,9 +14,12 @@ extends PathFollow2D
 @export var powerup_chance: float = 25.0;
 
 @export var missile_scene: PackedScene
-@export var missile_chance: float = 100.0
+@export var missile_chance: float = 100.0;
+
+@export var points: int = 0
 
 func _on_health_bar_died() -> void:
+	SignalHub.emit_points_scored(points);
 	SignalHub.emit_spawn_pool_object(global_position, explosion_scene);
 	create_random_chance_scene(powerup_scene, powerup_chance);
 	create_random_chance_scene(missile_scene, missile_chance);

@@ -9,7 +9,11 @@ class_name BaseProjectile
 
 @export var explosion_margin: float = 40.0
 
-var _mover: Mover
+var _mover: Mover;
+
+
+@export var points: int = 0
+
 
 
 func _ready() -> void:
@@ -48,5 +52,6 @@ func _on_screen_notifier_screen_exited() -> void:
 
 
 func _on_hitbox_died(collided_with: Area2D) -> void:
+	SignalHub.emit_points_scored(points);
 	explode(collided_with.global_position)
 	deactivate()

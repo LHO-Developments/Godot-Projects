@@ -10,6 +10,7 @@ radius = 30.0
 
 [node name="EnemyBomb" unique_id=1709716112 instance=ExtResource("1_fj0le")]
 explosion_scene = ExtResource("2_7top6")
+points = 25
 
 [node name="Sprite2D" parent="." index="0" unique_id=989220919]
 scale = Vector2(0.9, 0.9)
@@ -24,4 +25,5 @@ speed = 100.0
 [node name="Hitbox" parent="." index="4" unique_id=1733803325]
 position = Vector2(0, 24)
 damage_dealt = 30
+invincible_time = 0.1
 collision_shape = SubResource("CircleShape2D_fj0le")
