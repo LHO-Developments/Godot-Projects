@@ -15,7 +15,7 @@ signal hit(damage: int);
 
 var _collisions_left: int = 0
 
-@export var invincible_time: float = 0.1
+@export var invincible_time: float = 0.0
 
 var _invincible: bool = false
 
@@ -39,10 +39,11 @@ func _ready() -> void:
 
 
 func reset() -> void:
-	print(get_parent().name, " hitbox reset")
 	_collisions_left = max_collisions
-	_invincible = true
-	invincibility_timer.start(invincible_time)
+	_invincible = false
+	if not is_zero_approx(invincible_time):
+		invincibility_timer.start(invincible_time)
+		_invincible = true
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -50,7 +51,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is HitBox: hit.emit(area.damage_dealt);
 	_collisions_left -= 1
 	if _collisions_left <= 0:
-		print(get_parent().name, " hitbox died")
 		died.emit(area)
 
 
