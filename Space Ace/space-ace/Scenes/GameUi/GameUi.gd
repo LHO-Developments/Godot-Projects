@@ -34,5 +34,4 @@ func on_player_health_boost(boost: int) -> void:
 
 func on_points_scored(points: int) -> void:
 	_score += points
-	print("_score",_score);
 	score_label.text = "%05d" % _score

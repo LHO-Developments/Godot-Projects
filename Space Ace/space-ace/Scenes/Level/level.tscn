@@ -4,15 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://fxrpwv2c7cp8" path="res://Scenes/Background/Background.tscn" id="2_1ov45"]
 [ext_resource type="PackedScene" uid="uid://bohlnwst1215b" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_lscpc"]
 [ext_resource type="PackedScene" uid="uid://b545opvuqj36i" path="res://Scenes/Projectile/Asteroid.tscn" id="4_q8n36"]
-[ext_resource type="PackedScene" uid="uid://ceqdwewjsd72c" path="res://Scenes/Enemy/EnemyVee.tscn" id="5_7i4w6"]
-[ext_resource type="PackedScene" uid="uid://de07mjhw6t4nk" path="res://Scenes/Enemy/EnemyRobot.tscn" id="6_q8n36"]
+[ext_resource type="PackedScene" uid="uid://bfm40q7n6wtkq" path="res://Scenes/WaveManager/WaveManager.tscn" id="6_7i4w6"]
 [ext_resource type="PackedScene" uid="uid://cna5uq6wchu3" path="res://Scenes/GameUi/GameUi.tscn" id="7_q8n36"]
-
-[sub_resource type="Curve2D" id="Curve2D_06ioy"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 94, 314, 0, 0, 0, 0, 1232, 299)
-}
-point_count = 2
 
 [node name="Level" type="Node2D" unique_id=75695576]
 
@@ -24,17 +17,8 @@ position = Vector2(672, 924)
 [node name="ObjectContainer" parent="." unique_id=584549780 instance=ExtResource("3_lscpc")]
 test_scene = ExtResource("4_q8n36")
 
-[node name="Path2D" type="Path2D" parent="." unique_id=347543163]
-curve = SubResource("Curve2D_06ioy")
-
-[node name="EnemyVee" parent="Path2D" unique_id=330623592 instance=ExtResource("5_7i4w6")]
-position = Vector2(193.98505, 312.68213)
-progress = 100.0
-
-[node name="EnemyRobot" parent="Path2D" unique_id=919102646 instance=ExtResource("6_q8n36")]
-position = Vector2(94, 314)
-speed = 75.0
-
 [node name="GameUi" parent="." unique_id=2042328640 instance=ExtResource("7_q8n36")]
 offset_right = 1440.0
 offset_bottom = 1080.0
+
+[node name="WaveManager" parent="." unique_id=605773986 instance=ExtResource("6_7i4w6")]
