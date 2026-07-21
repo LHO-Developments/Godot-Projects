@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cuhg8r2cfey5w"]
+
+[ext_resource type="PackedScene" uid="uid://cwvkoimo7kywb" path="res://Scenes/Player/Player.tscn" id="1_iheil"]
+[ext_resource type="PackedScene" uid="uid://fxrpwv2c7cp8" path="res://Scenes/Background/Background.tscn" id="2_1ov45"]
+[ext_resource type="PackedScene" uid="uid://bohlnwst1215b" path="res://Scenes/ObjectContainer/ObjectContainer.tscn" id="3_lscpc"]
+[ext_resource type="PackedScene" uid="uid://b545opvuqj36i" path="res://Scenes/Projectile/Asteroid.tscn" id="4_q8n36"]
+[ext_resource type="PackedScene" uid="uid://bfm40q7n6wtkq" path="res://Scenes/WaveManager/WaveManager.tscn" id="6_7i4w6"]
+[ext_resource type="PackedScene" uid="uid://do1151345ur8k" path="res://Scenes/Spawner/Spawner.tscn" id="7_362x8"]
+[ext_resource type="PackedScene" uid="uid://cna5uq6wchu3" path="res://Scenes/GameUi/GameUi.tscn" id="7_q8n36"]
+
+[node name="Level" type="Node2D" unique_id=75695576]
+
+[node name="Player" parent="." unique_id=1328625762 instance=ExtResource("1_iheil")]
+position = Vector2(672, 924)
+
+[node name="Background" parent="." unique_id=1164972436 instance=ExtResource("2_1ov45")]
+
+[node name="ObjectContainer" parent="." unique_id=584549780 instance=ExtResource("3_lscpc")]
+test_scene = ExtResource("4_q8n36")
+
+[node name="GameUi" parent="." unique_id=2042328640 instance=ExtResource("7_q8n36")]
+process_mode = 3
+offset_right = 1440.0
+offset_bottom = 1080.0
+
+[node name="WaveManager" parent="." unique_id=605773986 instance=ExtResource("6_7i4w6")]
+
+[node name="Spawner" parent="." unique_id=142165311 instance=ExtResource("7_362x8")]
+scene = ExtResource("4_q8n36")

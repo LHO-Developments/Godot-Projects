@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cvhbi4y6ljci3"]
+
+[ext_resource type="Script" uid="uid://cpqtm7rhbwm5" path="res://Scenes/AsteroidPiece/AsteroidPiece.gd" id="1_w3o6v"]
+[ext_resource type="Texture2D" uid="uid://deb3kqlg1q6xj" path="res://Asset/Images/AsteroidPiece2.png" id="2_8bsi8"]
+[ext_resource type="Texture2D" uid="uid://bsk4cmyy3lfcp" path="res://Asset/Images/AsteroidPiece5.png" id="2_68u1o"]
+[ext_resource type="Texture2D" uid="uid://cq2wx6exc1pf0" path="res://Asset/Images/AsteroidPiece3.png" id="3_mtygo"]
+[ext_resource type="Texture2D" uid="uid://ct6y8gndoxbhp" path="res://Asset/Images/AsteroidPiece4.png" id="4_kg2j2"]
+
+[node name="AsteroidPiece" type="Node2D" unique_id=623127424]
+script = ExtResource("1_w3o6v")
+speed = 800.0
+rotation_speed_degrees = 720.0
+textures = Array[Texture2D]([ExtResource("2_8bsi8"), ExtResource("3_mtygo"), ExtResource("4_kg2j2"), ExtResource("2_68u1o")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846865112]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_68u1o")

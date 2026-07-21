@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bohlnwst1215b"]
+
+[ext_resource type="Script" uid="uid://8bgyy2o8xyff" path="res://Scenes/ObjectContainer/ObjectContainer.gd" id="1_mynqv"]
+[ext_resource type="PackedScene" uid="uid://dccv01gn1qjh" path="res://Scenes/TestPoolable/TestPoolable.tscn" id="2_b27y7"]
+
+[node name="ObjectContainer" type="Node" unique_id=584549780]
+script = ExtResource("1_mynqv")
+test_scene = ExtResource("2_b27y7")

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cdho2km3viyn6"]
+
+[ext_resource type="Script" uid="uid://c14abd41et4s" path="res://Scenes/AsteroidPiece/AsteroidExplosion.gd" id="1_ieuwh"]
+[ext_resource type="PackedScene" uid="uid://cvhbi4y6ljci3" path="res://Scenes/AsteroidPiece/AsteroidPiece.tscn" id="3_aa838"]
+[ext_resource type="AudioStream" uid="uid://dfapaliwictv2" path="res://Asset/Sounds/AsteroidExplosion.wav" id="4_aa838"]
+
+[node name="AsteroidExplosion" type="Node2D" unique_id=1929852623]
+script = ExtResource("1_ieuwh")
+
+[node name="Pieces" type="Node2D" parent="." unique_id=673959560]
+
+[node name="AsteroidPiece" parent="Pieces" unique_id=623127424 instance=ExtResource("3_aa838")]
+position = Vector2(-33, -25)
+
+[node name="AsteroidPiece2" parent="Pieces" unique_id=359823657 instance=ExtResource("3_aa838")]
+position = Vector2(5, -26)
+
+[node name="AsteroidPiece3" parent="Pieces" unique_id=2139007639 instance=ExtResource("3_aa838")]
+position = Vector2(27, -9)
+
+[node name="AsteroidPiece4" parent="Pieces" unique_id=490358187 instance=ExtResource("3_aa838")]
+position = Vector2(10, 15)
+
+[node name="AsteroidPiece5" parent="Pieces" unique_id=1404529041 instance=ExtResource("3_aa838")]
+position = Vector2(-9, 21)
+
+[node name="AsteroidPiece6" parent="Pieces" unique_id=517305262 instance=ExtResource("3_aa838")]
+position = Vector2(-32, 18)
+
+[node name="AsteroidPiece7" parent="Pieces" unique_id=285566497 instance=ExtResource("3_aa838")]
+position = Vector2(-48, -3)
+
+[node name="AsteroidPiece8" parent="Pieces" unique_id=1711074764 instance=ExtResource("3_aa838")]
+position = Vector2(-10, -50)
+
+[node name="AsteroidPiece9" parent="Pieces" unique_id=1964654517 instance=ExtResource("3_aa838")]
+position = Vector2(29, -46)
+
+[node name="AsteroidPiece10" parent="Pieces" unique_id=1963582794 instance=ExtResource("3_aa838")]
+position = Vector2(46, -14)
+
+[node name="AsteroidPiece11" parent="Pieces" unique_id=706260433 instance=ExtResource("3_aa838")]
+position = Vector2(39, 21)
+
+[node name="AsteroidPiece12" parent="Pieces" unique_id=37119299 instance=ExtResource("3_aa838")]
+position = Vector2(11, 40)
+
+[node name="AsteroidPiece13" parent="Pieces" unique_id=1588401031 instance=ExtResource("3_aa838")]
+position = Vector2(-27, 43)
+
+[node name="AsteroidPiece14" parent="Pieces" unique_id=1561352051 instance=ExtResource("3_aa838")]
+position = Vector2(-61, 28)
+
+[node name="AsteroidPiece15" parent="Pieces" unique_id=1899910153 instance=ExtResource("3_aa838")]
+position = Vector2(-64, -34)
+
+[node name="Sound" type="AudioStreamPlayer" parent="." unique_id=682368350]
+stream = ExtResource("4_aa838")
+
+[node name="Timer" type="Timer" parent="." unique_id=195985441]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
