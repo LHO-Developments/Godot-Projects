@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bojxn1fot36f2"]
+
+[ext_resource type="Script" uid="uid://dqg46xb28dias" path="res://Scenes/PowerUp/PowerUp.gd" id="1_v5ap0"]
+[ext_resource type="Texture2D" uid="uid://b6a1b1cc02jb5" path="res://Asset/Textures/light_03.png" id="2_gtc48"]
+[ext_resource type="PackedScene" uid="uid://bi8fqovlohcc6" path="res://Component/Movement/Mover.tscn" id="3_rtpde"]
+[ext_resource type="Texture2D" uid="uid://b7alv8yxi604m" path="res://Asset/Textures/MagicSmall.png" id="4_gtc48"]
+
+[sub_resource type="Curve" id="Curve_rtpde"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5319149, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1685394), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_kdlqn"]
+colors = PackedColorArray(0.80784315, 0, 0.57254905, 1, 0.22745098, 1, 0.5529412, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtc48"]
+radius = 53.037724
+
+[node name="PowerUp" type="Node2D" unique_id=1373468377]
+script = ExtResource("1_v5ap0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=45019125]
+modulate = Color(0.21176471, 1, 0.36078432, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_gtc48")
+
+[node name="Mover" parent="." unique_id=1340264163 instance=ExtResource("3_rtpde")]
+speed = 100.0
+rotation_speed_degrees = 45.0
+direction = Vector2(0, 1)
+
+[node name="LifeTimer" type="Timer" parent="." unique_id=2124882618]
+wait_time = 10.0
+
+[node name="Effects" type="CPUParticles2D" parent="." unique_id=763518021]
+amount = 24
+texture = ExtResource("4_gtc48")
+lifetime = 2.0
+preprocess = 5.0
+local_coords = true
+emission_shape = 6
+emission_ring_inner_radius = 50.0
+emission_ring_radius = 65.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.3
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+scale_amount_curve = SubResource("Curve_rtpde")
+color_initial_ramp = SubResource("Gradient_kdlqn")
+
+[node name="Detection" type="Area2D" parent="." unique_id=1532877916]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" unique_id=1088217784]
+shape = SubResource("CircleShape2D_gtc48")
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
+[connection signal="area_entered" from="Detection" to="." method="_on_detection_area_entered"]

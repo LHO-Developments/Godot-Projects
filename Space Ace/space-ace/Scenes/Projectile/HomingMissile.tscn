@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://lie5jjga5efr"]
+
+[ext_resource type="PackedScene" uid="uid://cuq5igk8lfv4f" path="res://Scenes/Projectile/BaseProjectile.tscn" id="1_ivttq"]
+[ext_resource type="Texture2D" uid="uid://dkqjp5rdnexd0" path="res://Asset/Images/HomingMissile.png" id="2_m2se8"]
+[ext_resource type="PackedScene" uid="uid://cu8sly35eeaw6" path="res://Scenes/Explosion/EnemyLaserExplosion.tscn" id="2_pn0nu"]
+[ext_resource type="PackedScene" uid="uid://cjqdnrt3kdoxp" path="res://Component/Movement/HomingMover.tscn" id="3_pn0nu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivttq"]
+radius = 30.0
+height = 80.0
+
+[node name="HomingMissile" unique_id=1709716112 instance=ExtResource("1_ivttq")]
+explosion_scene = ExtResource("2_pn0nu")
+points = 15
+
+[node name="Sprite2D" parent="." index="0" unique_id=989220919]
+rotation = 1.5707964
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_m2se8")
+
+[node name="ScreenNotifier" parent="." index="1" unique_id=960293046]
+rect = Rect2(-70, -56, 138, 111)
+
+[node name="HomingMover" parent="." index="3" unique_id=1434343771 instance=ExtResource("3_pn0nu")]
+speed = 150.0
+rotation_speed_degrees = 90.0
+
+[node name="Hitbox" parent="." index="4" unique_id=1733803325]
+rotation = 1.5707964
+damage_dealt = 30
+invincible_time = 2.0
+collision_shape = SubResource("CapsuleShape2D_ivttq")
