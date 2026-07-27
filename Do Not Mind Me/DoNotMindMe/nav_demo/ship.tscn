@@ -23,4 +23,7 @@ text = "asdasdasd
 asdasdasd"
 
 [node name="NavAgent2D" type="NavigationAgent2D" parent="." unique_id=183781315]
+avoidance_enabled = true
 debug_enabled = true
+
+[connection signal="velocity_computed" from="NavAgent2D" to="." method="_on_nav_agent_2d_velocity_computed"]
