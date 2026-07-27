@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://4fvn6bktblhn"]
 
 [ext_resource type="TileSet" uid="uid://bxqd7og3hoxc" path="res://resources/level_tiles.tres" id="1_h3e3j"]
+[ext_resource type="PackedScene" uid="uid://b20aca81m6ayn" path="res://scenes/npc/npc.tscn" id="2_nbgty"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h3e3j"]
 vertices = PackedVector2Array(950, 886, 906, 886, 906, 842, 950, 842, 1782, 886, 1418, 886, 1418, 778, 1782, 778, 2844.3828, 182, 2826, 182, 2826, 160.75781, 2294, 714, 2698, 1014, 2166, 1014, 1866, 970, 1866, 694, 1334, 694, 1034, 758, 822, 758, 778, 714, 778, 310, 1270, 138, 1334, 586, 1334, 138, 1418, 586, 1418, 202, 2358, 202, 2294, 310, 2358, 310, 2634, 630, 2378, 630, 2378, 394, 2442, 394, 2442, 202, 2806, 202, 2806, 630, 2742, 630, 2634, 714, 2742, 714, 2870, 714, 2870, 822, 2806, 822, 2806, 1206, 2698, 1206, 1034, 970, 1334, 906, 1398, 906, 1398, 970, 1098, 1142, 2166, 1270, 1142, 1270, 1142, 1334, 1098, 1334, 138, 1142, 822, 970, 138, 842, 182, 842, 182, 906, 458, 906, 694, 714, 458, 502, 694, 310, 182, 586, 374, 586, 374, 822, 266, 758, 266, 822, 74, 758, 74, 330, 182, 502, 458, 330, 458, 118, 1270, 74, 374, 118, 374, 246, 74, 246, 74, 74)
@@ -31,3 +32,6 @@ tile_set = ExtResource("1_h3e3j")
 
 [node name="NavRegion" type="NavigationRegion2D" parent="." unique_id=836184063]
 navigation_polygon = SubResource("NavigationPolygon_h3e3j")
+
+[node name="Npc" parent="." unique_id=1585929345 instance=ExtResource("2_nbgty")]
+position = Vector2(1012, 408)
