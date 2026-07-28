@@ -16,3 +16,4 @@ Games created using godot engine based on varieties of tutorials and videos
 	12. Foxy Adventure - 2d platformer, side scroller
 	13. Sokoban - puzzle
 	14. Space Ace - arcade. bullet shooter
+	15. Do Not Mind Me - top down. stealth
