@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://4w3ikyc1p22b"]
+
+[ext_resource type="Script" uid="uid://clco10chukw7k" path="res://scenes/Pill/pill.gd" id="1_8t1qy"]
+[ext_resource type="Texture2D" uid="uid://cilxv8b31m6wu" path="res://assets/images/pill2.png" id="1_t313c"]
+[ext_resource type="AudioStream" uid="uid://bsf0uuls5bte0" path="res://assets/sounds/sfx_sounds_powerup1.wav" id="2_3ksc0"]
+[ext_resource type="AudioStream" uid="uid://cwky4w1ie01iw" path="res://assets/sounds/sfx_sounds_powerup2.wav" id="3_8t1qy"]
+[ext_resource type="AudioStream" uid="uid://drx87ol4c6u35" path="res://assets/sounds/sfx_sounds_powerup3.wav" id="4_a3dfi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ruu5h"]
+radius = 22.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i27bp"]
+streams_count = 3
+stream_0/stream = ExtResource("2_3ksc0")
+stream_1/stream = ExtResource("3_8t1qy")
+stream_2/stream = ExtResource("4_a3dfi")
+
+[node name="Pill" type="Area2D" unique_id=44092970 groups=["pill"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8t1qy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1477939673]
+texture = ExtResource("1_t313c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1188089537]
+shape = SubResource("CircleShape2D_ruu5h")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=1507922553]
+stream = SubResource("AudioStreamRandomizer_i27bp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="Sound" to="." method="_on_sound_finished"]
