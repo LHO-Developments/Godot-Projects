@@ -2,13 +2,24 @@ extends Area2D
 
 enum EnemyState {Patrolling, Searching, Chasing};
 
-@export var speed: float = 60.0;
+const SPEEDS: Dictionary[EnemyState, float] = {
+	EnemyState.Patrolling: 60.0,
+	EnemyState.Searching: 80.0,
+	EnemyState.Chasing: 90.0
+}
+
+const FOVS: Dictionary[EnemyState, float] = {
+	EnemyState.Patrolling: 60.0,
+	EnemyState.Searching: 90.0,
+	EnemyState.Chasing: 120.0
+}
+
 @export var patrol_points: Node2D;
 
 @onready var nav_agent: NavigationAgent2D = $NavAgent;
 @onready var player_detect: RayCast2D = $PlayerDetect
-@onready var label: Label = $CanvasLayer/Label;
 @onready var gasp: AudioStreamPlayer2D = $Gasp;
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var _patrol_points: Array[Vector2];
 var _state: EnemyState = EnemyState.Patrolling;
@@ -37,21 +48,17 @@ func _physics_process(delta: float) -> void:
 	process_behaviour();
 	update_movement(delta);
 	update_raycast();
-	
-	label.text = "SeePL:%s\n" % can_see_player();
-	label.text += "FOV:%.1f\n" % fov_angle();
-	label.text += "%s" % EnemyState.keys()[_state];
 
 func update_movement(delta: float) -> void:
 	if nav_agent.is_navigation_finished(): return
 	
 	var npp: Vector2 = nav_agent.get_next_path_position();
 	var dir: Vector2 = global_position.direction_to(npp);
-	position += dir * speed * delta;
+	position += dir * SPEEDS[_state] * delta;
 	rotation = dir.angle();
 
 func can_see_player() -> bool:
-	return player_detect.get_collider() is Player and abs(fov_angle()) < 60;
+	return player_detect.get_collider() is Player and abs(fov_angle()) < FOVS[_state];
 
 func fov_angle() -> float:
 	var dir: Vector2 = global_position.direction_to(_player_ref.global_position);
@@ -97,4 +104,8 @@ func change_state(new_state: EnemyState) -> void:
 	
 	match  _state:
 		EnemyState.Chasing:
-			gasp.play();
+			animation_player.play("chasing");
+		EnemyState.Searching:
+			animation_player.play("searching");
+		EnemyState.Patrolling:
+			animation_player.play("RESET");
