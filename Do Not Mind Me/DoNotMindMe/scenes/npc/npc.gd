@@ -2,12 +2,13 @@ extends Area2D
 
 enum EnemyState {Patrolling, Searching, Chasing};
 
-@export var speed: float = 120.0;
+@export var speed: float = 60.0;
 @export var patrol_points: Node2D;
 
 @onready var nav_agent: NavigationAgent2D = $NavAgent;
 @onready var player_detect: RayCast2D = $PlayerDetect
 @onready var label: Label = $CanvasLayer/Label;
+@onready var gasp: AudioStreamPlayer2D = $Gasp;
 
 var _patrol_points: Array[Vector2];
 var _state: EnemyState = EnemyState.Patrolling;
@@ -32,12 +33,14 @@ func _ready() -> void:
 		return;
 
 func _physics_process(delta: float) -> void:
+	detect_player();
 	process_behaviour();
 	update_movement(delta);
 	update_raycast();
 	
 	label.text = "SeePL:%s\n" % can_see_player();
-	label.text += "FOV:%.1f" % fov_angle();
+	label.text += "FOV:%.1f\n" % fov_angle();
+	label.text += "%s" % EnemyState.keys()[_state];
 
 func update_movement(delta: float) -> void:
 	if nav_agent.is_navigation_finished(): return
@@ -55,6 +58,12 @@ func fov_angle() -> float:
 	var atp: float = transform.x.angle_to(dir);
 	return rad_to_deg(atp);
 
+func detect_player() -> void:
+	if can_see_player():
+		change_state(EnemyState.Chasing);
+	elif _state == EnemyState.Chasing:
+		change_state(EnemyState.Searching);
+
 func update_raycast() -> void:
 	player_detect.look_at(_player_ref.global_position);
 
@@ -66,8 +75,26 @@ func process_patroling() -> void:
 	if nav_agent.is_navigation_finished():
 		navigate_to_patrol_point();
 
+func process_searching() -> void:
+	if nav_agent.is_navigation_finished():
+		change_state(EnemyState.Patrolling);
+
+func process_chasing() -> void:
+	nav_agent.target_position = _player_ref.global_position;
+
 func process_behaviour() -> void:
 	match  _state:
 		EnemyState.Patrolling:
 			process_patroling();
-		
+		EnemyState.Chasing:
+			process_chasing();
+		EnemyState.Searching:
+			process_searching();
+
+func change_state(new_state: EnemyState) -> void:
+	if new_state == _state: return;
+	_state = new_state;
+	
+	match  _state:
+		EnemyState.Chasing:
+			gasp.play();
