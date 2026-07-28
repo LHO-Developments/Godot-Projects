@@ -7,7 +7,7 @@
 radius = 18.0
 height = 46.0
 
-[node name="Player" type="CharacterBody2D" unique_id=724023429]
+[node name="Player" type="CharacterBody2D" unique_id=724023429 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_dovo2")
 
