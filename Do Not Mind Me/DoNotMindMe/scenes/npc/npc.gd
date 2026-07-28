@@ -125,3 +125,8 @@ func shoot() -> void:
 func _on_timer_timeout() -> void:
 	timer.wait_time = randf_range(1.5,3.0);
 	shoot();
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		SignalHub.emit_game_over(false);

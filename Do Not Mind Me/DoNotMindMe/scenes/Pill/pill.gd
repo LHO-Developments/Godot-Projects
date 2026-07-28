@@ -6,7 +6,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		sound.play();
 		hide();
-		SignalHub.emit_on_pill_collected();
+		SignalHub.emit_pill_collected();
 	
 
 

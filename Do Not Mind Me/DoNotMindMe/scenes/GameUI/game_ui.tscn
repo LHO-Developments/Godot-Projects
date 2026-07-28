@@ -10,7 +10,15 @@ font_color = Color(0.23529412, 1, 1, 1)
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_su2lh"]
+font = ExtResource("2_su2lh")
+font_size = 72
+font_color = Color(0.23529412, 1, 0.24705882, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
 [node name="GameUI" type="Control" unique_id=1220135402]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,3 +61,30 @@ size_flags_vertical = 0
 text = "GO TO EXIT!"
 label_settings = SubResource("LabelSettings_euqsa")
 horizontal_alignment = 2
+
+[node name="GameOverRect" type="ColorRect" parent="." unique_id=1534694579]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.22745098, 1, 0.41568628)
+
+[node name="GameOverLabel" type="Label" parent="GameOverRect" unique_id=875253638]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.5
+offset_top = -41.5
+offset_right = 418.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "GAME OVER! YOU DIED!"
+label_settings = SubResource("LabelSettings_su2lh")

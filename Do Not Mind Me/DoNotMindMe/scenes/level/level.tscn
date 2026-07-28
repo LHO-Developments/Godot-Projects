@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://4fvn6bktblhn"]
 
 [ext_resource type="TileSet" uid="uid://bxqd7og3hoxc" path="res://resources/level_tiles.tres" id="1_h3e3j"]
+[ext_resource type="PackedScene" uid="uid://b20aca81m6ayn" path="res://scenes/npc/npc.tscn" id="2_nbgty"]
 [ext_resource type="PackedScene" uid="uid://bmvxfkk05nkbx" path="res://scenes/player/player.tscn" id="3_i166f"]
 [ext_resource type="PackedScene" uid="uid://4w3ikyc1p22b" path="res://scenes/Pill/pill.tscn" id="3_qkmgm"]
 [ext_resource type="PackedScene" uid="uid://t0k6ka7vyc4s" path="res://scenes/exit/exit.tscn" id="4_qkmgm"]
@@ -18,7 +19,7 @@ agent_radius = 25.0
 [node name="Level" type="Node" unique_id=697843636]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=591262106]
-color = Color(0.043039158, 0.04303915, 0.04303915, 1)
+color = Color(0.09998604, 0.099985994, 0.09998598, 1)
 
 [node name="Tiles" type="Node2D" parent="." unique_id=595037887]
 
@@ -58,16 +59,65 @@ position = Vector2(822, 133)
 [node name="Marker2D5" type="Marker2D" parent="PatrolPoints" unique_id=1209686603]
 position = Vector2(1162, 139)
 
+[node name="PatrolPoints2" type="Node2D" parent="." unique_id=2109237010]
+
+[node name="Marker2D" type="Marker2D" parent="PatrolPoints2" unique_id=1381009384]
+position = Vector2(1666, 461)
+
+[node name="Marker2D2" type="Marker2D" parent="PatrolPoints2" unique_id=37648469]
+position = Vector2(1506, 276)
+
+[node name="Marker2D3" type="Marker2D" parent="PatrolPoints2" unique_id=847658043]
+position = Vector2(2111, 267)
+
+[node name="Marker2D4" type="Marker2D" parent="PatrolPoints2" unique_id=1861065196]
+position = Vector2(2154, 567)
+
+[node name="Marker2D5" type="Marker2D" parent="PatrolPoints2" unique_id=1327914714]
+position = Vector2(1569, 598)
+
+[node name="PatrolPoints3" type="Node2D" parent="." unique_id=2047086594]
+
+[node name="Marker2D" type="Marker2D" parent="PatrolPoints3" unique_id=1595462737]
+position = Vector2(282, 1015)
+
+[node name="Marker2D2" type="Marker2D" parent="PatrolPoints3" unique_id=1119214058]
+position = Vector2(793, 1049)
+
+[node name="Marker2D3" type="Marker2D" parent="PatrolPoints3" unique_id=1601416594]
+position = Vector2(1452, 1129)
+
+[node name="Marker2D4" type="Marker2D" parent="PatrolPoints3" unique_id=349290919]
+position = Vector2(2031, 1121)
+
+[node name="Marker2D5" type="Marker2D" parent="PatrolPoints3" unique_id=910710904]
+position = Vector2(2017, 838)
+
 [node name="Player" parent="." unique_id=724023429 instance=ExtResource("3_i166f")]
-position = Vector2(1067, 471)
+position = Vector2(212, 160)
 
 [node name="Pills" type="Node" parent="." unique_id=1563454905]
 
 [node name="Pill" parent="Pills" unique_id=44092970 instance=ExtResource("3_qkmgm")]
-position = Vector2(1183, 423)
+position = Vector2(231, 406)
+
+[node name="Pill2" parent="Pills" unique_id=935758875 instance=ExtResource("3_qkmgm")]
+position = Vector2(298, 674)
+
+[node name="Pill3" parent="Pills" unique_id=2109960688 instance=ExtResource("3_qkmgm")]
+position = Vector2(651, 884)
+
+[node name="Pill4" parent="Pills" unique_id=1659472603 instance=ExtResource("3_qkmgm")]
+position = Vector2(1234, 1098)
+
+[node name="Pill5" parent="Pills" unique_id=186786238 instance=ExtResource("3_qkmgm")]
+position = Vector2(1877, 1092)
+
+[node name="Pill6" parent="Pills" unique_id=2082790464 instance=ExtResource("3_qkmgm")]
+position = Vector2(1684, 463)
 
 [node name="Exit" parent="." unique_id=1434545009 instance=ExtResource("4_qkmgm")]
-position = Vector2(955, 341)
+position = Vector2(2623, 322)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1589669573]
 
@@ -76,3 +126,17 @@ position = Vector2(955, 341)
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=176880732]
 stream = ExtResource("6_vpf64")
 autoplay = true
+
+[node name="NPC" type="Node" parent="." unique_id=1338870086]
+
+[node name="Npc" parent="NPC" unique_id=1585929345 node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_nbgty")]
+position = Vector2(1104, 412)
+patrol_points = NodePath("../../PatrolPoints")
+
+[node name="Npc2" parent="NPC" unique_id=650580521 node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_nbgty")]
+position = Vector2(1916, 468)
+patrol_points = NodePath("../../PatrolPoints2")
+
+[node name="Npc3" parent="NPC" unique_id=1234050858 node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_nbgty")]
+position = Vector2(285, 1010)
+patrol_points = NodePath("../../PatrolPoints3")

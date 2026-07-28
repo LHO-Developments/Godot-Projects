@@ -1,10 +1,14 @@
 extends Node
 
-signal on_pill_collected;
-signal on_show_exit;
+signal pill_collected;
+signal show_exit;
+signal game_over(won:bool);
 
-func emit_on_pill_collected() -> void:
-	on_pill_collected.emit();
+func emit_game_over(won: bool) -> void:
+	game_over.emit(won);
 
-func emit_on_show_exit() -> void:
-	on_show_exit.emit();
+func emit_pill_collected() -> void:
+	pill_collected.emit();
+
+func emit_show_exit() -> void:
+	show_exit.emit();
