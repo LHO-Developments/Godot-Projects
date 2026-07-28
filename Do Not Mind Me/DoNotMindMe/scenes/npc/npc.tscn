@@ -5,12 +5,13 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sspvn"]
 radius = 12.0
-height = 40.0
+height = 28.0
 
 [node name="Npc" type="Area2D" unique_id=1585929345]
 script = ExtResource("1_pcwmf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1436561973]
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_sspvn")
 offset = Vector2(10, 0)
 
