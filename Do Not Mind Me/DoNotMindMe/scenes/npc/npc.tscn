@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bvfa7syt84f4q" path="res://assets/sounds/gasp1.wav" id="3_woxlu"]
 [ext_resource type="AudioStream" uid="uid://cp7nn3wwabjas" path="res://assets/sounds/gasp2.wav" id="4_ay68w"]
 [ext_resource type="AudioStream" uid="uid://b1hfk7f3ffmlo" path="res://assets/sounds/gasp3.wav" id="5_evswx"]
+[ext_resource type="AudioStream" uid="uid://catrbaguvetwp" path="res://assets/sounds/sfx_wpn_laser2.wav" id="6_ay68w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sspvn"]
 radius = 12.0
@@ -84,7 +85,6 @@ offset = Vector2(10, 0)
 shape = SubResource("CapsuleShape2D_sspvn")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=1887595354]
-debug_enabled = true
 
 [node name="PlayerDetect" type="RayCast2D" parent="." unique_id=1958346399]
 target_position = Vector2(400, 0)
@@ -92,5 +92,14 @@ target_position = Vector2(400, 0)
 [node name="Gasp" type="AudioStreamPlayer2D" parent="." unique_id=160993722]
 stream = SubResource("AudioStreamRandomizer_p70cs")
 
+[node name="Laser" type="AudioStreamPlayer2D" parent="." unique_id=2095794508]
+stream = ExtResource("6_ay68w")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1216679865]
 libraries/ = SubResource("AnimationLibrary_ay68w")
+
+[node name="Timer" type="Timer" parent="." unique_id=1233862901]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

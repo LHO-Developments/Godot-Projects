@@ -13,6 +13,7 @@ const FOVS: Dictionary[EnemyState, float] = {
 	EnemyState.Searching: 90.0,
 	EnemyState.Chasing: 120.0
 }
+const BULLET = preload("uid://ydihdjdt6xy");
 
 @export var patrol_points: Node2D;
 
@@ -20,6 +21,9 @@ const FOVS: Dictionary[EnemyState, float] = {
 @onready var player_detect: RayCast2D = $PlayerDetect
 @onready var gasp: AudioStreamPlayer2D = $Gasp;
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var timer: Timer = $Timer
+@onready var laser: AudioStreamPlayer2D = $Laser
+
 
 var _patrol_points: Array[Vector2];
 var _state: EnemyState = EnemyState.Patrolling;
@@ -109,3 +113,15 @@ func change_state(new_state: EnemyState) -> void:
 			animation_player.play("searching");
 		EnemyState.Patrolling:
 			animation_player.play("RESET");
+
+func shoot() -> void:
+	if _state != EnemyState.Chasing: return;
+	laser.play();
+	var new_b: Bullet = BULLET.instantiate();
+	new_b.global_position = global_position;
+	new_b.setup(global_position.direction_to(_player_ref.global_position));
+	get_tree().current_scene.add_child.call_deferred(new_b);
+
+func _on_timer_timeout() -> void:
+	timer.wait_time = randf_range(1.5,3.0);
+	shoot();

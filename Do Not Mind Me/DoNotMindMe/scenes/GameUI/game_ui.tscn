@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c6ysnyy1waxvu"]
+
+[ext_resource type="Script" uid="uid://bxuim74hgqs16" path="res://scenes/GameUI/game_ui.gd" id="1_kqpje"]
+[ext_resource type="FontFile" uid="uid://bmj05qg3kbmrp" path="res://assets/fonts/TitanOne-Regular.ttf" id="2_su2lh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_euqsa"]
+font = ExtResource("2_su2lh")
+font_size = 32
+font_color = Color(0.23529412, 1, 1, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameUI" type="Control" unique_id=1220135402]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kqpje")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2049768835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="CollectedLabel" type="Label" parent="MarginContainer" unique_id=1614530251]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0 / 0"
+label_settings = SubResource("LabelSettings_euqsa")
+
+[node name="TimeLabel" type="Label" parent="MarginContainer" unique_id=478273833]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "0.00 s"
+label_settings = SubResource("LabelSettings_euqsa")
+
+[node name="ExitLabel" type="Label" parent="MarginContainer" unique_id=196034090]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "GO TO EXIT!"
+label_settings = SubResource("LabelSettings_euqsa")
+horizontal_alignment = 2
