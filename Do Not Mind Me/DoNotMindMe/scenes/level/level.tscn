@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bxqd7og3hoxc" path="res://resources/level_tiles.tres" id="1_h3e3j"]
 [ext_resource type="PackedScene" uid="uid://b20aca81m6ayn" path="res://scenes/npc/npc.tscn" id="2_nbgty"]
+[ext_resource type="PackedScene" uid="uid://bmvxfkk05nkbx" path="res://scenes/player/player.tscn" id="3_i166f"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h3e3j"]
 vertices = PackedVector2Array(935, 871, 921, 871, 921, 857, 935, 857, 1767, 871, 1433, 871, 1433, 793, 1767, 793, 2279, 729, 2713, 999, 2151, 999, 1881, 985, 1881, 679, 1319, 601, 1319, 679, 1049, 743, 807, 743, 793, 729, 793, 295, 1255, 153, 1319, 153, 1433, 601, 1433, 217, 2343, 217, 2279, 295, 2343, 295, 2649, 615, 2393, 615, 2393, 409, 2457, 409, 2457, 217, 2791, 217, 2791, 615, 2727, 615, 2649, 729, 2727, 729, 2855, 729, 2855, 807, 2791, 807, 2791, 1191, 2713, 1191, 1049, 985, 1319, 921, 1383, 921, 1383, 985, 1113, 1127, 2151, 1255, 1127, 1255, 1127, 1319, 1113, 1319, 153, 1127, 807, 985, 153, 857, 167, 857, 167, 921, 473, 921, 679, 729, 473, 487, 679, 295, 167, 601, 359, 601, 359, 807, 281, 743, 281, 807, 89, 743, 89, 345, 167, 487, 473, 345, 473, 103, 1255, 89, 359, 103, 359, 231, 89, 231, 89, 89)
@@ -54,3 +55,6 @@ position = Vector2(822, 133)
 
 [node name="Marker2D5" type="Marker2D" parent="PatrolPoints" unique_id=1209686603]
 position = Vector2(1162, 139)
+
+[node name="Player" parent="." unique_id=724023429 instance=ExtResource("3_i166f")]
+position = Vector2(1224, 1133)

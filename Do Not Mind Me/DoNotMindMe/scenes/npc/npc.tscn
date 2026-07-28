@@ -20,6 +20,3 @@ shape = SubResource("CapsuleShape2D_sspvn")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="." unique_id=1887595354]
 debug_enabled = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=720376600]
-zoom = Vector2(0.6, 0.6)
